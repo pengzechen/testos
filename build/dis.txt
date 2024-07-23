@@ -1,0 +1,3866 @@
+
+build/kernel.elf:     file format elf64-littleaarch64
+build/kernel.elf
+architecture: aarch64, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x0000000070200000
+
+Program Header:
+    LOAD off    0x0000000000010000 vaddr 0x0000000070200000 paddr 0x0000000070200000 align 2**16
+         filesz 0x0000000000003950 memsz 0x0000000000009010 flags rwx
+   STACK off    0x0000000000000000 vaddr 0x0000000000000000 paddr 0x0000000000000000 align 2**4
+         filesz 0x0000000000000000 memsz 0x0000000000000000 flags rw-
+private flags = 0x0:
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         00003040  0000000070200000  0000000070200000  00010000  2**11
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .rodata       000001f0  0000000070203040  0000000070203040  00013040  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .eh_frame     00000710  0000000070203230  0000000070203230  00013230  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .data         00000010  0000000070203940  0000000070203940  00013940  2**3
+                  CONTENTS, ALLOC, LOAD, DATA
+  4 .bss          00005010  0000000070204000  0000000070204000  00013950  2**12
+                  ALLOC
+  5 .debug_line   00000acf  0000000000000000  0000000000000000  00013950  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  6 .debug_line_str 00000115  0000000000000000  0000000000000000  0001441f  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  7 .debug_info   0000182c  0000000000000000  0000000000000000  00014534  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  8 .debug_abbrev 0000086e  0000000000000000  0000000000000000  00015d60  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  9 .debug_aranges 00000180  0000000000000000  0000000000000000  000165d0  2**4
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 10 .debug_str    000005ab  0000000000000000  0000000000000000  00016750  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 11 .comment      0000001b  0000000000000000  0000000000000000  00016cfb  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+0000000070200000 l    d  .text	0000000000000000 .text
+0000000070203040 l    d  .rodata	0000000000000000 .rodata
+0000000070203230 l    d  .eh_frame	0000000000000000 .eh_frame
+0000000070203940 l    d  .data	0000000000000000 .data
+0000000070204000 l    d  .bss	0000000000000000 .bss
+0000000000000000 l    d  .debug_line	0000000000000000 .debug_line
+0000000000000000 l    d  .debug_line_str	0000000000000000 .debug_line_str
+0000000000000000 l    d  .debug_info	0000000000000000 .debug_info
+0000000000000000 l    d  .debug_abbrev	0000000000000000 .debug_abbrev
+0000000000000000 l    d  .debug_aranges	0000000000000000 .debug_aranges
+0000000000000000 l    d  .debug_str	0000000000000000 .debug_str
+0000000000000000 l    d  .comment	0000000000000000 .comment
+0000000000000000 l    df *ABS*	0000000000000000 dmos.s.o
+0000000000000000 l    df *ABS*	0000000000000000 spinlock.s.o
+0000000000000000 l    df *ABS*	0000000000000000 print.c
+0000000070200084 l     F .text	000000000000001c spinlock_init
+0000000070203940 l     O .data	0000000000000010 digits
+0000000070200198 l     F .text	000000000000006c addchar
+0000000070200204 l     F .text	0000000000000120 print_str
+0000000070200324 l     F .text	00000000000001a4 print_int
+00000000702004c8 l     F .text	00000000000001f4 print_unsigned
+00000000702006bc l     F .text	00000000000000b4 fmtnum
+0000000000000000 l    df *ABS*	0000000000000000 string.c
+0000000000000000 l    df *ABS*	0000000000000000 dmos.c
+0000000070201944 l     F .text	000000000000000c enable_interrupts
+0000000000000000 l    df *ABS*	0000000000000000 gic.c
+0000000070201a0c l     F .text	0000000000000018 read32
+0000000070201a24 l     F .text	0000000000000024 write32
+0000000000000000 l    df *ABS*	0000000000000000 exception.c
+0000000070201f24 l     F .text	0000000000000018 read_esr_el1
+0000000000000000 l    df *ABS*	0000000000000000 exception.s.o
+00000000702013b0 g     F .text	000000000000002c strcpy
+0000000070208010 g     O .bss	0000000000001000 g_handler_vec
+0000000070201034 g     F .text	000000000000009c printf
+0000000070201b7c g     F .text	0000000000000030 gicc_init
+0000000070202800 g       .text	0000000000000000 exception_vector_base
+0000000070201c08 g     F .text	0000000000000028 gic_write_dir
+000000007020004c g       .text	0000000000000000 spin_trylock
+00000000702016dc g     F .text	00000000000000d8 memmove
+0000000070200f40 g     F .text	000000000000008c snprintf
+0000000070201820 g     F .text	0000000000000124 atol
+0000000070201208 g     F .text	00000000000000bc binstr
+0000000070208000 g     O .bss	0000000000000004 lock
+0000000070200148 g     F .text	0000000000000028 print_info
+00000000702000a0 g     F .text	0000000000000020 io_init
+00000000702015dc g     F .text	0000000000000070 memcpy
+0000000070200104 g     F .text	0000000000000044 uart_putstr
+0000000070202040 g     F .text	000000000000006c handle_irq_exception
+00000000702020ac g     F .text	0000000000000030 invalid_exception
+0000000070200770 g     F .text	00000000000007d0 vsnprintf
+0000000070201998 g     F .text	0000000000000024 test_mem_no_maped2
+0000000070201d64 g     F .text	0000000000000078 gic_disable_int
+0000000070201a48 g     F .text	00000000000000ac gic_test_init
+0000000070201ddc g     F .text	0000000000000088 gic_get_enable
+00000000702019bc g     F .text	0000000000000050 kernel_main
+0000000070204000 g       .bss	0000000000000000 _stack_top
+0000000070208008 g     O .bss	0000000000000004 _gicv2
+0000000070201340 g     F .text	0000000000000070 strcat
+00000000702012c4 g     F .text	000000000000003c print_binstr
+0000000070201950 g     F .text	0000000000000024 test_mem_maped
+0000000070200fcc g     F .text	0000000000000068 vprintf
+0000000070201af4 g     F .text	0000000000000088 gic_init
+00000000702017b4 g     F .text	000000000000006c memchr
+0000000070201ea4 g     F .text	0000000000000040 gic_set_ipriority
+0000000070200000 g       .text	0000000000000000 _start
+00000000702014e8 g     F .text	0000000000000094 strstr
+0000000070201ee4 g     F .text	0000000000000040 gic_set_icenabler
+00000000702013dc g     F .text	0000000000000090 strncmp
+0000000070201e64 g     F .text	0000000000000040 gic_set_isenabler
+0000000070201f68 g     F .text	00000000000000d8 handle_sync_exception
+0000000070201f3c g     F .text	000000000000002c irq_install
+0000000070201bac g     F .text	000000000000001c gic_read_iar
+000000007020164c g     F .text	0000000000000090 memcmp
+0000000070201c98 g     F .text	00000000000000cc gic_enable_int
+000000007020157c g     F .text	0000000000000060 memset
+000000007020146c g     F .text	0000000000000028 strcmp
+00000000702020dc g     F .text	0000000000000034 cntp_handler
+0000000070200170 g     F .text	0000000000000028 print_warn
+0000000070201974 g     F .text	0000000000000024 test_mem_no_maped
+000000007020116c g     F .text	000000000000009c error
+0000000070200074 g       .text	0000000000000000 spin_unlock
+00000000702010d0 g     F .text	000000000000009c warning
+0000000070201bc8 g     F .text	0000000000000018 gic_iar_irqnr
+0000000070200030 g       .text	0000000000000000 spin_lock
+0000000070201be0 g     F .text	0000000000000028 gic_write_eoir
+0000000070201c30 g     F .text	0000000000000040 gic_ipi_send_single
+0000000070201300 g     F .text	0000000000000040 strlen
+0000000070201494 g     F .text	0000000000000054 strchr
+0000000070202110 g     F .text	0000000000000024 exception_init
+00000000702000c0 g     F .text	0000000000000044 uart_putchar
+0000000070201c70 g     F .text	0000000000000028 cpu_num
+
+
+
+Disassembly of section .text:
+
+0000000070200000 <_start>:
+.section .text
+.global _start
+
+_start:
+
+    msr daifset, #2   // 关闭所有中断
+    70200000:	d50342df 	msr	daifset, #0x2
+
+    adrp    x0, exception_vector_base
+    70200004:	d0000000 	adrp	x0, 70202000 <handle_sync_exception+0x98>
+    add     x0, x0, :lo12:exception_vector_base
+    70200008:	91200000 	add	x0, x0, #0x800
+    msr     vbar_el1, x0
+    7020000c:	d518c000 	msr	vbar_el1, x0
+    dsb     sy      // 确保所有内存访问完成
+    70200010:	d5033f9f 	dsb	sy
+    isb             // 确保所有指令都执行完成
+    70200014:	d5033fdf 	isb
+
+    // 设置栈指针
+    ldr x0, =_stack_top
+    70200018:	58000080 	ldr	x0, 70200028 <_start+0x28>
+    mov sp, x0
+    7020001c:	9100001f 	mov	sp, x0
+
+    // 调用 C 语言的 main 函数
+    bl kernel_main
+    70200020:	94000667 	bl	702019bc <kernel_main>
+
+    // 死循环，防止返回
+1:  b 1b
+    70200024:	14000000 	b	70200024 <_start+0x24>
+    70200028:	70204000 	.word	0x70204000
+    7020002c:	00000000 	.word	0x00000000
+
+0000000070200030 <spin_lock>:
+.global spin_unlock
+.global spin_trylock
+
+
+spin_lock:
+    mov w1, #1                // w1 = 1 (表示锁定)
+    70200030:	52800021 	mov	w1, #0x1                   	// #1
+1:  ldaxr w2, [x0]            // 原子加载锁的状态到 w2，带有 Acquire 语义
+    70200034:	885ffc02 	ldaxr	w2, [x0]
+    cbnz w2, 1b               // 如果锁已被持有，继续自旋
+    70200038:	35ffffe2 	cbnz	w2, 70200034 <spin_lock+0x4>
+    stlxr w2, w1, [x0]        // 尝试原子存储 1 到锁变量，带有 Release 语义
+    7020003c:	8802fc01 	stlxr	w2, w1, [x0]
+    cbnz w2, 1b               // 如果存储失败（锁被其他处理器获取），继续自旋
+    70200040:	35ffffa2 	cbnz	w2, 70200034 <spin_lock+0x4>
+    dmb ish                   // 内存屏障，确保锁定操作完成
+    70200044:	d5033bbf 	dmb	ish
+    ret
+    70200048:	d65f03c0 	ret
+
+000000007020004c <spin_trylock>:
+/*
+ * when spinlock already taken, r1 will read 1 which is same with the
+ * 'strex' failure return value, no extra convertion needed.
+ */
+spin_trylock:
+    mov w1, #1                // w1 = 1 (表示锁定)
+    7020004c:	52800021 	mov	w1, #0x1                   	// #1
+    ldaxr w2, [x0]            // 原子加载锁的状态到 w2，带有 Acquire 语义
+    70200050:	885ffc02 	ldaxr	w2, [x0]
+    cbnz w2, 2f               // 如果锁已被持有，跳到标签2
+    70200054:	350000c2 	cbnz	w2, 7020006c <spin_trylock+0x20>
+    stlxr w2, w1, [x0]        // 尝试原子存储 1 到锁变量，带有 Release 语义
+    70200058:	8802fc01 	stlxr	w2, w1, [x0]
+    cbnz w2, 2f               // 如果存储失败（锁被其他处理器获取），跳到标签2
+    7020005c:	35000082 	cbnz	w2, 7020006c <spin_trylock+0x20>
+    dmb ish                   // 内存屏障，确保锁定操作完成
+    70200060:	d5033bbf 	dmb	ish
+    mov w0, #0                // 返回 0 表示获取锁成功
+    70200064:	52800000 	mov	w0, #0x0                   	// #0
+    ret
+    70200068:	d65f03c0 	ret
+2:  mov w0, #1                // 返回 1 表示获取锁失败
+    7020006c:	52800020 	mov	w0, #0x1                   	// #1
+    ret
+    70200070:	d65f03c0 	ret
+
+0000000070200074 <spin_unlock>:
+
+
+spin_unlock:
+    dmb ish                   // 内存屏障，确保之前的内存操作完成
+    70200074:	d5033bbf 	dmb	ish
+    mov w1, #0
+    70200078:	52800001 	mov	w1, #0x0                   	// #0
+    stlr w1, [x0]             // 原子存储 0 到锁变量，带有 Release 语义
+    7020007c:	889ffc01 	stlr	w1, [x0]
+    70200080:	d65f03c0 	ret
+
+0000000070200084 <spinlock_init>:
+
+typedef struct {
+    volatile int lock;
+} spinlock_t;
+
+static inline void spinlock_init(spinlock_t *lock) {lock->lock = 0;}
+    70200084:	d10043ff 	sub	sp, sp, #0x10
+    70200088:	f90007e0 	str	x0, [sp, #8]
+    7020008c:	f94007e0 	ldr	x0, [sp, #8]
+    70200090:	b900001f 	str	wzr, [x0]
+    70200094:	d503201f 	nop
+    70200098:	910043ff 	add	sp, sp, #0x10
+    7020009c:	d65f03c0 	ret
+
+00000000702000a0 <io_init>:
+#define BUFSZ 2000
+
+spinlock_t lock;
+
+void io_init() 
+{
+    702000a0:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+    702000a4:	910003fd 	mov	x29, sp
+	spinlock_init(&lock);
+    702000a8:	90000040 	adrp	x0, 70208000 <lock>
+    702000ac:	91000000 	add	x0, x0, #0x0
+    702000b0:	97fffff5 	bl	70200084 <spinlock_init>
+}
+    702000b4:	d503201f 	nop
+    702000b8:	a8c17bfd 	ldp	x29, x30, [sp], #16
+    702000bc:	d65f03c0 	ret
+
+00000000702000c0 <uart_putchar>:
+
+void uart_putstr(const char *str);
+#define puts uart_putstr
+
+void uart_putchar(char c)
+{
+    702000c0:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+    702000c4:	910003fd 	mov	x29, sp
+    702000c8:	39007fe0 	strb	w0, [sp, #31]
+    volatile unsigned int *const UART0DR = (unsigned int *)0x9000000;
+    702000cc:	d2a12000 	mov	x0, #0x9000000             	// #150994944
+    702000d0:	f90017e0 	str	x0, [sp, #40]
+	spin_lock(&lock);
+    702000d4:	90000040 	adrp	x0, 70208000 <lock>
+    702000d8:	91000000 	add	x0, x0, #0x0
+    702000dc:	97ffffd5 	bl	70200030 <spin_lock>
+    *UART0DR = (unsigned int)c;
+    702000e0:	39407fe1 	ldrb	w1, [sp, #31]
+    702000e4:	f94017e0 	ldr	x0, [sp, #40]
+    702000e8:	b9000001 	str	w1, [x0]
+	spin_unlock(&lock);
+    702000ec:	90000040 	adrp	x0, 70208000 <lock>
+    702000f0:	91000000 	add	x0, x0, #0x0
+    702000f4:	97ffffe0 	bl	70200074 <spin_unlock>
+}
+    702000f8:	d503201f 	nop
+    702000fc:	a8c37bfd 	ldp	x29, x30, [sp], #48
+    70200100:	d65f03c0 	ret
+
+0000000070200104 <uart_putstr>:
+
+void uart_putstr(const char *str)
+{
+    70200104:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    70200108:	910003fd 	mov	x29, sp
+    7020010c:	f9000fe0 	str	x0, [sp, #24]
+    while (*str)
+    70200110:	14000006 	b	70200128 <uart_putstr+0x24>
+    {
+        uart_putchar(*str++);
+    70200114:	f9400fe0 	ldr	x0, [sp, #24]
+    70200118:	91000401 	add	x1, x0, #0x1
+    7020011c:	f9000fe1 	str	x1, [sp, #24]
+    70200120:	39400000 	ldrb	w0, [x0]
+    70200124:	97ffffe7 	bl	702000c0 <uart_putchar>
+    while (*str)
+    70200128:	f9400fe0 	ldr	x0, [sp, #24]
+    7020012c:	39400000 	ldrb	w0, [x0]
+    70200130:	7100001f 	cmp	w0, #0x0
+    70200134:	54ffff01 	b.ne	70200114 <uart_putstr+0x10>  // b.any
+    }
+}
+    70200138:	d503201f 	nop
+    7020013c:	d503201f 	nop
+    70200140:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70200144:	d65f03c0 	ret
+
+0000000070200148 <print_info>:
+
+void print_info(const char *info)
+{
+    70200148:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    7020014c:	910003fd 	mov	x29, sp
+    70200150:	f9000fe0 	str	x0, [sp, #24]
+    // ANSI 转义序列: "\033[32m" 设置绿色前景色, "\033[0m" 重置颜色
+    printf("\033[32m%s\033[0m", info);
+    70200154:	f9400fe1 	ldr	x1, [sp, #24]
+    70200158:	f0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    7020015c:	91010000 	add	x0, x0, #0x40
+    70200160:	940003b5 	bl	70201034 <printf>
+}
+    70200164:	d503201f 	nop
+    70200168:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    7020016c:	d65f03c0 	ret
+
+0000000070200170 <print_warn>:
+
+void print_warn(const char *info)
+{
+    70200170:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    70200174:	910003fd 	mov	x29, sp
+    70200178:	f9000fe0 	str	x0, [sp, #24]
+    // ANSI 转义序列: "\033[32m" 设置绿色前景色, "\033[0m" 重置颜色
+    printf("\033[33m%s\033[0m", info);
+    7020017c:	f9400fe1 	ldr	x1, [sp, #24]
+    70200180:	f0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70200184:	91014000 	add	x0, x0, #0x50
+    70200188:	940003ab 	bl	70201034 <printf>
+}
+    7020018c:	d503201f 	nop
+    70200190:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70200194:	d65f03c0 	ret
+
+0000000070200198 <addchar>:
+	int npad;
+	bool alternate;
+} strprops_t;
+
+static void addchar(pstream_t *p, char c)
+{
+    70200198:	d10043ff 	sub	sp, sp, #0x10
+    7020019c:	f90007e0 	str	x0, [sp, #8]
+    702001a0:	39001fe1 	strb	w1, [sp, #7]
+	if (p->remain)
+    702001a4:	f94007e0 	ldr	x0, [sp, #8]
+    702001a8:	b9400800 	ldr	w0, [x0, #8]
+    702001ac:	7100001f 	cmp	w0, #0x0
+    702001b0:	540001a0 	b.eq	702001e4 <addchar+0x4c>  // b.none
+	{
+		*p->buffer++ = c;
+    702001b4:	f94007e0 	ldr	x0, [sp, #8]
+    702001b8:	f9400000 	ldr	x0, [x0]
+    702001bc:	91000402 	add	x2, x0, #0x1
+    702001c0:	f94007e1 	ldr	x1, [sp, #8]
+    702001c4:	f9000022 	str	x2, [x1]
+    702001c8:	39401fe1 	ldrb	w1, [sp, #7]
+    702001cc:	39000001 	strb	w1, [x0]
+		--p->remain;
+    702001d0:	f94007e0 	ldr	x0, [sp, #8]
+    702001d4:	b9400800 	ldr	w0, [x0, #8]
+    702001d8:	51000401 	sub	w1, w0, #0x1
+    702001dc:	f94007e0 	ldr	x0, [sp, #8]
+    702001e0:	b9000801 	str	w1, [x0, #8]
+	}
+	++p->added;
+    702001e4:	f94007e0 	ldr	x0, [sp, #8]
+    702001e8:	b9400c00 	ldr	w0, [x0, #12]
+    702001ec:	11000401 	add	w1, w0, #0x1
+    702001f0:	f94007e0 	ldr	x0, [sp, #8]
+    702001f4:	b9000c01 	str	w1, [x0, #12]
+}
+    702001f8:	d503201f 	nop
+    702001fc:	910043ff 	add	sp, sp, #0x10
+    70200200:	d65f03c0 	ret
+
+0000000070200204 <print_str>:
+
+static void print_str(pstream_t *p, const char *s, strprops_t props)
+{
+    70200204:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
+    70200208:	910003fd 	mov	x29, sp
+    7020020c:	f9000bf3 	str	x19, [sp, #16]
+    70200210:	f9001fe0 	str	x0, [sp, #56]
+    70200214:	f9001be1 	str	x1, [sp, #48]
+    70200218:	aa0203e0 	mov	x0, x2
+    7020021c:	aa0303e1 	mov	x1, x3
+    70200220:	f90013e0 	str	x0, [sp, #32]
+    70200224:	b9402be0 	ldr	w0, [sp, #40]
+    70200228:	33007c20 	bfxil	w0, w1, #0, #32
+    7020022c:	b9002be0 	str	w0, [sp, #40]
+	const char *s_orig = s;
+    70200230:	f9401be0 	ldr	x0, [sp, #48]
+    70200234:	f90023e0 	str	x0, [sp, #64]
+	int npad = props.npad;
+    70200238:	b94027e0 	ldr	w0, [sp, #36]
+    7020023c:	b9004fe0 	str	w0, [sp, #76]
+
+	if (npad > 0)
+    70200240:	b9404fe0 	ldr	w0, [sp, #76]
+    70200244:	7100001f 	cmp	w0, #0x0
+    70200248:	5400032d 	b.le	702002ac <print_str+0xa8>
+	{
+		npad -= strlen(s_orig);
+    7020024c:	b9404ff3 	ldr	w19, [sp, #76]
+    70200250:	f94023e0 	ldr	x0, [sp, #64]
+    70200254:	9400042b 	bl	70201300 <strlen>
+    70200258:	4b000260 	sub	w0, w19, w0
+    7020025c:	b9004fe0 	str	w0, [sp, #76]
+		while (npad > 0)
+    70200260:	14000008 	b	70200280 <print_str+0x7c>
+		{
+			addchar(p, props.pad);
+    70200264:	394083e0 	ldrb	w0, [sp, #32]
+    70200268:	2a0003e1 	mov	w1, w0
+    7020026c:	f9401fe0 	ldr	x0, [sp, #56]
+    70200270:	97ffffca 	bl	70200198 <addchar>
+			--npad;
+    70200274:	b9404fe0 	ldr	w0, [sp, #76]
+    70200278:	51000400 	sub	w0, w0, #0x1
+    7020027c:	b9004fe0 	str	w0, [sp, #76]
+		while (npad > 0)
+    70200280:	b9404fe0 	ldr	w0, [sp, #76]
+    70200284:	7100001f 	cmp	w0, #0x0
+    70200288:	54fffeec 	b.gt	70200264 <print_str+0x60>
+		}
+	}
+
+	while (*s)
+    7020028c:	14000008 	b	702002ac <print_str+0xa8>
+		addchar(p, *s++);
+    70200290:	f9401be0 	ldr	x0, [sp, #48]
+    70200294:	91000401 	add	x1, x0, #0x1
+    70200298:	f9001be1 	str	x1, [sp, #48]
+    7020029c:	39400000 	ldrb	w0, [x0]
+    702002a0:	2a0003e1 	mov	w1, w0
+    702002a4:	f9401fe0 	ldr	x0, [sp, #56]
+    702002a8:	97ffffbc 	bl	70200198 <addchar>
+	while (*s)
+    702002ac:	f9401be0 	ldr	x0, [sp, #48]
+    702002b0:	39400000 	ldrb	w0, [x0]
+    702002b4:	7100001f 	cmp	w0, #0x0
+    702002b8:	54fffec1 	b.ne	70200290 <print_str+0x8c>  // b.any
+
+	if (npad < 0)
+    702002bc:	b9404fe0 	ldr	w0, [sp, #76]
+    702002c0:	7100001f 	cmp	w0, #0x0
+    702002c4:	5400028a 	b.ge	70200314 <print_str+0x110>  // b.tcont
+	{
+		props.pad = ' '; /* ignore '0' flag with '-' flag */
+    702002c8:	52800400 	mov	w0, #0x20                  	// #32
+    702002cc:	390083e0 	strb	w0, [sp, #32]
+		npad += strlen(s_orig);
+    702002d0:	f94023e0 	ldr	x0, [sp, #64]
+    702002d4:	9400040b 	bl	70201300 <strlen>
+    702002d8:	2a0003e1 	mov	w1, w0
+    702002dc:	b9404fe0 	ldr	w0, [sp, #76]
+    702002e0:	0b000020 	add	w0, w1, w0
+    702002e4:	b9004fe0 	str	w0, [sp, #76]
+		while (npad < 0)
+    702002e8:	14000008 	b	70200308 <print_str+0x104>
+		{
+			addchar(p, props.pad);
+    702002ec:	394083e0 	ldrb	w0, [sp, #32]
+    702002f0:	2a0003e1 	mov	w1, w0
+    702002f4:	f9401fe0 	ldr	x0, [sp, #56]
+    702002f8:	97ffffa8 	bl	70200198 <addchar>
+			++npad;
+    702002fc:	b9404fe0 	ldr	w0, [sp, #76]
+    70200300:	11000400 	add	w0, w0, #0x1
+    70200304:	b9004fe0 	str	w0, [sp, #76]
+		while (npad < 0)
+    70200308:	b9404fe0 	ldr	w0, [sp, #76]
+    7020030c:	7100001f 	cmp	w0, #0x0
+    70200310:	54fffeeb 	b.lt	702002ec <print_str+0xe8>  // b.tstop
+		}
+	}
+}
+    70200314:	d503201f 	nop
+    70200318:	f9400bf3 	ldr	x19, [sp, #16]
+    7020031c:	a8c57bfd 	ldp	x29, x30, [sp], #80
+    70200320:	d65f03c0 	ret
+
+0000000070200324 <print_int>:
+
+static void print_int(pstream_t *ps, long n, int base, strprops_t props)
+{
+    70200324:	a9b97bfd 	stp	x29, x30, [sp, #-112]!
+    70200328:	910003fd 	mov	x29, sp
+    7020032c:	f9001fe0 	str	x0, [sp, #56]
+    70200330:	f9001be1 	str	x1, [sp, #48]
+    70200334:	b9002fe2 	str	w2, [sp, #44]
+    70200338:	aa0303e0 	mov	x0, x3
+    7020033c:	aa0403e1 	mov	x1, x4
+    70200340:	f801c3e0 	stur	x0, [sp, #28]
+    70200344:	b94027e0 	ldr	w0, [sp, #36]
+    70200348:	33007c20 	bfxil	w0, w1, #0, #32
+    7020034c:	b90027e0 	str	w0, [sp, #36]
+
+	char buf[sizeof(long) * 3 + 2], *p = buf;
+    70200350:	910103e0 	add	x0, sp, #0x40
+    70200354:	f90037e0 	str	x0, [sp, #104]
+	int s = 0, i;
+    70200358:	b90067ff 	str	wzr, [sp, #100]
+
+	if (n < 0)
+    7020035c:	f9401be0 	ldr	x0, [sp, #48]
+    70200360:	f100001f 	cmp	x0, #0x0
+    70200364:	540002ea 	b.ge	702003c0 <print_int+0x9c>  // b.tcont
+	{
+		n = -n;
+    70200368:	f9401be0 	ldr	x0, [sp, #48]
+    7020036c:	cb0003e0 	neg	x0, x0
+    70200370:	f9001be0 	str	x0, [sp, #48]
+		s = 1;
+    70200374:	52800020 	mov	w0, #0x1                   	// #1
+    70200378:	b90067e0 	str	w0, [sp, #100]
+	}
+
+	while (n)
+    7020037c:	14000011 	b	702003c0 <print_int+0x9c>
+	{
+		*p++ = digits[n % base];
+    70200380:	b9802fe1 	ldrsw	x1, [sp, #44]
+    70200384:	f9401be0 	ldr	x0, [sp, #48]
+    70200388:	9ac10c02 	sdiv	x2, x0, x1
+    7020038c:	9b017c41 	mul	x1, x2, x1
+    70200390:	cb010001 	sub	x1, x0, x1
+    70200394:	f94037e0 	ldr	x0, [sp, #104]
+    70200398:	91000402 	add	x2, x0, #0x1
+    7020039c:	f90037e2 	str	x2, [sp, #104]
+    702003a0:	f0000002 	adrp	x2, 70203000 <exception_vector_base+0x800>
+    702003a4:	91250042 	add	x2, x2, #0x940
+    702003a8:	38616841 	ldrb	w1, [x2, x1]
+    702003ac:	39000001 	strb	w1, [x0]
+		n /= base;
+    702003b0:	b9802fe0 	ldrsw	x0, [sp, #44]
+    702003b4:	f9401be1 	ldr	x1, [sp, #48]
+    702003b8:	9ac00c20 	sdiv	x0, x1, x0
+    702003bc:	f9001be0 	str	x0, [sp, #48]
+	while (n)
+    702003c0:	f9401be0 	ldr	x0, [sp, #48]
+    702003c4:	f100001f 	cmp	x0, #0x0
+    702003c8:	54fffdc1 	b.ne	70200380 <print_int+0x5c>  // b.any
+	}
+
+	if (s)
+    702003cc:	b94067e0 	ldr	w0, [sp, #100]
+    702003d0:	7100001f 	cmp	w0, #0x0
+    702003d4:	540000c0 	b.eq	702003ec <print_int+0xc8>  // b.none
+		*p++ = '-';
+    702003d8:	f94037e0 	ldr	x0, [sp, #104]
+    702003dc:	91000401 	add	x1, x0, #0x1
+    702003e0:	f90037e1 	str	x1, [sp, #104]
+    702003e4:	528005a1 	mov	w1, #0x2d                  	// #45
+    702003e8:	39000001 	strb	w1, [x0]
+
+	if (p == buf)
+    702003ec:	910103e0 	add	x0, sp, #0x40
+    702003f0:	f94037e1 	ldr	x1, [sp, #104]
+    702003f4:	eb00003f 	cmp	x1, x0
+    702003f8:	540000c1 	b.ne	70200410 <print_int+0xec>  // b.any
+		*p++ = '0';
+    702003fc:	f94037e0 	ldr	x0, [sp, #104]
+    70200400:	91000401 	add	x1, x0, #0x1
+    70200404:	f90037e1 	str	x1, [sp, #104]
+    70200408:	52800601 	mov	w1, #0x30                  	// #48
+    7020040c:	39000001 	strb	w1, [x0]
+
+	for (i = 0; i < (p - buf) / 2; ++i)
+    70200410:	b90063ff 	str	wzr, [sp, #96]
+    70200414:	14000018 	b	70200474 <print_int+0x150>
+	{
+		char tmp;
+
+		tmp = buf[i];
+    70200418:	b98063e0 	ldrsw	x0, [sp, #96]
+    7020041c:	910103e1 	add	x1, sp, #0x40
+    70200420:	38606820 	ldrb	w0, [x1, x0]
+    70200424:	39017fe0 	strb	w0, [sp, #95]
+		buf[i] = p[-1 - i];
+    70200428:	b94063e0 	ldr	w0, [sp, #96]
+    7020042c:	2a2003e0 	mvn	w0, w0
+    70200430:	93407c00 	sxtw	x0, w0
+    70200434:	f94037e1 	ldr	x1, [sp, #104]
+    70200438:	8b000020 	add	x0, x1, x0
+    7020043c:	39400002 	ldrb	w2, [x0]
+    70200440:	b98063e0 	ldrsw	x0, [sp, #96]
+    70200444:	910103e1 	add	x1, sp, #0x40
+    70200448:	38206822 	strb	w2, [x1, x0]
+		p[-1 - i] = tmp;
+    7020044c:	b94063e0 	ldr	w0, [sp, #96]
+    70200450:	2a2003e0 	mvn	w0, w0
+    70200454:	93407c00 	sxtw	x0, w0
+    70200458:	f94037e1 	ldr	x1, [sp, #104]
+    7020045c:	8b000020 	add	x0, x1, x0
+    70200460:	39417fe1 	ldrb	w1, [sp, #95]
+    70200464:	39000001 	strb	w1, [x0]
+	for (i = 0; i < (p - buf) / 2; ++i)
+    70200468:	b94063e0 	ldr	w0, [sp, #96]
+    7020046c:	11000400 	add	w0, w0, #0x1
+    70200470:	b90063e0 	str	w0, [sp, #96]
+    70200474:	b98063e1 	ldrsw	x1, [sp, #96]
+    70200478:	910103e0 	add	x0, sp, #0x40
+    7020047c:	f94037e2 	ldr	x2, [sp, #104]
+    70200480:	cb000040 	sub	x0, x2, x0
+    70200484:	d37ffc02 	lsr	x2, x0, #63
+    70200488:	8b000040 	add	x0, x2, x0
+    7020048c:	9341fc00 	asr	x0, x0, #1
+    70200490:	eb00003f 	cmp	x1, x0
+    70200494:	54fffc2b 	b.lt	70200418 <print_int+0xf4>  // b.tstop
+	}
+
+	*p = 0;
+    70200498:	f94037e0 	ldr	x0, [sp, #104]
+    7020049c:	3900001f 	strb	wzr, [x0]
+
+	print_str(ps, buf, props);
+    702004a0:	f841c3e2 	ldur	x2, [sp, #28]
+    702004a4:	b94027e1 	ldr	w1, [sp, #36]
+    702004a8:	910103e0 	add	x0, sp, #0x40
+    702004ac:	aa0103e3 	mov	x3, x1
+    702004b0:	aa0003e1 	mov	x1, x0
+    702004b4:	f9401fe0 	ldr	x0, [sp, #56]
+    702004b8:	97ffff53 	bl	70200204 <print_str>
+}
+    702004bc:	d503201f 	nop
+    702004c0:	a8c77bfd 	ldp	x29, x30, [sp], #112
+    702004c4:	d65f03c0 	ret
+
+00000000702004c8 <print_unsigned>:
+
+static void print_unsigned(pstream_t *ps, uint32_t n, int base,
+						   strprops_t props)
+{
+    702004c8:	a9ba7bfd 	stp	x29, x30, [sp, #-96]!
+    702004cc:	910003fd 	mov	x29, sp
+    702004d0:	f90017e0 	str	x0, [sp, #40]
+    702004d4:	b90027e1 	str	w1, [sp, #36]
+    702004d8:	b90023e2 	str	w2, [sp, #32]
+    702004dc:	aa0303e0 	mov	x0, x3
+    702004e0:	aa0403e1 	mov	x1, x4
+    702004e4:	f9000be0 	str	x0, [sp, #16]
+    702004e8:	b9401be0 	ldr	w0, [sp, #24]
+    702004ec:	33007c20 	bfxil	w0, w1, #0, #32
+    702004f0:	b9001be0 	str	w0, [sp, #24]
+	char buf[sizeof(long) * 3 + 3], *p = buf;
+    702004f4:	9100e3e0 	add	x0, sp, #0x38
+    702004f8:	f9002fe0 	str	x0, [sp, #88]
+	int i;
+
+	while (n)
+    702004fc:	14000012 	b	70200544 <print_unsigned+0x7c>
+	{
+		*p++ = digits[n % base];
+    70200500:	b94023e1 	ldr	w1, [sp, #32]
+    70200504:	b94027e0 	ldr	w0, [sp, #36]
+    70200508:	1ac10802 	udiv	w2, w0, w1
+    7020050c:	1b017c41 	mul	w1, w2, w1
+    70200510:	4b010003 	sub	w3, w0, w1
+    70200514:	f9402fe0 	ldr	x0, [sp, #88]
+    70200518:	91000401 	add	x1, x0, #0x1
+    7020051c:	f9002fe1 	str	x1, [sp, #88]
+    70200520:	f0000001 	adrp	x1, 70203000 <exception_vector_base+0x800>
+    70200524:	91250022 	add	x2, x1, #0x940
+    70200528:	2a0303e1 	mov	w1, w3
+    7020052c:	38616841 	ldrb	w1, [x2, x1]
+    70200530:	39000001 	strb	w1, [x0]
+		n /= base;
+    70200534:	b94023e0 	ldr	w0, [sp, #32]
+    70200538:	b94027e1 	ldr	w1, [sp, #36]
+    7020053c:	1ac00820 	udiv	w0, w1, w0
+    70200540:	b90027e0 	str	w0, [sp, #36]
+	while (n)
+    70200544:	b94027e0 	ldr	w0, [sp, #36]
+    70200548:	7100001f 	cmp	w0, #0x0
+    7020054c:	54fffda1 	b.ne	70200500 <print_unsigned+0x38>  // b.any
+	}
+
+	if (p == buf)
+    70200550:	9100e3e0 	add	x0, sp, #0x38
+    70200554:	f9402fe1 	ldr	x1, [sp, #88]
+    70200558:	eb00003f 	cmp	x1, x0
+    7020055c:	540000e1 	b.ne	70200578 <print_unsigned+0xb0>  // b.any
+		*p++ = '0';
+    70200560:	f9402fe0 	ldr	x0, [sp, #88]
+    70200564:	91000401 	add	x1, x0, #0x1
+    70200568:	f9002fe1 	str	x1, [sp, #88]
+    7020056c:	52800601 	mov	w1, #0x30                  	// #48
+    70200570:	39000001 	strb	w1, [x0]
+    70200574:	14000024 	b	70200604 <print_unsigned+0x13c>
+	else if (props.alternate && base == 16)
+    70200578:	394063e0 	ldrb	w0, [sp, #24]
+    7020057c:	7100001f 	cmp	w0, #0x0
+    70200580:	54000420 	b.eq	70200604 <print_unsigned+0x13c>  // b.none
+    70200584:	b94023e0 	ldr	w0, [sp, #32]
+    70200588:	7100401f 	cmp	w0, #0x10
+    7020058c:	540003c1 	b.ne	70200604 <print_unsigned+0x13c>  // b.any
+	{
+		if (props.pad == '0')
+    70200590:	394043e0 	ldrb	w0, [sp, #16]
+    70200594:	7100c01f 	cmp	w0, #0x30
+    70200598:	54000221 	b.ne	702005dc <print_unsigned+0x114>  // b.any
+		{
+			addchar(ps, '0');
+    7020059c:	52800601 	mov	w1, #0x30                  	// #48
+    702005a0:	f94017e0 	ldr	x0, [sp, #40]
+    702005a4:	97fffefd 	bl	70200198 <addchar>
+			addchar(ps, 'x');
+    702005a8:	52800f01 	mov	w1, #0x78                  	// #120
+    702005ac:	f94017e0 	ldr	x0, [sp, #40]
+    702005b0:	97fffefa 	bl	70200198 <addchar>
+
+			if (props.npad > 0)
+    702005b4:	b94017e0 	ldr	w0, [sp, #20]
+    702005b8:	7100001f 	cmp	w0, #0x0
+    702005bc:	5400024d 	b.le	70200604 <print_unsigned+0x13c>
+				props.npad = MAX(props.npad - 2, 0);
+    702005c0:	b94017e0 	ldr	w0, [sp, #20]
+    702005c4:	52800041 	mov	w1, #0x2                   	// #2
+    702005c8:	7100081f 	cmp	w0, #0x2
+    702005cc:	1a81a000 	csel	w0, w0, w1, ge  // ge = tcont
+    702005d0:	51000800 	sub	w0, w0, #0x2
+    702005d4:	b90017e0 	str	w0, [sp, #20]
+    702005d8:	1400000b 	b	70200604 <print_unsigned+0x13c>
+		}
+		else
+		{
+			*p++ = 'x';
+    702005dc:	f9402fe0 	ldr	x0, [sp, #88]
+    702005e0:	91000401 	add	x1, x0, #0x1
+    702005e4:	f9002fe1 	str	x1, [sp, #88]
+    702005e8:	52800f01 	mov	w1, #0x78                  	// #120
+    702005ec:	39000001 	strb	w1, [x0]
+			*p++ = '0';
+    702005f0:	f9402fe0 	ldr	x0, [sp, #88]
+    702005f4:	91000401 	add	x1, x0, #0x1
+    702005f8:	f9002fe1 	str	x1, [sp, #88]
+    702005fc:	52800601 	mov	w1, #0x30                  	// #48
+    70200600:	39000001 	strb	w1, [x0]
+		}
+	}
+
+	for (i = 0; i < (p - buf) / 2; ++i)
+    70200604:	b90057ff 	str	wzr, [sp, #84]
+    70200608:	14000018 	b	70200668 <print_unsigned+0x1a0>
+	{
+		char tmp;
+
+		tmp = buf[i];
+    7020060c:	b98057e0 	ldrsw	x0, [sp, #84]
+    70200610:	9100e3e1 	add	x1, sp, #0x38
+    70200614:	38606820 	ldrb	w0, [x1, x0]
+    70200618:	39014fe0 	strb	w0, [sp, #83]
+		buf[i] = p[-1 - i];
+    7020061c:	b94057e0 	ldr	w0, [sp, #84]
+    70200620:	2a2003e0 	mvn	w0, w0
+    70200624:	93407c00 	sxtw	x0, w0
+    70200628:	f9402fe1 	ldr	x1, [sp, #88]
+    7020062c:	8b000020 	add	x0, x1, x0
+    70200630:	39400002 	ldrb	w2, [x0]
+    70200634:	b98057e0 	ldrsw	x0, [sp, #84]
+    70200638:	9100e3e1 	add	x1, sp, #0x38
+    7020063c:	38206822 	strb	w2, [x1, x0]
+		p[-1 - i] = tmp;
+    70200640:	b94057e0 	ldr	w0, [sp, #84]
+    70200644:	2a2003e0 	mvn	w0, w0
+    70200648:	93407c00 	sxtw	x0, w0
+    7020064c:	f9402fe1 	ldr	x1, [sp, #88]
+    70200650:	8b000020 	add	x0, x1, x0
+    70200654:	39414fe1 	ldrb	w1, [sp, #83]
+    70200658:	39000001 	strb	w1, [x0]
+	for (i = 0; i < (p - buf) / 2; ++i)
+    7020065c:	b94057e0 	ldr	w0, [sp, #84]
+    70200660:	11000400 	add	w0, w0, #0x1
+    70200664:	b90057e0 	str	w0, [sp, #84]
+    70200668:	b98057e1 	ldrsw	x1, [sp, #84]
+    7020066c:	9100e3e0 	add	x0, sp, #0x38
+    70200670:	f9402fe2 	ldr	x2, [sp, #88]
+    70200674:	cb000040 	sub	x0, x2, x0
+    70200678:	d37ffc02 	lsr	x2, x0, #63
+    7020067c:	8b000040 	add	x0, x2, x0
+    70200680:	9341fc00 	asr	x0, x0, #1
+    70200684:	eb00003f 	cmp	x1, x0
+    70200688:	54fffc2b 	b.lt	7020060c <print_unsigned+0x144>  // b.tstop
+	}
+
+	*p = 0;
+    7020068c:	f9402fe0 	ldr	x0, [sp, #88]
+    70200690:	3900001f 	strb	wzr, [x0]
+
+	print_str(ps, buf, props);
+    70200694:	f9400be2 	ldr	x2, [sp, #16]
+    70200698:	b9401be1 	ldr	w1, [sp, #24]
+    7020069c:	9100e3e0 	add	x0, sp, #0x38
+    702006a0:	aa0103e3 	mov	x3, x1
+    702006a4:	aa0003e1 	mov	x1, x0
+    702006a8:	f94017e0 	ldr	x0, [sp, #40]
+    702006ac:	97fffed6 	bl	70200204 <print_str>
+}
+    702006b0:	d503201f 	nop
+    702006b4:	a8c67bfd 	ldp	x29, x30, [sp], #96
+    702006b8:	d65f03c0 	ret
+
+00000000702006bc <fmtnum>:
+
+static int fmtnum(const char **fmt)
+{
+    702006bc:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+    702006c0:	910003fd 	mov	x29, sp
+    702006c4:	f9000fe0 	str	x0, [sp, #24]
+	const char *f = *fmt;
+    702006c8:	f9400fe0 	ldr	x0, [sp, #24]
+    702006cc:	f9400000 	ldr	x0, [x0]
+    702006d0:	f90017e0 	str	x0, [sp, #40]
+	int len = 0, num;
+    702006d4:	b90027ff 	str	wzr, [sp, #36]
+
+	if (*f == '-')
+    702006d8:	f94017e0 	ldr	x0, [sp, #40]
+    702006dc:	39400000 	ldrb	w0, [x0]
+    702006e0:	7100b41f 	cmp	w0, #0x2d
+    702006e4:	540001c1 	b.ne	7020071c <fmtnum+0x60>  // b.any
+		++f, ++len;
+    702006e8:	f94017e0 	ldr	x0, [sp, #40]
+    702006ec:	91000400 	add	x0, x0, #0x1
+    702006f0:	f90017e0 	str	x0, [sp, #40]
+    702006f4:	b94027e0 	ldr	w0, [sp, #36]
+    702006f8:	11000400 	add	w0, w0, #0x1
+    702006fc:	b90027e0 	str	w0, [sp, #36]
+
+	while (*f >= '0' && *f <= '9')
+    70200700:	14000007 	b	7020071c <fmtnum+0x60>
+		++f, ++len;
+    70200704:	f94017e0 	ldr	x0, [sp, #40]
+    70200708:	91000400 	add	x0, x0, #0x1
+    7020070c:	f90017e0 	str	x0, [sp, #40]
+    70200710:	b94027e0 	ldr	w0, [sp, #36]
+    70200714:	11000400 	add	w0, w0, #0x1
+    70200718:	b90027e0 	str	w0, [sp, #36]
+	while (*f >= '0' && *f <= '9')
+    7020071c:	f94017e0 	ldr	x0, [sp, #40]
+    70200720:	39400000 	ldrb	w0, [x0]
+    70200724:	7100bc1f 	cmp	w0, #0x2f
+    70200728:	540000a9 	b.ls	7020073c <fmtnum+0x80>  // b.plast
+    7020072c:	f94017e0 	ldr	x0, [sp, #40]
+    70200730:	39400000 	ldrb	w0, [x0]
+    70200734:	7100e41f 	cmp	w0, #0x39
+    70200738:	54fffe69 	b.ls	70200704 <fmtnum+0x48>  // b.plast
+
+	num = atol(*fmt);
+    7020073c:	f9400fe0 	ldr	x0, [sp, #24]
+    70200740:	f9400000 	ldr	x0, [x0]
+    70200744:	94000437 	bl	70201820 <atol>
+    70200748:	b90023e0 	str	w0, [sp, #32]
+	*fmt += len;
+    7020074c:	f9400fe0 	ldr	x0, [sp, #24]
+    70200750:	f9400001 	ldr	x1, [x0]
+    70200754:	b98027e0 	ldrsw	x0, [sp, #36]
+    70200758:	8b000021 	add	x1, x1, x0
+    7020075c:	f9400fe0 	ldr	x0, [sp, #24]
+    70200760:	f9000001 	str	x1, [x0]
+	return num;
+    70200764:	b94023e0 	ldr	w0, [sp, #32]
+}
+    70200768:	a8c37bfd 	ldp	x29, x30, [sp], #48
+    7020076c:	d65f03c0 	ret
+
+0000000070200770 <vsnprintf>:
+
+int vsnprintf(char *buf, int size, const char *fmt, va_list va)
+{
+    70200770:	a9b97bfd 	stp	x29, x30, [sp, #-112]!
+    70200774:	910003fd 	mov	x29, sp
+    70200778:	f9000bf3 	str	x19, [sp, #16]
+    7020077c:	f9001fe0 	str	x0, [sp, #56]
+    70200780:	b90037e1 	str	w1, [sp, #52]
+    70200784:	f90017e2 	str	x2, [sp, #40]
+    70200788:	aa0303f3 	mov	x19, x3
+	pstream_t s;
+
+	s.buffer = buf;
+    7020078c:	f9401fe0 	ldr	x0, [sp, #56]
+    70200790:	f9002fe0 	str	x0, [sp, #88]
+	s.remain = size - 1;
+    70200794:	b94037e0 	ldr	w0, [sp, #52]
+    70200798:	51000400 	sub	w0, w0, #0x1
+    7020079c:	b90063e0 	str	w0, [sp, #96]
+	s.added = 0;
+    702007a0:	b90067ff 	str	wzr, [sp, #100]
+	while (*fmt)
+    702007a4:	140001dd 	b	70200f18 <vsnprintf+0x7a8>
+	{
+		char f = *fmt++;
+    702007a8:	f94017e0 	ldr	x0, [sp, #40]
+    702007ac:	91000401 	add	x1, x0, #0x1
+    702007b0:	f90017e1 	str	x1, [sp, #40]
+    702007b4:	39400000 	ldrb	w0, [x0]
+    702007b8:	3901afe0 	strb	w0, [sp, #107]
+		int nlong = 0;
+    702007bc:	b9006fff 	str	wzr, [sp, #108]
+		strprops_t props;
+		memset(&props, 0, sizeof(props));
+    702007c0:	910123e0 	add	x0, sp, #0x48
+    702007c4:	d2800182 	mov	x2, #0xc                   	// #12
+    702007c8:	52800001 	mov	w1, #0x0                   	// #0
+    702007cc:	9400036c 	bl	7020157c <memset>
+		props.pad = ' ';
+    702007d0:	52800400 	mov	w0, #0x20                  	// #32
+    702007d4:	390123e0 	strb	w0, [sp, #72]
+
+		if (f != '%')
+    702007d8:	3941afe0 	ldrb	w0, [sp, #107]
+    702007dc:	7100941f 	cmp	w0, #0x25
+    702007e0:	540000a0 	b.eq	702007f4 <vsnprintf+0x84>  // b.none
+		{
+			addchar(&s, f);
+    702007e4:	910163e0 	add	x0, sp, #0x58
+    702007e8:	3941afe1 	ldrb	w1, [sp, #107]
+    702007ec:	97fffe6b 	bl	70200198 <addchar>
+    702007f0:	140001ca 	b	70200f18 <vsnprintf+0x7a8>
+			continue;
+		}
+	morefmt:
+    702007f4:	d503201f 	nop
+		f = *fmt++;
+    702007f8:	f94017e0 	ldr	x0, [sp, #40]
+    702007fc:	91000401 	add	x1, x0, #0x1
+    70200800:	f90017e1 	str	x1, [sp, #40]
+    70200804:	39400000 	ldrb	w0, [x0]
+    70200808:	3901afe0 	strb	w0, [sp, #107]
+		switch (f)
+    7020080c:	3941afe0 	ldrb	w0, [sp, #107]
+    70200810:	7101e81f 	cmp	w0, #0x7a
+    70200814:	54000d80 	b.eq	702009c4 <vsnprintf+0x254>  // b.none
+    70200818:	7101e81f 	cmp	w0, #0x7a
+    7020081c:	5400376c 	b.gt	70200f08 <vsnprintf+0x798>
+    70200820:	7101e01f 	cmp	w0, #0x78
+    70200824:	54002480 	b.eq	70200cb4 <vsnprintf+0x544>  // b.none
+    70200828:	7101e01f 	cmp	w0, #0x78
+    7020082c:	540036ec 	b.gt	70200f08 <vsnprintf+0x798>
+    70200830:	7101d41f 	cmp	w0, #0x75
+    70200834:	54001880 	b.eq	70200b44 <vsnprintf+0x3d4>  // b.none
+    70200838:	7101d41f 	cmp	w0, #0x75
+    7020083c:	5400366c 	b.gt	70200f08 <vsnprintf+0x798>
+    70200840:	7101d01f 	cmp	w0, #0x74
+    70200844:	54000c00 	b.eq	702009c4 <vsnprintf+0x254>  // b.none
+    70200848:	7101d01f 	cmp	w0, #0x74
+    7020084c:	540035ec 	b.gt	70200f08 <vsnprintf+0x798>
+    70200850:	7101cc1f 	cmp	w0, #0x73
+    70200854:	54003260 	b.eq	70200ea0 <vsnprintf+0x730>  // b.none
+    70200858:	7101cc1f 	cmp	w0, #0x73
+    7020085c:	5400356c 	b.gt	70200f08 <vsnprintf+0x798>
+    70200860:	7101c01f 	cmp	w0, #0x70
+    70200864:	54002e00 	b.eq	70200e24 <vsnprintf+0x6b4>  // b.none
+    70200868:	7101c01f 	cmp	w0, #0x70
+    7020086c:	540034ec 	b.gt	70200f08 <vsnprintf+0x798>
+    70200870:	7101b01f 	cmp	w0, #0x6c
+    70200874:	54000a00 	b.eq	702009b4 <vsnprintf+0x244>  // b.none
+    70200878:	7101b01f 	cmp	w0, #0x6c
+    7020087c:	5400346c 	b.gt	70200f08 <vsnprintf+0x798>
+    70200880:	7101901f 	cmp	w0, #0x64
+    70200884:	54000a60 	b.eq	702009d0 <vsnprintf+0x260>  // b.none
+    70200888:	7101901f 	cmp	w0, #0x64
+    7020088c:	540033ec 	b.gt	70200f08 <vsnprintf+0x798>
+    70200890:	71018c1f 	cmp	w0, #0x63
+    70200894:	54000380 	b.eq	70200904 <vsnprintf+0x194>  // b.none
+    70200898:	71018c1f 	cmp	w0, #0x63
+    7020089c:	5400336c 	b.gt	70200f08 <vsnprintf+0x798>
+    702008a0:	7100e41f 	cmp	w0, #0x39
+    702008a4:	5400332c 	b.gt	70200f08 <vsnprintf+0x798>
+    702008a8:	7100c41f 	cmp	w0, #0x31
+    702008ac:	5400076a 	b.ge	70200998 <vsnprintf+0x228>  // b.tcont
+    702008b0:	7100c01f 	cmp	w0, #0x30
+    702008b4:	54000680 	b.eq	70200984 <vsnprintf+0x214>  // b.none
+    702008b8:	7100c01f 	cmp	w0, #0x30
+    702008bc:	5400326c 	b.gt	70200f08 <vsnprintf+0x798>
+    702008c0:	7100b41f 	cmp	w0, #0x2d
+    702008c4:	540006a0 	b.eq	70200998 <vsnprintf+0x228>  // b.none
+    702008c8:	7100b41f 	cmp	w0, #0x2d
+    702008cc:	540031ec 	b.gt	70200f08 <vsnprintf+0x798>
+    702008d0:	7100941f 	cmp	w0, #0x25
+    702008d4:	54000100 	b.eq	702008f4 <vsnprintf+0x184>  // b.none
+    702008d8:	7100941f 	cmp	w0, #0x25
+    702008dc:	5400316c 	b.gt	70200f08 <vsnprintf+0x798>
+    702008e0:	7100001f 	cmp	w0, #0x0
+    702008e4:	54000420 	b.eq	70200968 <vsnprintf+0x1f8>  // b.none
+    702008e8:	71008c1f 	cmp	w0, #0x23
+    702008ec:	54000460 	b.eq	70200978 <vsnprintf+0x208>  // b.none
+    702008f0:	14000186 	b	70200f08 <vsnprintf+0x798>
+		{
+		case '%':
+			addchar(&s, '%');
+    702008f4:	910163e0 	add	x0, sp, #0x58
+    702008f8:	528004a1 	mov	w1, #0x25                  	// #37
+    702008fc:	97fffe27 	bl	70200198 <addchar>
+			break;
+    70200900:	14000186 	b	70200f18 <vsnprintf+0x7a8>
+		case 'c':
+			addchar(&s, va_arg(va, int));
+    70200904:	b9401a61 	ldr	w1, [x19, #24]
+    70200908:	f9400260 	ldr	x0, [x19]
+    7020090c:	7100003f 	cmp	w1, #0x0
+    70200910:	540000ab 	b.lt	70200924 <vsnprintf+0x1b4>  // b.tstop
+    70200914:	91002c01 	add	x1, x0, #0xb
+    70200918:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    7020091c:	f9000261 	str	x1, [x19]
+    70200920:	1400000d 	b	70200954 <vsnprintf+0x1e4>
+    70200924:	11002022 	add	w2, w1, #0x8
+    70200928:	b9001a62 	str	w2, [x19, #24]
+    7020092c:	b9401a62 	ldr	w2, [x19, #24]
+    70200930:	7100005f 	cmp	w2, #0x0
+    70200934:	540000ad 	b.le	70200948 <vsnprintf+0x1d8>
+    70200938:	91002c01 	add	x1, x0, #0xb
+    7020093c:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200940:	f9000261 	str	x1, [x19]
+    70200944:	14000004 	b	70200954 <vsnprintf+0x1e4>
+    70200948:	f9400662 	ldr	x2, [x19, #8]
+    7020094c:	93407c20 	sxtw	x0, w1
+    70200950:	8b000040 	add	x0, x2, x0
+    70200954:	b9400000 	ldr	w0, [x0]
+    70200958:	12001c01 	and	w1, w0, #0xff
+    7020095c:	910163e0 	add	x0, sp, #0x58
+    70200960:	97fffe0e 	bl	70200198 <addchar>
+			break;
+    70200964:	1400016d 	b	70200f18 <vsnprintf+0x7a8>
+		case '\0':
+			--fmt;
+    70200968:	f94017e0 	ldr	x0, [sp, #40]
+    7020096c:	d1000400 	sub	x0, x0, #0x1
+    70200970:	f90017e0 	str	x0, [sp, #40]
+			break;
+    70200974:	14000169 	b	70200f18 <vsnprintf+0x7a8>
+		case '#':
+			props.alternate = true;
+    70200978:	52800020 	mov	w0, #0x1                   	// #1
+    7020097c:	390143e0 	strb	w0, [sp, #80]
+			goto morefmt;
+    70200980:	17ffff9e 	b	702007f8 <vsnprintf+0x88>
+		case '0':
+			props.pad = '0';
+    70200984:	52800600 	mov	w0, #0x30                  	// #48
+    70200988:	390123e0 	strb	w0, [sp, #72]
+			++fmt;
+    7020098c:	f94017e0 	ldr	x0, [sp, #40]
+    70200990:	91000400 	add	x0, x0, #0x1
+    70200994:	f90017e0 	str	x0, [sp, #40]
+			/* fall through */
+		case '1' ... '9':
+		case '-':
+			--fmt;
+    70200998:	f94017e0 	ldr	x0, [sp, #40]
+    7020099c:	d1000400 	sub	x0, x0, #0x1
+    702009a0:	f90017e0 	str	x0, [sp, #40]
+			props.npad = fmtnum(&fmt);
+    702009a4:	9100a3e0 	add	x0, sp, #0x28
+    702009a8:	97ffff45 	bl	702006bc <fmtnum>
+    702009ac:	b9004fe0 	str	w0, [sp, #76]
+			goto morefmt;
+    702009b0:	17ffff92 	b	702007f8 <vsnprintf+0x88>
+		case 'l':
+			++nlong;
+    702009b4:	b9406fe0 	ldr	w0, [sp, #108]
+    702009b8:	11000400 	add	w0, w0, #0x1
+    702009bc:	b9006fe0 	str	w0, [sp, #108]
+			goto morefmt;
+    702009c0:	17ffff8e 	b	702007f8 <vsnprintf+0x88>
+			/* Here we only care that sizeof(size_t) == sizeof(long).
+			 * On a 32-bit platform it doesn't matter that size_t is
+			 * typedef'ed to int or long; va_arg will work either way.
+			 * Same for ptrdiff_t (%td).
+			 */
+			nlong = 1;
+    702009c4:	52800020 	mov	w0, #0x1                   	// #1
+    702009c8:	b9006fe0 	str	w0, [sp, #108]
+			goto morefmt;
+    702009cc:	17ffff8b 	b	702007f8 <vsnprintf+0x88>
+    702009d0:	b9406fe0 	ldr	w0, [sp, #108]
+    702009d4:	7100001f 	cmp	w0, #0x0
+    702009d8:	540000a0 	b.eq	702009ec <vsnprintf+0x27c>  // b.none
+    702009dc:	b9406fe0 	ldr	w0, [sp, #108]
+    702009e0:	7100041f 	cmp	w0, #0x1
+    702009e4:	540003e0 	b.eq	70200a60 <vsnprintf+0x2f0>  // b.none
+    702009e8:	1400003a 	b	70200ad0 <vsnprintf+0x360>
+		case 'd':
+			switch (nlong)
+			{
+			case 0:
+				print_int(&s, va_arg(va, int), 10, props);
+    702009ec:	b9401a61 	ldr	w1, [x19, #24]
+    702009f0:	f9400260 	ldr	x0, [x19]
+    702009f4:	7100003f 	cmp	w1, #0x0
+    702009f8:	540000ab 	b.lt	70200a0c <vsnprintf+0x29c>  // b.tstop
+    702009fc:	91002c01 	add	x1, x0, #0xb
+    70200a00:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200a04:	f9000261 	str	x1, [x19]
+    70200a08:	1400000d 	b	70200a3c <vsnprintf+0x2cc>
+    70200a0c:	11002022 	add	w2, w1, #0x8
+    70200a10:	b9001a62 	str	w2, [x19, #24]
+    70200a14:	b9401a62 	ldr	w2, [x19, #24]
+    70200a18:	7100005f 	cmp	w2, #0x0
+    70200a1c:	540000ad 	b.le	70200a30 <vsnprintf+0x2c0>
+    70200a20:	91002c01 	add	x1, x0, #0xb
+    70200a24:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200a28:	f9000261 	str	x1, [x19]
+    70200a2c:	14000004 	b	70200a3c <vsnprintf+0x2cc>
+    70200a30:	f9400662 	ldr	x2, [x19, #8]
+    70200a34:	93407c20 	sxtw	x0, w1
+    70200a38:	8b000040 	add	x0, x2, x0
+    70200a3c:	b9400000 	ldr	w0, [x0]
+    70200a40:	93407c01 	sxtw	x1, w0
+    70200a44:	f94027e3 	ldr	x3, [sp, #72]
+    70200a48:	b94053e2 	ldr	w2, [sp, #80]
+    70200a4c:	910163e0 	add	x0, sp, #0x58
+    70200a50:	aa0203e4 	mov	x4, x2
+    70200a54:	52800142 	mov	w2, #0xa                   	// #10
+    70200a58:	97fffe33 	bl	70200324 <print_int>
+				break;
+    70200a5c:	14000039 	b	70200b40 <vsnprintf+0x3d0>
+			case 1:
+				print_int(&s, va_arg(va, long), 10, props);
+    70200a60:	b9401a61 	ldr	w1, [x19, #24]
+    70200a64:	f9400260 	ldr	x0, [x19]
+    70200a68:	7100003f 	cmp	w1, #0x0
+    70200a6c:	540000ab 	b.lt	70200a80 <vsnprintf+0x310>  // b.tstop
+    70200a70:	91003c01 	add	x1, x0, #0xf
+    70200a74:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200a78:	f9000261 	str	x1, [x19]
+    70200a7c:	1400000d 	b	70200ab0 <vsnprintf+0x340>
+    70200a80:	11002022 	add	w2, w1, #0x8
+    70200a84:	b9001a62 	str	w2, [x19, #24]
+    70200a88:	b9401a62 	ldr	w2, [x19, #24]
+    70200a8c:	7100005f 	cmp	w2, #0x0
+    70200a90:	540000ad 	b.le	70200aa4 <vsnprintf+0x334>
+    70200a94:	91003c01 	add	x1, x0, #0xf
+    70200a98:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200a9c:	f9000261 	str	x1, [x19]
+    70200aa0:	14000004 	b	70200ab0 <vsnprintf+0x340>
+    70200aa4:	f9400662 	ldr	x2, [x19, #8]
+    70200aa8:	93407c20 	sxtw	x0, w1
+    70200aac:	8b000040 	add	x0, x2, x0
+    70200ab0:	f9400001 	ldr	x1, [x0]
+    70200ab4:	f94027e3 	ldr	x3, [sp, #72]
+    70200ab8:	b94053e2 	ldr	w2, [sp, #80]
+    70200abc:	910163e0 	add	x0, sp, #0x58
+    70200ac0:	aa0203e4 	mov	x4, x2
+    70200ac4:	52800142 	mov	w2, #0xa                   	// #10
+    70200ac8:	97fffe17 	bl	70200324 <print_int>
+				break;
+    70200acc:	1400001d 	b	70200b40 <vsnprintf+0x3d0>
+			default:
+				print_int(&s, va_arg(va, long long), 10, props);
+    70200ad0:	b9401a61 	ldr	w1, [x19, #24]
+    70200ad4:	f9400260 	ldr	x0, [x19]
+    70200ad8:	7100003f 	cmp	w1, #0x0
+    70200adc:	540000ab 	b.lt	70200af0 <vsnprintf+0x380>  // b.tstop
+    70200ae0:	91003c01 	add	x1, x0, #0xf
+    70200ae4:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200ae8:	f9000261 	str	x1, [x19]
+    70200aec:	1400000d 	b	70200b20 <vsnprintf+0x3b0>
+    70200af0:	11002022 	add	w2, w1, #0x8
+    70200af4:	b9001a62 	str	w2, [x19, #24]
+    70200af8:	b9401a62 	ldr	w2, [x19, #24]
+    70200afc:	7100005f 	cmp	w2, #0x0
+    70200b00:	540000ad 	b.le	70200b14 <vsnprintf+0x3a4>
+    70200b04:	91003c01 	add	x1, x0, #0xf
+    70200b08:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200b0c:	f9000261 	str	x1, [x19]
+    70200b10:	14000004 	b	70200b20 <vsnprintf+0x3b0>
+    70200b14:	f9400662 	ldr	x2, [x19, #8]
+    70200b18:	93407c20 	sxtw	x0, w1
+    70200b1c:	8b000040 	add	x0, x2, x0
+    70200b20:	f9400001 	ldr	x1, [x0]
+    70200b24:	f94027e3 	ldr	x3, [sp, #72]
+    70200b28:	b94053e2 	ldr	w2, [sp, #80]
+    70200b2c:	910163e0 	add	x0, sp, #0x58
+    70200b30:	aa0203e4 	mov	x4, x2
+    70200b34:	52800142 	mov	w2, #0xa                   	// #10
+    70200b38:	97fffdfb 	bl	70200324 <print_int>
+				break;
+    70200b3c:	d503201f 	nop
+			}
+			break;
+    70200b40:	140000f6 	b	70200f18 <vsnprintf+0x7a8>
+    70200b44:	b9406fe0 	ldr	w0, [sp, #108]
+    70200b48:	7100001f 	cmp	w0, #0x0
+    70200b4c:	540000a0 	b.eq	70200b60 <vsnprintf+0x3f0>  // b.none
+    70200b50:	b9406fe0 	ldr	w0, [sp, #108]
+    70200b54:	7100041f 	cmp	w0, #0x1
+    70200b58:	540003c0 	b.eq	70200bd0 <vsnprintf+0x460>  // b.none
+    70200b5c:	14000039 	b	70200c40 <vsnprintf+0x4d0>
+		case 'u':
+			switch (nlong)
+			{
+			case 0:
+				print_unsigned(&s, va_arg(va, unsigned), 10, props);
+    70200b60:	b9401a61 	ldr	w1, [x19, #24]
+    70200b64:	f9400260 	ldr	x0, [x19]
+    70200b68:	7100003f 	cmp	w1, #0x0
+    70200b6c:	540000ab 	b.lt	70200b80 <vsnprintf+0x410>  // b.tstop
+    70200b70:	91002c01 	add	x1, x0, #0xb
+    70200b74:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200b78:	f9000261 	str	x1, [x19]
+    70200b7c:	1400000d 	b	70200bb0 <vsnprintf+0x440>
+    70200b80:	11002022 	add	w2, w1, #0x8
+    70200b84:	b9001a62 	str	w2, [x19, #24]
+    70200b88:	b9401a62 	ldr	w2, [x19, #24]
+    70200b8c:	7100005f 	cmp	w2, #0x0
+    70200b90:	540000ad 	b.le	70200ba4 <vsnprintf+0x434>
+    70200b94:	91002c01 	add	x1, x0, #0xb
+    70200b98:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200b9c:	f9000261 	str	x1, [x19]
+    70200ba0:	14000004 	b	70200bb0 <vsnprintf+0x440>
+    70200ba4:	f9400662 	ldr	x2, [x19, #8]
+    70200ba8:	93407c20 	sxtw	x0, w1
+    70200bac:	8b000040 	add	x0, x2, x0
+    70200bb0:	b9400001 	ldr	w1, [x0]
+    70200bb4:	f94027e3 	ldr	x3, [sp, #72]
+    70200bb8:	b94053e2 	ldr	w2, [sp, #80]
+    70200bbc:	910163e0 	add	x0, sp, #0x58
+    70200bc0:	aa0203e4 	mov	x4, x2
+    70200bc4:	52800142 	mov	w2, #0xa                   	// #10
+    70200bc8:	97fffe40 	bl	702004c8 <print_unsigned>
+				break;
+    70200bcc:	14000039 	b	70200cb0 <vsnprintf+0x540>
+			case 1:
+				print_unsigned(&s, va_arg(va, uint32_t), 10, props);
+    70200bd0:	b9401a61 	ldr	w1, [x19, #24]
+    70200bd4:	f9400260 	ldr	x0, [x19]
+    70200bd8:	7100003f 	cmp	w1, #0x0
+    70200bdc:	540000ab 	b.lt	70200bf0 <vsnprintf+0x480>  // b.tstop
+    70200be0:	91002c01 	add	x1, x0, #0xb
+    70200be4:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200be8:	f9000261 	str	x1, [x19]
+    70200bec:	1400000d 	b	70200c20 <vsnprintf+0x4b0>
+    70200bf0:	11002022 	add	w2, w1, #0x8
+    70200bf4:	b9001a62 	str	w2, [x19, #24]
+    70200bf8:	b9401a62 	ldr	w2, [x19, #24]
+    70200bfc:	7100005f 	cmp	w2, #0x0
+    70200c00:	540000ad 	b.le	70200c14 <vsnprintf+0x4a4>
+    70200c04:	91002c01 	add	x1, x0, #0xb
+    70200c08:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200c0c:	f9000261 	str	x1, [x19]
+    70200c10:	14000004 	b	70200c20 <vsnprintf+0x4b0>
+    70200c14:	f9400662 	ldr	x2, [x19, #8]
+    70200c18:	93407c20 	sxtw	x0, w1
+    70200c1c:	8b000040 	add	x0, x2, x0
+    70200c20:	b9400001 	ldr	w1, [x0]
+    70200c24:	f94027e3 	ldr	x3, [sp, #72]
+    70200c28:	b94053e2 	ldr	w2, [sp, #80]
+    70200c2c:	910163e0 	add	x0, sp, #0x58
+    70200c30:	aa0203e4 	mov	x4, x2
+    70200c34:	52800142 	mov	w2, #0xa                   	// #10
+    70200c38:	97fffe24 	bl	702004c8 <print_unsigned>
+				break;
+    70200c3c:	1400001d 	b	70200cb0 <vsnprintf+0x540>
+			default:
+				print_unsigned(&s, va_arg(va, uint32_t), 10, props);
+    70200c40:	b9401a61 	ldr	w1, [x19, #24]
+    70200c44:	f9400260 	ldr	x0, [x19]
+    70200c48:	7100003f 	cmp	w1, #0x0
+    70200c4c:	540000ab 	b.lt	70200c60 <vsnprintf+0x4f0>  // b.tstop
+    70200c50:	91002c01 	add	x1, x0, #0xb
+    70200c54:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200c58:	f9000261 	str	x1, [x19]
+    70200c5c:	1400000d 	b	70200c90 <vsnprintf+0x520>
+    70200c60:	11002022 	add	w2, w1, #0x8
+    70200c64:	b9001a62 	str	w2, [x19, #24]
+    70200c68:	b9401a62 	ldr	w2, [x19, #24]
+    70200c6c:	7100005f 	cmp	w2, #0x0
+    70200c70:	540000ad 	b.le	70200c84 <vsnprintf+0x514>
+    70200c74:	91002c01 	add	x1, x0, #0xb
+    70200c78:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200c7c:	f9000261 	str	x1, [x19]
+    70200c80:	14000004 	b	70200c90 <vsnprintf+0x520>
+    70200c84:	f9400662 	ldr	x2, [x19, #8]
+    70200c88:	93407c20 	sxtw	x0, w1
+    70200c8c:	8b000040 	add	x0, x2, x0
+    70200c90:	b9400001 	ldr	w1, [x0]
+    70200c94:	f94027e3 	ldr	x3, [sp, #72]
+    70200c98:	b94053e2 	ldr	w2, [sp, #80]
+    70200c9c:	910163e0 	add	x0, sp, #0x58
+    70200ca0:	aa0203e4 	mov	x4, x2
+    70200ca4:	52800142 	mov	w2, #0xa                   	// #10
+    70200ca8:	97fffe08 	bl	702004c8 <print_unsigned>
+				break;
+    70200cac:	d503201f 	nop
+			}
+			break;
+    70200cb0:	1400009a 	b	70200f18 <vsnprintf+0x7a8>
+    70200cb4:	b9406fe0 	ldr	w0, [sp, #108]
+    70200cb8:	7100001f 	cmp	w0, #0x0
+    70200cbc:	540000a0 	b.eq	70200cd0 <vsnprintf+0x560>  // b.none
+    70200cc0:	b9406fe0 	ldr	w0, [sp, #108]
+    70200cc4:	7100041f 	cmp	w0, #0x1
+    70200cc8:	540003c0 	b.eq	70200d40 <vsnprintf+0x5d0>  // b.none
+    70200ccc:	14000039 	b	70200db0 <vsnprintf+0x640>
+		case 'x':
+			switch (nlong)
+			{
+			case 0:
+				print_unsigned(&s, va_arg(va, unsigned), 16, props);
+    70200cd0:	b9401a61 	ldr	w1, [x19, #24]
+    70200cd4:	f9400260 	ldr	x0, [x19]
+    70200cd8:	7100003f 	cmp	w1, #0x0
+    70200cdc:	540000ab 	b.lt	70200cf0 <vsnprintf+0x580>  // b.tstop
+    70200ce0:	91002c01 	add	x1, x0, #0xb
+    70200ce4:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200ce8:	f9000261 	str	x1, [x19]
+    70200cec:	1400000d 	b	70200d20 <vsnprintf+0x5b0>
+    70200cf0:	11002022 	add	w2, w1, #0x8
+    70200cf4:	b9001a62 	str	w2, [x19, #24]
+    70200cf8:	b9401a62 	ldr	w2, [x19, #24]
+    70200cfc:	7100005f 	cmp	w2, #0x0
+    70200d00:	540000ad 	b.le	70200d14 <vsnprintf+0x5a4>
+    70200d04:	91002c01 	add	x1, x0, #0xb
+    70200d08:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200d0c:	f9000261 	str	x1, [x19]
+    70200d10:	14000004 	b	70200d20 <vsnprintf+0x5b0>
+    70200d14:	f9400662 	ldr	x2, [x19, #8]
+    70200d18:	93407c20 	sxtw	x0, w1
+    70200d1c:	8b000040 	add	x0, x2, x0
+    70200d20:	b9400001 	ldr	w1, [x0]
+    70200d24:	f94027e3 	ldr	x3, [sp, #72]
+    70200d28:	b94053e2 	ldr	w2, [sp, #80]
+    70200d2c:	910163e0 	add	x0, sp, #0x58
+    70200d30:	aa0203e4 	mov	x4, x2
+    70200d34:	52800202 	mov	w2, #0x10                  	// #16
+    70200d38:	97fffde4 	bl	702004c8 <print_unsigned>
+				break;
+    70200d3c:	14000039 	b	70200e20 <vsnprintf+0x6b0>
+			case 1:
+				print_unsigned(&s, va_arg(va, uint32_t), 16, props);
+    70200d40:	b9401a61 	ldr	w1, [x19, #24]
+    70200d44:	f9400260 	ldr	x0, [x19]
+    70200d48:	7100003f 	cmp	w1, #0x0
+    70200d4c:	540000ab 	b.lt	70200d60 <vsnprintf+0x5f0>  // b.tstop
+    70200d50:	91002c01 	add	x1, x0, #0xb
+    70200d54:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200d58:	f9000261 	str	x1, [x19]
+    70200d5c:	1400000d 	b	70200d90 <vsnprintf+0x620>
+    70200d60:	11002022 	add	w2, w1, #0x8
+    70200d64:	b9001a62 	str	w2, [x19, #24]
+    70200d68:	b9401a62 	ldr	w2, [x19, #24]
+    70200d6c:	7100005f 	cmp	w2, #0x0
+    70200d70:	540000ad 	b.le	70200d84 <vsnprintf+0x614>
+    70200d74:	91002c01 	add	x1, x0, #0xb
+    70200d78:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200d7c:	f9000261 	str	x1, [x19]
+    70200d80:	14000004 	b	70200d90 <vsnprintf+0x620>
+    70200d84:	f9400662 	ldr	x2, [x19, #8]
+    70200d88:	93407c20 	sxtw	x0, w1
+    70200d8c:	8b000040 	add	x0, x2, x0
+    70200d90:	b9400001 	ldr	w1, [x0]
+    70200d94:	f94027e3 	ldr	x3, [sp, #72]
+    70200d98:	b94053e2 	ldr	w2, [sp, #80]
+    70200d9c:	910163e0 	add	x0, sp, #0x58
+    70200da0:	aa0203e4 	mov	x4, x2
+    70200da4:	52800202 	mov	w2, #0x10                  	// #16
+    70200da8:	97fffdc8 	bl	702004c8 <print_unsigned>
+				break;
+    70200dac:	1400001d 	b	70200e20 <vsnprintf+0x6b0>
+			default:
+				print_unsigned(&s, va_arg(va, uint32_t), 16, props);
+    70200db0:	b9401a61 	ldr	w1, [x19, #24]
+    70200db4:	f9400260 	ldr	x0, [x19]
+    70200db8:	7100003f 	cmp	w1, #0x0
+    70200dbc:	540000ab 	b.lt	70200dd0 <vsnprintf+0x660>  // b.tstop
+    70200dc0:	91002c01 	add	x1, x0, #0xb
+    70200dc4:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200dc8:	f9000261 	str	x1, [x19]
+    70200dcc:	1400000d 	b	70200e00 <vsnprintf+0x690>
+    70200dd0:	11002022 	add	w2, w1, #0x8
+    70200dd4:	b9001a62 	str	w2, [x19, #24]
+    70200dd8:	b9401a62 	ldr	w2, [x19, #24]
+    70200ddc:	7100005f 	cmp	w2, #0x0
+    70200de0:	540000ad 	b.le	70200df4 <vsnprintf+0x684>
+    70200de4:	91002c01 	add	x1, x0, #0xb
+    70200de8:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200dec:	f9000261 	str	x1, [x19]
+    70200df0:	14000004 	b	70200e00 <vsnprintf+0x690>
+    70200df4:	f9400662 	ldr	x2, [x19, #8]
+    70200df8:	93407c20 	sxtw	x0, w1
+    70200dfc:	8b000040 	add	x0, x2, x0
+    70200e00:	b9400001 	ldr	w1, [x0]
+    70200e04:	f94027e3 	ldr	x3, [sp, #72]
+    70200e08:	b94053e2 	ldr	w2, [sp, #80]
+    70200e0c:	910163e0 	add	x0, sp, #0x58
+    70200e10:	aa0203e4 	mov	x4, x2
+    70200e14:	52800202 	mov	w2, #0x10                  	// #16
+    70200e18:	97fffdac 	bl	702004c8 <print_unsigned>
+				break;
+    70200e1c:	d503201f 	nop
+			}
+			break;
+    70200e20:	1400003e 	b	70200f18 <vsnprintf+0x7a8>
+		case 'p':
+			props.alternate = true;
+    70200e24:	52800020 	mov	w0, #0x1                   	// #1
+    70200e28:	390143e0 	strb	w0, [sp, #80]
+			print_unsigned(&s, *(uint32_t *)va_arg(va, void *), 16, props);
+    70200e2c:	b9401a61 	ldr	w1, [x19, #24]
+    70200e30:	f9400260 	ldr	x0, [x19]
+    70200e34:	7100003f 	cmp	w1, #0x0
+    70200e38:	540000ab 	b.lt	70200e4c <vsnprintf+0x6dc>  // b.tstop
+    70200e3c:	91003c01 	add	x1, x0, #0xf
+    70200e40:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200e44:	f9000261 	str	x1, [x19]
+    70200e48:	1400000d 	b	70200e7c <vsnprintf+0x70c>
+    70200e4c:	11002022 	add	w2, w1, #0x8
+    70200e50:	b9001a62 	str	w2, [x19, #24]
+    70200e54:	b9401a62 	ldr	w2, [x19, #24]
+    70200e58:	7100005f 	cmp	w2, #0x0
+    70200e5c:	540000ad 	b.le	70200e70 <vsnprintf+0x700>
+    70200e60:	91003c01 	add	x1, x0, #0xf
+    70200e64:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200e68:	f9000261 	str	x1, [x19]
+    70200e6c:	14000004 	b	70200e7c <vsnprintf+0x70c>
+    70200e70:	f9400662 	ldr	x2, [x19, #8]
+    70200e74:	93407c20 	sxtw	x0, w1
+    70200e78:	8b000040 	add	x0, x2, x0
+    70200e7c:	f9400000 	ldr	x0, [x0]
+    70200e80:	b9400001 	ldr	w1, [x0]
+    70200e84:	f94027e3 	ldr	x3, [sp, #72]
+    70200e88:	b94053e2 	ldr	w2, [sp, #80]
+    70200e8c:	910163e0 	add	x0, sp, #0x58
+    70200e90:	aa0203e4 	mov	x4, x2
+    70200e94:	52800202 	mov	w2, #0x10                  	// #16
+    70200e98:	97fffd8c 	bl	702004c8 <print_unsigned>
+			break;
+    70200e9c:	1400001f 	b	70200f18 <vsnprintf+0x7a8>
+		case 's':
+			print_str(&s, va_arg(va, const char *), props);
+    70200ea0:	b9401a61 	ldr	w1, [x19, #24]
+    70200ea4:	f9400260 	ldr	x0, [x19]
+    70200ea8:	7100003f 	cmp	w1, #0x0
+    70200eac:	540000ab 	b.lt	70200ec0 <vsnprintf+0x750>  // b.tstop
+    70200eb0:	91003c01 	add	x1, x0, #0xf
+    70200eb4:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200eb8:	f9000261 	str	x1, [x19]
+    70200ebc:	1400000d 	b	70200ef0 <vsnprintf+0x780>
+    70200ec0:	11002022 	add	w2, w1, #0x8
+    70200ec4:	b9001a62 	str	w2, [x19, #24]
+    70200ec8:	b9401a62 	ldr	w2, [x19, #24]
+    70200ecc:	7100005f 	cmp	w2, #0x0
+    70200ed0:	540000ad 	b.le	70200ee4 <vsnprintf+0x774>
+    70200ed4:	91003c01 	add	x1, x0, #0xf
+    70200ed8:	927df021 	and	x1, x1, #0xfffffffffffffff8
+    70200edc:	f9000261 	str	x1, [x19]
+    70200ee0:	14000004 	b	70200ef0 <vsnprintf+0x780>
+    70200ee4:	f9400662 	ldr	x2, [x19, #8]
+    70200ee8:	93407c20 	sxtw	x0, w1
+    70200eec:	8b000040 	add	x0, x2, x0
+    70200ef0:	f9400001 	ldr	x1, [x0]
+    70200ef4:	f94027e2 	ldr	x2, [sp, #72]
+    70200ef8:	b94053e3 	ldr	w3, [sp, #80]
+    70200efc:	910163e0 	add	x0, sp, #0x58
+    70200f00:	97fffcc1 	bl	70200204 <print_str>
+			break;
+    70200f04:	14000005 	b	70200f18 <vsnprintf+0x7a8>
+		default:
+			addchar(&s, f);
+    70200f08:	910163e0 	add	x0, sp, #0x58
+    70200f0c:	3941afe1 	ldrb	w1, [sp, #107]
+    70200f10:	97fffca2 	bl	70200198 <addchar>
+			break;
+    70200f14:	d503201f 	nop
+	while (*fmt)
+    70200f18:	f94017e0 	ldr	x0, [sp, #40]
+    70200f1c:	39400000 	ldrb	w0, [x0]
+    70200f20:	7100001f 	cmp	w0, #0x0
+    70200f24:	54ffc421 	b.ne	702007a8 <vsnprintf+0x38>  // b.any
+		}
+	}
+	*s.buffer = 0;
+    70200f28:	f9402fe0 	ldr	x0, [sp, #88]
+    70200f2c:	3900001f 	strb	wzr, [x0]
+	return s.added;
+    70200f30:	b94067e0 	ldr	w0, [sp, #100]
+}
+    70200f34:	f9400bf3 	ldr	x19, [sp, #16]
+    70200f38:	a8c77bfd 	ldp	x29, x30, [sp], #112
+    70200f3c:	d65f03c0 	ret
+
+0000000070200f40 <snprintf>:
+
+int snprintf(char *buf, int size, const char *fmt, ...)
+{
+    70200f40:	a9b57bfd 	stp	x29, x30, [sp, #-176]!
+    70200f44:	910003fd 	mov	x29, sp
+    70200f48:	f90027e0 	str	x0, [sp, #72]
+    70200f4c:	b90047e1 	str	w1, [sp, #68]
+    70200f50:	f9001fe2 	str	x2, [sp, #56]
+    70200f54:	f90047e3 	str	x3, [sp, #136]
+    70200f58:	f9004be4 	str	x4, [sp, #144]
+    70200f5c:	f9004fe5 	str	x5, [sp, #152]
+    70200f60:	f90053e6 	str	x6, [sp, #160]
+    70200f64:	f90057e7 	str	x7, [sp, #168]
+	va_list va;
+	int r;
+
+	va_start(va, fmt);
+    70200f68:	9102c3e0 	add	x0, sp, #0xb0
+    70200f6c:	f9002fe0 	str	x0, [sp, #88]
+    70200f70:	9102c3e0 	add	x0, sp, #0xb0
+    70200f74:	f90033e0 	str	x0, [sp, #96]
+    70200f78:	910203e0 	add	x0, sp, #0x80
+    70200f7c:	f90037e0 	str	x0, [sp, #104]
+    70200f80:	128004e0 	mov	w0, #0xffffffd8            	// #-40
+    70200f84:	b90073e0 	str	w0, [sp, #112]
+    70200f88:	b90077ff 	str	wzr, [sp, #116]
+	r = vsnprintf(buf, size, fmt, va);
+    70200f8c:	910043e2 	add	x2, sp, #0x10
+    70200f90:	910163e3 	add	x3, sp, #0x58
+    70200f94:	a9400460 	ldp	x0, x1, [x3]
+    70200f98:	a9000440 	stp	x0, x1, [x2]
+    70200f9c:	a9410460 	ldp	x0, x1, [x3, #16]
+    70200fa0:	a9010440 	stp	x0, x1, [x2, #16]
+    70200fa4:	910043e0 	add	x0, sp, #0x10
+    70200fa8:	aa0003e3 	mov	x3, x0
+    70200fac:	f9401fe2 	ldr	x2, [sp, #56]
+    70200fb0:	b94047e1 	ldr	w1, [sp, #68]
+    70200fb4:	f94027e0 	ldr	x0, [sp, #72]
+    70200fb8:	97fffdee 	bl	70200770 <vsnprintf>
+    70200fbc:	b9007fe0 	str	w0, [sp, #124]
+	va_end(va);
+	return r;
+    70200fc0:	b9407fe0 	ldr	w0, [sp, #124]
+}
+    70200fc4:	a8cb7bfd 	ldp	x29, x30, [sp], #176
+    70200fc8:	d65f03c0 	ret
+
+0000000070200fcc <vprintf>:
+
+int vprintf(const char *fmt, va_list va)
+{
+    70200fcc:	d120c3ff 	sub	sp, sp, #0x830
+    70200fd0:	a9007bfd 	stp	x29, x30, [sp]
+    70200fd4:	910003fd 	mov	x29, sp
+    70200fd8:	f9000bf3 	str	x19, [sp, #16]
+    70200fdc:	f90027e0 	str	x0, [sp, #72]
+    70200fe0:	aa0103f3 	mov	x19, x1
+	char buf[BUFSZ];
+	int r;
+
+	r = vsnprintf(buf, sizeof(buf), fmt, va);
+    70200fe4:	910083e2 	add	x2, sp, #0x20
+    70200fe8:	aa1303e3 	mov	x3, x19
+    70200fec:	a9400460 	ldp	x0, x1, [x3]
+    70200ff0:	a9000440 	stp	x0, x1, [x2]
+    70200ff4:	a9410460 	ldp	x0, x1, [x3, #16]
+    70200ff8:	a9010440 	stp	x0, x1, [x2, #16]
+    70200ffc:	910083e1 	add	x1, sp, #0x20
+    70201000:	910163e0 	add	x0, sp, #0x58
+    70201004:	aa0103e3 	mov	x3, x1
+    70201008:	f94027e2 	ldr	x2, [sp, #72]
+    7020100c:	5280fa01 	mov	w1, #0x7d0                 	// #2000
+    70201010:	97fffdd8 	bl	70200770 <vsnprintf>
+    70201014:	b9082fe0 	str	w0, [sp, #2092]
+	puts(buf);
+    70201018:	910163e0 	add	x0, sp, #0x58
+    7020101c:	97fffc3a 	bl	70200104 <uart_putstr>
+	return r;
+    70201020:	b9482fe0 	ldr	w0, [sp, #2092]
+}
+    70201024:	f9400bf3 	ldr	x19, [sp, #16]
+    70201028:	a9407bfd 	ldp	x29, x30, [sp]
+    7020102c:	9120c3ff 	add	sp, sp, #0x830
+    70201030:	d65f03c0 	ret
+
+0000000070201034 <printf>:
+
+int printf(const char *fmt, ...)
+{
+    70201034:	d12203ff 	sub	sp, sp, #0x880
+    70201038:	a9007bfd 	stp	x29, x30, [sp]
+    7020103c:	910003fd 	mov	x29, sp
+    70201040:	f9001fe0 	str	x0, [sp, #56]
+    70201044:	f90427e1 	str	x1, [sp, #2120]
+    70201048:	f9042be2 	str	x2, [sp, #2128]
+    7020104c:	f9042fe3 	str	x3, [sp, #2136]
+    70201050:	f90433e4 	str	x4, [sp, #2144]
+    70201054:	f90437e5 	str	x5, [sp, #2152]
+    70201058:	f9043be6 	str	x6, [sp, #2160]
+    7020105c:	f9043fe7 	str	x7, [sp, #2168]
+	va_list va;
+	char buf[BUFSZ];
+	int r;
+
+	va_start(va, fmt);
+    70201060:	912203e0 	add	x0, sp, #0x880
+    70201064:	f9040fe0 	str	x0, [sp, #2072]
+    70201068:	912203e0 	add	x0, sp, #0x880
+    7020106c:	f90413e0 	str	x0, [sp, #2080]
+    70201070:	912103e0 	add	x0, sp, #0x840
+    70201074:	f90417e0 	str	x0, [sp, #2088]
+    70201078:	128006e0 	mov	w0, #0xffffffc8            	// #-56
+    7020107c:	b90833e0 	str	w0, [sp, #2096]
+    70201080:	b90837ff 	str	wzr, [sp, #2100]
+	r = vsnprintf(buf, sizeof buf, fmt, va);
+    70201084:	910043e2 	add	x2, sp, #0x10
+    70201088:	912063e3 	add	x3, sp, #0x818
+    7020108c:	a9400460 	ldp	x0, x1, [x3]
+    70201090:	a9000440 	stp	x0, x1, [x2]
+    70201094:	a9410460 	ldp	x0, x1, [x3, #16]
+    70201098:	a9010440 	stp	x0, x1, [x2, #16]
+    7020109c:	910043e1 	add	x1, sp, #0x10
+    702010a0:	910123e0 	add	x0, sp, #0x48
+    702010a4:	aa0103e3 	mov	x3, x1
+    702010a8:	f9401fe2 	ldr	x2, [sp, #56]
+    702010ac:	5280fa01 	mov	w1, #0x7d0                 	// #2000
+    702010b0:	97fffdb0 	bl	70200770 <vsnprintf>
+    702010b4:	b9083fe0 	str	w0, [sp, #2108]
+	va_end(va);
+
+	puts(buf);
+    702010b8:	910123e0 	add	x0, sp, #0x48
+    702010bc:	97fffc12 	bl	70200104 <uart_putstr>
+
+	return r;
+    702010c0:	b9483fe0 	ldr	w0, [sp, #2108]
+}
+    702010c4:	a9407bfd 	ldp	x29, x30, [sp]
+    702010c8:	912203ff 	add	sp, sp, #0x880
+    702010cc:	d65f03c0 	ret
+
+00000000702010d0 <warning>:
+
+int warning(const char *fmt, ...)
+{
+    702010d0:	d12203ff 	sub	sp, sp, #0x880
+    702010d4:	a9007bfd 	stp	x29, x30, [sp]
+    702010d8:	910003fd 	mov	x29, sp
+    702010dc:	f9001fe0 	str	x0, [sp, #56]
+    702010e0:	f90427e1 	str	x1, [sp, #2120]
+    702010e4:	f9042be2 	str	x2, [sp, #2128]
+    702010e8:	f9042fe3 	str	x3, [sp, #2136]
+    702010ec:	f90433e4 	str	x4, [sp, #2144]
+    702010f0:	f90437e5 	str	x5, [sp, #2152]
+    702010f4:	f9043be6 	str	x6, [sp, #2160]
+    702010f8:	f9043fe7 	str	x7, [sp, #2168]
+	va_list va;
+	char buf[BUFSZ];
+	int r;
+
+	va_start(va, fmt);
+    702010fc:	912203e0 	add	x0, sp, #0x880
+    70201100:	f9040fe0 	str	x0, [sp, #2072]
+    70201104:	912203e0 	add	x0, sp, #0x880
+    70201108:	f90413e0 	str	x0, [sp, #2080]
+    7020110c:	912103e0 	add	x0, sp, #0x840
+    70201110:	f90417e0 	str	x0, [sp, #2088]
+    70201114:	128006e0 	mov	w0, #0xffffffc8            	// #-56
+    70201118:	b90833e0 	str	w0, [sp, #2096]
+    7020111c:	b90837ff 	str	wzr, [sp, #2100]
+	r = vsnprintf(buf, sizeof buf, fmt, va);
+    70201120:	910043e2 	add	x2, sp, #0x10
+    70201124:	912063e3 	add	x3, sp, #0x818
+    70201128:	a9400460 	ldp	x0, x1, [x3]
+    7020112c:	a9000440 	stp	x0, x1, [x2]
+    70201130:	a9410460 	ldp	x0, x1, [x3, #16]
+    70201134:	a9010440 	stp	x0, x1, [x2, #16]
+    70201138:	910043e1 	add	x1, sp, #0x10
+    7020113c:	910123e0 	add	x0, sp, #0x48
+    70201140:	aa0103e3 	mov	x3, x1
+    70201144:	f9401fe2 	ldr	x2, [sp, #56]
+    70201148:	5280fa01 	mov	w1, #0x7d0                 	// #2000
+    7020114c:	97fffd89 	bl	70200770 <vsnprintf>
+    70201150:	b9083fe0 	str	w0, [sp, #2108]
+	va_end(va);
+
+	puts(buf);
+    70201154:	910123e0 	add	x0, sp, #0x48
+    70201158:	97fffbeb 	bl	70200104 <uart_putstr>
+
+	return r;
+    7020115c:	b9483fe0 	ldr	w0, [sp, #2108]
+}
+    70201160:	a9407bfd 	ldp	x29, x30, [sp]
+    70201164:	912203ff 	add	sp, sp, #0x880
+    70201168:	d65f03c0 	ret
+
+000000007020116c <error>:
+
+int error(const char *fmt, ...)
+{
+    7020116c:	d12203ff 	sub	sp, sp, #0x880
+    70201170:	a9007bfd 	stp	x29, x30, [sp]
+    70201174:	910003fd 	mov	x29, sp
+    70201178:	f9001fe0 	str	x0, [sp, #56]
+    7020117c:	f90427e1 	str	x1, [sp, #2120]
+    70201180:	f9042be2 	str	x2, [sp, #2128]
+    70201184:	f9042fe3 	str	x3, [sp, #2136]
+    70201188:	f90433e4 	str	x4, [sp, #2144]
+    7020118c:	f90437e5 	str	x5, [sp, #2152]
+    70201190:	f9043be6 	str	x6, [sp, #2160]
+    70201194:	f9043fe7 	str	x7, [sp, #2168]
+	va_list va;
+	char buf[BUFSZ];
+	int r;
+
+	va_start(va, fmt);
+    70201198:	912203e0 	add	x0, sp, #0x880
+    7020119c:	f9040fe0 	str	x0, [sp, #2072]
+    702011a0:	912203e0 	add	x0, sp, #0x880
+    702011a4:	f90413e0 	str	x0, [sp, #2080]
+    702011a8:	912103e0 	add	x0, sp, #0x840
+    702011ac:	f90417e0 	str	x0, [sp, #2088]
+    702011b0:	128006e0 	mov	w0, #0xffffffc8            	// #-56
+    702011b4:	b90833e0 	str	w0, [sp, #2096]
+    702011b8:	b90837ff 	str	wzr, [sp, #2100]
+	r = vsnprintf(buf, sizeof buf, fmt, va);
+    702011bc:	910043e2 	add	x2, sp, #0x10
+    702011c0:	912063e3 	add	x3, sp, #0x818
+    702011c4:	a9400460 	ldp	x0, x1, [x3]
+    702011c8:	a9000440 	stp	x0, x1, [x2]
+    702011cc:	a9410460 	ldp	x0, x1, [x3, #16]
+    702011d0:	a9010440 	stp	x0, x1, [x2, #16]
+    702011d4:	910043e1 	add	x1, sp, #0x10
+    702011d8:	910123e0 	add	x0, sp, #0x48
+    702011dc:	aa0103e3 	mov	x3, x1
+    702011e0:	f9401fe2 	ldr	x2, [sp, #56]
+    702011e4:	5280fa01 	mov	w1, #0x7d0                 	// #2000
+    702011e8:	97fffd62 	bl	70200770 <vsnprintf>
+    702011ec:	b9083fe0 	str	w0, [sp, #2108]
+	va_end(va);
+
+	puts(buf);
+    702011f0:	910123e0 	add	x0, sp, #0x48
+    702011f4:	97fffbc4 	bl	70200104 <uart_putstr>
+
+	return r;
+    702011f8:	b9483fe0 	ldr	w0, [sp, #2108]
+}
+    702011fc:	a9407bfd 	ldp	x29, x30, [sp]
+    70201200:	912203ff 	add	sp, sp, #0x880
+    70201204:	d65f03c0 	ret
+
+0000000070201208 <binstr>:
+
+void binstr(uint32_t x, char out[BINSTR_SZ])
+{
+    70201208:	d100c3ff 	sub	sp, sp, #0x30
+    7020120c:	b9000fe0 	str	w0, [sp, #12]
+    70201210:	f90003e1 	str	x1, [sp]
+	int i;
+	char *c;
+	int n;
+
+	n = sizeof(uint32_t) * 8;
+    70201214:	52800400 	mov	w0, #0x20                  	// #32
+    70201218:	b9001fe0 	str	w0, [sp, #28]
+	i = 0;
+    7020121c:	b9002fff 	str	wzr, [sp, #44]
+	c = &out[0];
+    70201220:	f94003e0 	ldr	x0, [sp]
+    70201224:	f90013e0 	str	x0, [sp, #32]
+	for (;;)
+	{
+		*c++ = (x & (1ul << (n - i - 1))) ? '1' : '0';
+    70201228:	b9400fe1 	ldr	w1, [sp, #12]
+    7020122c:	b9401fe2 	ldr	w2, [sp, #28]
+    70201230:	b9402fe0 	ldr	w0, [sp, #44]
+    70201234:	4b000040 	sub	w0, w2, w0
+    70201238:	51000400 	sub	w0, w0, #0x1
+    7020123c:	9ac02420 	lsr	x0, x1, x0
+    70201240:	92400000 	and	x0, x0, #0x1
+    70201244:	f100001f 	cmp	x0, #0x0
+    70201248:	54000060 	b.eq	70201254 <binstr+0x4c>  // b.none
+    7020124c:	52800621 	mov	w1, #0x31                  	// #49
+    70201250:	14000002 	b	70201258 <binstr+0x50>
+    70201254:	52800601 	mov	w1, #0x30                  	// #48
+    70201258:	f94013e0 	ldr	x0, [sp, #32]
+    7020125c:	91000402 	add	x2, x0, #0x1
+    70201260:	f90013e2 	str	x2, [sp, #32]
+    70201264:	39000001 	strb	w1, [x0]
+		i++;
+    70201268:	b9402fe0 	ldr	w0, [sp, #44]
+    7020126c:	11000400 	add	w0, w0, #0x1
+    70201270:	b9002fe0 	str	w0, [sp, #44]
+
+		if (i == n)
+    70201274:	b9402fe1 	ldr	w1, [sp, #44]
+    70201278:	b9401fe0 	ldr	w0, [sp, #28]
+    7020127c:	6b00003f 	cmp	w1, w0
+    70201280:	54000081 	b.ne	70201290 <binstr+0x88>  // b.any
+		{
+			*c = '\0';
+    70201284:	f94013e0 	ldr	x0, [sp, #32]
+    70201288:	3900001f 	strb	wzr, [x0]
+			break;
+    7020128c:	1400000b 	b	702012b8 <binstr+0xb0>
+		}
+		if (i % 4 == 0)
+    70201290:	b9402fe0 	ldr	w0, [sp, #44]
+    70201294:	12000400 	and	w0, w0, #0x3
+    70201298:	7100001f 	cmp	w0, #0x0
+    7020129c:	54fffc61 	b.ne	70201228 <binstr+0x20>  // b.any
+			*c++ = '\'';
+    702012a0:	f94013e0 	ldr	x0, [sp, #32]
+    702012a4:	91000401 	add	x1, x0, #0x1
+    702012a8:	f90013e1 	str	x1, [sp, #32]
+    702012ac:	528004e1 	mov	w1, #0x27                  	// #39
+    702012b0:	39000001 	strb	w1, [x0]
+		*c++ = (x & (1ul << (n - i - 1))) ? '1' : '0';
+    702012b4:	17ffffdd 	b	70201228 <binstr+0x20>
+	}
+	// assert(c + 1 - &out[0] == BINSTR_SZ);
+}
+    702012b8:	d503201f 	nop
+    702012bc:	9100c3ff 	add	sp, sp, #0x30
+    702012c0:	d65f03c0 	ret
+
+00000000702012c4 <print_binstr>:
+
+void print_binstr(uint32_t x)
+{
+    702012c4:	a9bb7bfd 	stp	x29, x30, [sp, #-80]!
+    702012c8:	910003fd 	mov	x29, sp
+    702012cc:	b9001fe0 	str	w0, [sp, #28]
+	char out[BINSTR_SZ];
+	binstr(x, out);
+    702012d0:	9100a3e0 	add	x0, sp, #0x28
+    702012d4:	aa0003e1 	mov	x1, x0
+    702012d8:	b9401fe0 	ldr	w0, [sp, #28]
+    702012dc:	97ffffcb 	bl	70201208 <binstr>
+	printf("%s", out);
+    702012e0:	9100a3e0 	add	x0, sp, #0x28
+    702012e4:	aa0003e1 	mov	x1, x0
+    702012e8:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    702012ec:	91018000 	add	x0, x0, #0x60
+    702012f0:	97ffff51 	bl	70201034 <printf>
+}
+    702012f4:	d503201f 	nop
+    702012f8:	a8c57bfd 	ldp	x29, x30, [sp], #80
+    702012fc:	d65f03c0 	ret
+
+0000000070201300 <strlen>:
+
+#include "aj_string.h"
+#include "aj_types.h"
+
+unsigned long strlen(const char *buf)
+{
+    70201300:	d10083ff 	sub	sp, sp, #0x20
+    70201304:	f90007e0 	str	x0, [sp, #8]
+    unsigned long len = 0;
+    70201308:	f9000fff 	str	xzr, [sp, #24]
+
+    while (*buf++)
+    7020130c:	14000004 	b	7020131c <strlen+0x1c>
+        ++len;
+    70201310:	f9400fe0 	ldr	x0, [sp, #24]
+    70201314:	91000400 	add	x0, x0, #0x1
+    70201318:	f9000fe0 	str	x0, [sp, #24]
+    while (*buf++)
+    7020131c:	f94007e0 	ldr	x0, [sp, #8]
+    70201320:	91000401 	add	x1, x0, #0x1
+    70201324:	f90007e1 	str	x1, [sp, #8]
+    70201328:	39400000 	ldrb	w0, [x0]
+    7020132c:	7100001f 	cmp	w0, #0x0
+    70201330:	54ffff01 	b.ne	70201310 <strlen+0x10>  // b.any
+    return len;
+    70201334:	f9400fe0 	ldr	x0, [sp, #24]
+}
+    70201338:	910083ff 	add	sp, sp, #0x20
+    7020133c:	d65f03c0 	ret
+
+0000000070201340 <strcat>:
+
+char *strcat(char *dest, const char *src)
+{
+    70201340:	d10083ff 	sub	sp, sp, #0x20
+    70201344:	f90007e0 	str	x0, [sp, #8]
+    70201348:	f90003e1 	str	x1, [sp]
+    char *p = dest;
+    7020134c:	f94007e0 	ldr	x0, [sp, #8]
+    70201350:	f9000fe0 	str	x0, [sp, #24]
+
+    while (*p)
+    70201354:	14000004 	b	70201364 <strcat+0x24>
+        ++p;
+    70201358:	f9400fe0 	ldr	x0, [sp, #24]
+    7020135c:	91000400 	add	x0, x0, #0x1
+    70201360:	f9000fe0 	str	x0, [sp, #24]
+    while (*p)
+    70201364:	f9400fe0 	ldr	x0, [sp, #24]
+    70201368:	39400000 	ldrb	w0, [x0]
+    7020136c:	7100001f 	cmp	w0, #0x0
+    70201370:	54ffff41 	b.ne	70201358 <strcat+0x18>  // b.any
+    while ((*p++ = *src++) != 0)
+    70201374:	d503201f 	nop
+    70201378:	f94003e1 	ldr	x1, [sp]
+    7020137c:	91000420 	add	x0, x1, #0x1
+    70201380:	f90003e0 	str	x0, [sp]
+    70201384:	f9400fe0 	ldr	x0, [sp, #24]
+    70201388:	91000402 	add	x2, x0, #0x1
+    7020138c:	f9000fe2 	str	x2, [sp, #24]
+    70201390:	39400021 	ldrb	w1, [x1]
+    70201394:	39000001 	strb	w1, [x0]
+    70201398:	39400000 	ldrb	w0, [x0]
+    7020139c:	7100001f 	cmp	w0, #0x0
+    702013a0:	54fffec1 	b.ne	70201378 <strcat+0x38>  // b.any
+        ;
+    return dest;
+    702013a4:	f94007e0 	ldr	x0, [sp, #8]
+}
+    702013a8:	910083ff 	add	sp, sp, #0x20
+    702013ac:	d65f03c0 	ret
+
+00000000702013b0 <strcpy>:
+
+char *strcpy(char *dest, const char *src)
+{
+    702013b0:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    702013b4:	910003fd 	mov	x29, sp
+    702013b8:	f9000fe0 	str	x0, [sp, #24]
+    702013bc:	f9000be1 	str	x1, [sp, #16]
+    *dest = 0;
+    702013c0:	f9400fe0 	ldr	x0, [sp, #24]
+    702013c4:	3900001f 	strb	wzr, [x0]
+    return strcat(dest, src);
+    702013c8:	f9400be1 	ldr	x1, [sp, #16]
+    702013cc:	f9400fe0 	ldr	x0, [sp, #24]
+    702013d0:	97ffffdc 	bl	70201340 <strcat>
+}
+    702013d4:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    702013d8:	d65f03c0 	ret
+
+00000000702013dc <strncmp>:
+
+int strncmp(const char *a, const char *b, size_t n)
+{
+    702013dc:	d10083ff 	sub	sp, sp, #0x20
+    702013e0:	f9000fe0 	str	x0, [sp, #24]
+    702013e4:	f9000be1 	str	x1, [sp, #16]
+    702013e8:	f90007e2 	str	x2, [sp, #8]
+    for (; n--; ++a, ++b)
+    702013ec:	14000018 	b	7020144c <strncmp+0x70>
+        if (*a != *b || *a == '\0')
+    702013f0:	f9400fe0 	ldr	x0, [sp, #24]
+    702013f4:	39400001 	ldrb	w1, [x0]
+    702013f8:	f9400be0 	ldr	x0, [sp, #16]
+    702013fc:	39400000 	ldrb	w0, [x0]
+    70201400:	6b00003f 	cmp	w1, w0
+    70201404:	540000a1 	b.ne	70201418 <strncmp+0x3c>  // b.any
+    70201408:	f9400fe0 	ldr	x0, [sp, #24]
+    7020140c:	39400000 	ldrb	w0, [x0]
+    70201410:	7100001f 	cmp	w0, #0x0
+    70201414:	54000101 	b.ne	70201434 <strncmp+0x58>  // b.any
+            return *a - *b;
+    70201418:	f9400fe0 	ldr	x0, [sp, #24]
+    7020141c:	39400000 	ldrb	w0, [x0]
+    70201420:	2a0003e1 	mov	w1, w0
+    70201424:	f9400be0 	ldr	x0, [sp, #16]
+    70201428:	39400000 	ldrb	w0, [x0]
+    7020142c:	4b000020 	sub	w0, w1, w0
+    70201430:	1400000d 	b	70201464 <strncmp+0x88>
+    for (; n--; ++a, ++b)
+    70201434:	f9400fe0 	ldr	x0, [sp, #24]
+    70201438:	91000400 	add	x0, x0, #0x1
+    7020143c:	f9000fe0 	str	x0, [sp, #24]
+    70201440:	f9400be0 	ldr	x0, [sp, #16]
+    70201444:	91000400 	add	x0, x0, #0x1
+    70201448:	f9000be0 	str	x0, [sp, #16]
+    7020144c:	f94007e0 	ldr	x0, [sp, #8]
+    70201450:	d1000401 	sub	x1, x0, #0x1
+    70201454:	f90007e1 	str	x1, [sp, #8]
+    70201458:	f100001f 	cmp	x0, #0x0
+    7020145c:	54fffca1 	b.ne	702013f0 <strncmp+0x14>  // b.any
+
+    return 0;
+    70201460:	52800000 	mov	w0, #0x0                   	// #0
+}
+    70201464:	910083ff 	add	sp, sp, #0x20
+    70201468:	d65f03c0 	ret
+
+000000007020146c <strcmp>:
+
+int strcmp(const char *a, const char *b)
+{
+    7020146c:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    70201470:	910003fd 	mov	x29, sp
+    70201474:	f9000fe0 	str	x0, [sp, #24]
+    70201478:	f9000be1 	str	x1, [sp, #16]
+    return strncmp(a, b, SIZE_MAX);
+    7020147c:	92f00002 	mov	x2, #0x7fffffffffffffff    	// #9223372036854775807
+    70201480:	f9400be1 	ldr	x1, [sp, #16]
+    70201484:	f9400fe0 	ldr	x0, [sp, #24]
+    70201488:	97ffffd5 	bl	702013dc <strncmp>
+}
+    7020148c:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70201490:	d65f03c0 	ret
+
+0000000070201494 <strchr>:
+
+char *strchr(const char *s, int c)
+{
+    70201494:	d10043ff 	sub	sp, sp, #0x10
+    70201498:	f90007e0 	str	x0, [sp, #8]
+    7020149c:	b90007e1 	str	w1, [sp, #4]
+    while (*s != (char)c)
+    702014a0:	14000009 	b	702014c4 <strchr+0x30>
+        if (*s++ == '\0')
+    702014a4:	f94007e0 	ldr	x0, [sp, #8]
+    702014a8:	91000401 	add	x1, x0, #0x1
+    702014ac:	f90007e1 	str	x1, [sp, #8]
+    702014b0:	39400000 	ldrb	w0, [x0]
+    702014b4:	7100001f 	cmp	w0, #0x0
+    702014b8:	54000061 	b.ne	702014c4 <strchr+0x30>  // b.any
+            return NULL;
+    702014bc:	d2800000 	mov	x0, #0x0                   	// #0
+    702014c0:	14000008 	b	702014e0 <strchr+0x4c>
+    while (*s != (char)c)
+    702014c4:	f94007e0 	ldr	x0, [sp, #8]
+    702014c8:	39400001 	ldrb	w1, [x0]
+    702014cc:	b94007e0 	ldr	w0, [sp, #4]
+    702014d0:	12001c00 	and	w0, w0, #0xff
+    702014d4:	6b00003f 	cmp	w1, w0
+    702014d8:	54fffe61 	b.ne	702014a4 <strchr+0x10>  // b.any
+    return (char *)s;
+    702014dc:	f94007e0 	ldr	x0, [sp, #8]
+}
+    702014e0:	910043ff 	add	sp, sp, #0x10
+    702014e4:	d65f03c0 	ret
+
+00000000702014e8 <strstr>:
+
+char *strstr(const char *s1, const char *s2)
+{
+    702014e8:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+    702014ec:	910003fd 	mov	x29, sp
+    702014f0:	f9000fe0 	str	x0, [sp, #24]
+    702014f4:	f9000be1 	str	x1, [sp, #16]
+    size_t l1, l2;
+
+    l2 = strlen(s2);
+    702014f8:	f9400be0 	ldr	x0, [sp, #16]
+    702014fc:	97ffff81 	bl	70201300 <strlen>
+    70201500:	f90013e0 	str	x0, [sp, #32]
+    if (!l2)
+    70201504:	f94013e0 	ldr	x0, [sp, #32]
+    70201508:	f100001f 	cmp	x0, #0x0
+    7020150c:	54000061 	b.ne	70201518 <strstr+0x30>  // b.any
+        return (char *)s1;
+    70201510:	f9400fe0 	ldr	x0, [sp, #24]
+    70201514:	14000018 	b	70201574 <strstr+0x8c>
+    l1 = strlen(s1);
+    70201518:	f9400fe0 	ldr	x0, [sp, #24]
+    7020151c:	97ffff79 	bl	70201300 <strlen>
+    70201520:	f90017e0 	str	x0, [sp, #40]
+    while (l1 >= l2)
+    70201524:	1400000f 	b	70201560 <strstr+0x78>
+    {
+        l1--;
+    70201528:	f94017e0 	ldr	x0, [sp, #40]
+    7020152c:	d1000400 	sub	x0, x0, #0x1
+    70201530:	f90017e0 	str	x0, [sp, #40]
+        if (!memcmp(s1, s2, l2))
+    70201534:	f94013e2 	ldr	x2, [sp, #32]
+    70201538:	f9400be1 	ldr	x1, [sp, #16]
+    7020153c:	f9400fe0 	ldr	x0, [sp, #24]
+    70201540:	94000043 	bl	7020164c <memcmp>
+    70201544:	7100001f 	cmp	w0, #0x0
+    70201548:	54000061 	b.ne	70201554 <strstr+0x6c>  // b.any
+            return (char *)s1;
+    7020154c:	f9400fe0 	ldr	x0, [sp, #24]
+    70201550:	14000009 	b	70201574 <strstr+0x8c>
+        s1++;
+    70201554:	f9400fe0 	ldr	x0, [sp, #24]
+    70201558:	91000400 	add	x0, x0, #0x1
+    7020155c:	f9000fe0 	str	x0, [sp, #24]
+    while (l1 >= l2)
+    70201560:	f94017e1 	ldr	x1, [sp, #40]
+    70201564:	f94013e0 	ldr	x0, [sp, #32]
+    70201568:	eb00003f 	cmp	x1, x0
+    7020156c:	54fffde2 	b.cs	70201528 <strstr+0x40>  // b.hs, b.nlast
+    }
+    return NULL;
+    70201570:	d2800000 	mov	x0, #0x0                   	// #0
+}
+    70201574:	a8c37bfd 	ldp	x29, x30, [sp], #48
+    70201578:	d65f03c0 	ret
+
+000000007020157c <memset>:
+
+void *memset(void *s, int c, size_t n)
+{
+    7020157c:	d100c3ff 	sub	sp, sp, #0x30
+    70201580:	f9000fe0 	str	x0, [sp, #24]
+    70201584:	b90017e1 	str	w1, [sp, #20]
+    70201588:	f90007e2 	str	x2, [sp, #8]
+    size_t i;
+    char *a = s;
+    7020158c:	f9400fe0 	ldr	x0, [sp, #24]
+    70201590:	f90013e0 	str	x0, [sp, #32]
+
+    for (i = 0; i < n; ++i)
+    70201594:	f90017ff 	str	xzr, [sp, #40]
+    70201598:	1400000a 	b	702015c0 <memset+0x44>
+        a[i] = c;
+    7020159c:	f94013e1 	ldr	x1, [sp, #32]
+    702015a0:	f94017e0 	ldr	x0, [sp, #40]
+    702015a4:	8b000020 	add	x0, x1, x0
+    702015a8:	b94017e1 	ldr	w1, [sp, #20]
+    702015ac:	12001c21 	and	w1, w1, #0xff
+    702015b0:	39000001 	strb	w1, [x0]
+    for (i = 0; i < n; ++i)
+    702015b4:	f94017e0 	ldr	x0, [sp, #40]
+    702015b8:	91000400 	add	x0, x0, #0x1
+    702015bc:	f90017e0 	str	x0, [sp, #40]
+    702015c0:	f94017e1 	ldr	x1, [sp, #40]
+    702015c4:	f94007e0 	ldr	x0, [sp, #8]
+    702015c8:	eb00003f 	cmp	x1, x0
+    702015cc:	54fffe83 	b.cc	7020159c <memset+0x20>  // b.lo, b.ul, b.last
+
+    return s;
+    702015d0:	f9400fe0 	ldr	x0, [sp, #24]
+}
+    702015d4:	9100c3ff 	add	sp, sp, #0x30
+    702015d8:	d65f03c0 	ret
+
+00000000702015dc <memcpy>:
+
+void *memcpy(void *dest, const void *src, size_t n)
+{
+    702015dc:	d10103ff 	sub	sp, sp, #0x40
+    702015e0:	f9000fe0 	str	x0, [sp, #24]
+    702015e4:	f9000be1 	str	x1, [sp, #16]
+    702015e8:	f90007e2 	str	x2, [sp, #8]
+    size_t i;
+    char *a = dest;
+    702015ec:	f9400fe0 	ldr	x0, [sp, #24]
+    702015f0:	f9001be0 	str	x0, [sp, #48]
+    const char *b = src;
+    702015f4:	f9400be0 	ldr	x0, [sp, #16]
+    702015f8:	f90017e0 	str	x0, [sp, #40]
+
+    for (i = 0; i < n; ++i)
+    702015fc:	f9001fff 	str	xzr, [sp, #56]
+    70201600:	1400000c 	b	70201630 <memcpy+0x54>
+        a[i] = b[i];
+    70201604:	f94017e1 	ldr	x1, [sp, #40]
+    70201608:	f9401fe0 	ldr	x0, [sp, #56]
+    7020160c:	8b000021 	add	x1, x1, x0
+    70201610:	f9401be2 	ldr	x2, [sp, #48]
+    70201614:	f9401fe0 	ldr	x0, [sp, #56]
+    70201618:	8b000040 	add	x0, x2, x0
+    7020161c:	39400021 	ldrb	w1, [x1]
+    70201620:	39000001 	strb	w1, [x0]
+    for (i = 0; i < n; ++i)
+    70201624:	f9401fe0 	ldr	x0, [sp, #56]
+    70201628:	91000400 	add	x0, x0, #0x1
+    7020162c:	f9001fe0 	str	x0, [sp, #56]
+    70201630:	f9401fe1 	ldr	x1, [sp, #56]
+    70201634:	f94007e0 	ldr	x0, [sp, #8]
+    70201638:	eb00003f 	cmp	x1, x0
+    7020163c:	54fffe43 	b.cc	70201604 <memcpy+0x28>  // b.lo, b.ul, b.last
+
+    return dest;
+    70201640:	f9400fe0 	ldr	x0, [sp, #24]
+}
+    70201644:	910103ff 	add	sp, sp, #0x40
+    70201648:	d65f03c0 	ret
+
+000000007020164c <memcmp>:
+
+int memcmp(const void *s1, const void *s2, size_t n)
+{
+    7020164c:	d10103ff 	sub	sp, sp, #0x40
+    70201650:	f9000fe0 	str	x0, [sp, #24]
+    70201654:	f9000be1 	str	x1, [sp, #16]
+    70201658:	f90007e2 	str	x2, [sp, #8]
+    const unsigned char *a = s1, *b = s2;
+    7020165c:	f9400fe0 	ldr	x0, [sp, #24]
+    70201660:	f9001fe0 	str	x0, [sp, #56]
+    70201664:	f9400be0 	ldr	x0, [sp, #16]
+    70201668:	f9001be0 	str	x0, [sp, #48]
+    int ret = 0;
+    7020166c:	b9002fff 	str	wzr, [sp, #44]
+
+    while (n--)
+    70201670:	14000011 	b	702016b4 <memcmp+0x68>
+    {
+        ret = *a - *b;
+    70201674:	f9401fe0 	ldr	x0, [sp, #56]
+    70201678:	39400000 	ldrb	w0, [x0]
+    7020167c:	2a0003e1 	mov	w1, w0
+    70201680:	f9401be0 	ldr	x0, [sp, #48]
+    70201684:	39400000 	ldrb	w0, [x0]
+    70201688:	4b000020 	sub	w0, w1, w0
+    7020168c:	b9002fe0 	str	w0, [sp, #44]
+        if (ret)
+    70201690:	b9402fe0 	ldr	w0, [sp, #44]
+    70201694:	7100001f 	cmp	w0, #0x0
+    70201698:	540001a1 	b.ne	702016cc <memcmp+0x80>  // b.any
+            break;
+        ++a, ++b;
+    7020169c:	f9401fe0 	ldr	x0, [sp, #56]
+    702016a0:	91000400 	add	x0, x0, #0x1
+    702016a4:	f9001fe0 	str	x0, [sp, #56]
+    702016a8:	f9401be0 	ldr	x0, [sp, #48]
+    702016ac:	91000400 	add	x0, x0, #0x1
+    702016b0:	f9001be0 	str	x0, [sp, #48]
+    while (n--)
+    702016b4:	f94007e0 	ldr	x0, [sp, #8]
+    702016b8:	d1000401 	sub	x1, x0, #0x1
+    702016bc:	f90007e1 	str	x1, [sp, #8]
+    702016c0:	f100001f 	cmp	x0, #0x0
+    702016c4:	54fffd81 	b.ne	70201674 <memcmp+0x28>  // b.any
+    702016c8:	14000002 	b	702016d0 <memcmp+0x84>
+            break;
+    702016cc:	d503201f 	nop
+    }
+    return ret;
+    702016d0:	b9402fe0 	ldr	w0, [sp, #44]
+}
+    702016d4:	910103ff 	add	sp, sp, #0x40
+    702016d8:	d65f03c0 	ret
+
+00000000702016dc <memmove>:
+
+void *memmove(void *dest, const void *src, size_t n)
+{
+    702016dc:	d100c3ff 	sub	sp, sp, #0x30
+    702016e0:	f9000fe0 	str	x0, [sp, #24]
+    702016e4:	f9000be1 	str	x1, [sp, #16]
+    702016e8:	f90007e2 	str	x2, [sp, #8]
+    const unsigned char *s = src;
+    702016ec:	f9400be0 	ldr	x0, [sp, #16]
+    702016f0:	f90017e0 	str	x0, [sp, #40]
+    unsigned char *d = dest;
+    702016f4:	f9400fe0 	ldr	x0, [sp, #24]
+    702016f8:	f90013e0 	str	x0, [sp, #32]
+
+    if (d <= s)
+    702016fc:	f94013e1 	ldr	x1, [sp, #32]
+    70201700:	f94017e0 	ldr	x0, [sp, #40]
+    70201704:	eb00003f 	cmp	x1, x0
+    70201708:	54000208 	b.hi	70201748 <memmove+0x6c>  // b.pmore
+    {
+        while (n--)
+    7020170c:	14000009 	b	70201730 <memmove+0x54>
+            *d++ = *s++;
+    70201710:	f94017e1 	ldr	x1, [sp, #40]
+    70201714:	91000420 	add	x0, x1, #0x1
+    70201718:	f90017e0 	str	x0, [sp, #40]
+    7020171c:	f94013e0 	ldr	x0, [sp, #32]
+    70201720:	91000402 	add	x2, x0, #0x1
+    70201724:	f90013e2 	str	x2, [sp, #32]
+    70201728:	39400021 	ldrb	w1, [x1]
+    7020172c:	39000001 	strb	w1, [x0]
+        while (n--)
+    70201730:	f94007e0 	ldr	x0, [sp, #8]
+    70201734:	d1000401 	sub	x1, x0, #0x1
+    70201738:	f90007e1 	str	x1, [sp, #8]
+    7020173c:	f100001f 	cmp	x0, #0x0
+    70201740:	54fffe81 	b.ne	70201710 <memmove+0x34>  // b.any
+    70201744:	14000019 	b	702017a8 <memmove+0xcc>
+    }
+    else
+    {
+        d += n, s += n;
+    70201748:	f94013e1 	ldr	x1, [sp, #32]
+    7020174c:	f94007e0 	ldr	x0, [sp, #8]
+    70201750:	8b000020 	add	x0, x1, x0
+    70201754:	f90013e0 	str	x0, [sp, #32]
+    70201758:	f94017e1 	ldr	x1, [sp, #40]
+    7020175c:	f94007e0 	ldr	x0, [sp, #8]
+    70201760:	8b000020 	add	x0, x1, x0
+    70201764:	f90017e0 	str	x0, [sp, #40]
+        while (n--)
+    70201768:	1400000b 	b	70201794 <memmove+0xb8>
+            *--d = *--s;
+    7020176c:	f94017e0 	ldr	x0, [sp, #40]
+    70201770:	d1000400 	sub	x0, x0, #0x1
+    70201774:	f90017e0 	str	x0, [sp, #40]
+    70201778:	f94013e0 	ldr	x0, [sp, #32]
+    7020177c:	d1000400 	sub	x0, x0, #0x1
+    70201780:	f90013e0 	str	x0, [sp, #32]
+    70201784:	f94017e0 	ldr	x0, [sp, #40]
+    70201788:	39400001 	ldrb	w1, [x0]
+    7020178c:	f94013e0 	ldr	x0, [sp, #32]
+    70201790:	39000001 	strb	w1, [x0]
+        while (n--)
+    70201794:	f94007e0 	ldr	x0, [sp, #8]
+    70201798:	d1000401 	sub	x1, x0, #0x1
+    7020179c:	f90007e1 	str	x1, [sp, #8]
+    702017a0:	f100001f 	cmp	x0, #0x0
+    702017a4:	54fffe41 	b.ne	7020176c <memmove+0x90>  // b.any
+    }
+    return dest;
+    702017a8:	f9400fe0 	ldr	x0, [sp, #24]
+}
+    702017ac:	9100c3ff 	add	sp, sp, #0x30
+    702017b0:	d65f03c0 	ret
+
+00000000702017b4 <memchr>:
+
+void *memchr(const void *s, int c, size_t n)
+{
+    702017b4:	d100c3ff 	sub	sp, sp, #0x30
+    702017b8:	f9000fe0 	str	x0, [sp, #24]
+    702017bc:	b90017e1 	str	w1, [sp, #20]
+    702017c0:	f90007e2 	str	x2, [sp, #8]
+    const unsigned char *str = s, chr = (unsigned char)c;
+    702017c4:	f9400fe0 	ldr	x0, [sp, #24]
+    702017c8:	f90017e0 	str	x0, [sp, #40]
+    702017cc:	b94017e0 	ldr	w0, [sp, #20]
+    702017d0:	39009fe0 	strb	w0, [sp, #39]
+
+    while (n--)
+    702017d4:	1400000b 	b	70201800 <memchr+0x4c>
+        if (*str++ == chr)
+    702017d8:	f94017e0 	ldr	x0, [sp, #40]
+    702017dc:	91000401 	add	x1, x0, #0x1
+    702017e0:	f90017e1 	str	x1, [sp, #40]
+    702017e4:	39400000 	ldrb	w0, [x0]
+    702017e8:	39409fe1 	ldrb	w1, [sp, #39]
+    702017ec:	6b00003f 	cmp	w1, w0
+    702017f0:	54000081 	b.ne	70201800 <memchr+0x4c>  // b.any
+            return (void *)(str - 1);
+    702017f4:	f94017e0 	ldr	x0, [sp, #40]
+    702017f8:	d1000400 	sub	x0, x0, #0x1
+    702017fc:	14000007 	b	70201818 <memchr+0x64>
+    while (n--)
+    70201800:	f94007e0 	ldr	x0, [sp, #8]
+    70201804:	d1000401 	sub	x1, x0, #0x1
+    70201808:	f90007e1 	str	x1, [sp, #8]
+    7020180c:	f100001f 	cmp	x0, #0x0
+    70201810:	54fffe41 	b.ne	702017d8 <memchr+0x24>  // b.any
+    return NULL;
+    70201814:	d2800000 	mov	x0, #0x0                   	// #0
+}
+    70201818:	9100c3ff 	add	sp, sp, #0x30
+    7020181c:	d65f03c0 	ret
+
+0000000070201820 <atol>:
+
+long atol(const char *ptr)
+{
+    70201820:	d100c3ff 	sub	sp, sp, #0x30
+    70201824:	f90007e0 	str	x0, [sp, #8]
+    long acc = 0;
+    70201828:	f90017ff 	str	xzr, [sp, #40]
+    const char *s = ptr;
+    7020182c:	f94007e0 	ldr	x0, [sp, #8]
+    70201830:	f90013e0 	str	x0, [sp, #32]
+    int neg, c;
+
+    while (*s == ' ' || *s == '\t')
+    70201834:	14000004 	b	70201844 <atol+0x24>
+        s++;
+    70201838:	f94013e0 	ldr	x0, [sp, #32]
+    7020183c:	91000400 	add	x0, x0, #0x1
+    70201840:	f90013e0 	str	x0, [sp, #32]
+    while (*s == ' ' || *s == '\t')
+    70201844:	f94013e0 	ldr	x0, [sp, #32]
+    70201848:	39400000 	ldrb	w0, [x0]
+    7020184c:	7100801f 	cmp	w0, #0x20
+    70201850:	54ffff40 	b.eq	70201838 <atol+0x18>  // b.none
+    70201854:	f94013e0 	ldr	x0, [sp, #32]
+    70201858:	39400000 	ldrb	w0, [x0]
+    7020185c:	7100241f 	cmp	w0, #0x9
+    70201860:	54fffec0 	b.eq	70201838 <atol+0x18>  // b.none
+    if (*s == '-')
+    70201864:	f94013e0 	ldr	x0, [sp, #32]
+    70201868:	39400000 	ldrb	w0, [x0]
+    7020186c:	7100b41f 	cmp	w0, #0x2d
+    70201870:	540000e1 	b.ne	7020188c <atol+0x6c>  // b.any
+    {
+        neg = 1;
+    70201874:	52800020 	mov	w0, #0x1                   	// #1
+    70201878:	b9001fe0 	str	w0, [sp, #28]
+        s++;
+    7020187c:	f94013e0 	ldr	x0, [sp, #32]
+    70201880:	91000400 	add	x0, x0, #0x1
+    70201884:	f90013e0 	str	x0, [sp, #32]
+    70201888:	14000022 	b	70201910 <atol+0xf0>
+    }
+    else
+    {
+        neg = 0;
+    7020188c:	b9001fff 	str	wzr, [sp, #28]
+        if (*s == '+')
+    70201890:	f94013e0 	ldr	x0, [sp, #32]
+    70201894:	39400000 	ldrb	w0, [x0]
+    70201898:	7100ac1f 	cmp	w0, #0x2b
+    7020189c:	540003a1 	b.ne	70201910 <atol+0xf0>  // b.any
+            s++;
+    702018a0:	f94013e0 	ldr	x0, [sp, #32]
+    702018a4:	91000400 	add	x0, x0, #0x1
+    702018a8:	f90013e0 	str	x0, [sp, #32]
+    }
+
+    while (*s)
+    702018ac:	14000019 	b	70201910 <atol+0xf0>
+    {
+        if (*s < '0' || *s > '9')
+    702018b0:	f94013e0 	ldr	x0, [sp, #32]
+    702018b4:	39400000 	ldrb	w0, [x0]
+    702018b8:	7100bc1f 	cmp	w0, #0x2f
+    702018bc:	54000329 	b.ls	70201920 <atol+0x100>  // b.plast
+    702018c0:	f94013e0 	ldr	x0, [sp, #32]
+    702018c4:	39400000 	ldrb	w0, [x0]
+    702018c8:	7100e41f 	cmp	w0, #0x39
+    702018cc:	540002a8 	b.hi	70201920 <atol+0x100>  // b.pmore
+            break;
+        c = *s - '0';
+    702018d0:	f94013e0 	ldr	x0, [sp, #32]
+    702018d4:	39400000 	ldrb	w0, [x0]
+    702018d8:	5100c000 	sub	w0, w0, #0x30
+    702018dc:	b9001be0 	str	w0, [sp, #24]
+        acc = acc * 10 + c;
+    702018e0:	f94017e1 	ldr	x1, [sp, #40]
+    702018e4:	aa0103e0 	mov	x0, x1
+    702018e8:	d37ef400 	lsl	x0, x0, #2
+    702018ec:	8b010000 	add	x0, x0, x1
+    702018f0:	d37ff800 	lsl	x0, x0, #1
+    702018f4:	aa0003e1 	mov	x1, x0
+    702018f8:	b9801be0 	ldrsw	x0, [sp, #24]
+    702018fc:	8b000020 	add	x0, x1, x0
+    70201900:	f90017e0 	str	x0, [sp, #40]
+        s++;
+    70201904:	f94013e0 	ldr	x0, [sp, #32]
+    70201908:	91000400 	add	x0, x0, #0x1
+    7020190c:	f90013e0 	str	x0, [sp, #32]
+    while (*s)
+    70201910:	f94013e0 	ldr	x0, [sp, #32]
+    70201914:	39400000 	ldrb	w0, [x0]
+    70201918:	7100001f 	cmp	w0, #0x0
+    7020191c:	54fffca1 	b.ne	702018b0 <atol+0x90>  // b.any
+    }
+
+    if (neg)
+    70201920:	b9401fe0 	ldr	w0, [sp, #28]
+    70201924:	7100001f 	cmp	w0, #0x0
+    70201928:	54000080 	b.eq	70201938 <atol+0x118>  // b.none
+        acc = -acc;
+    7020192c:	f94017e0 	ldr	x0, [sp, #40]
+    70201930:	cb0003e0 	neg	x0, x0
+    70201934:	f90017e0 	str	x0, [sp, #40]
+
+    return acc;
+    70201938:	f94017e0 	ldr	x0, [sp, #40]
+}
+    7020193c:	9100c3ff 	add	sp, sp, #0x30
+    70201940:	d65f03c0 	ret
+
+0000000070201944 <enable_interrupts>:
+	return value;
+}
+
+static inline void enable_interrupts(void)
+{
+	__asm__ __volatile__("msr daifclr, #2" : : : "memory");
+    70201944:	d50342ff 	msr	daifclr, #0x2
+}
+    70201948:	d503201f 	nop
+    7020194c:	d65f03c0 	ret
+
+0000000070201950 <test_mem_maped>:
+#include "io.h"
+#include "exception.h"
+#include "acfg.h"
+
+void test_mem_maped()
+{
+    70201950:	d10043ff 	sub	sp, sp, #0x10
+    volatile unsigned int *const MEM_ADDR = (unsigned int *)0x70000000;
+    70201954:	d2ae0000 	mov	x0, #0x70000000            	// #1879048192
+    70201958:	f90007e0 	str	x0, [sp, #8]
+    *MEM_ADDR = 0x7777;
+    7020195c:	f94007e0 	ldr	x0, [sp, #8]
+    70201960:	528eeee1 	mov	w1, #0x7777                	// #30583
+    70201964:	b9000001 	str	w1, [x0]
+}
+    70201968:	d503201f 	nop
+    7020196c:	910043ff 	add	sp, sp, #0x10
+    70201970:	d65f03c0 	ret
+
+0000000070201974 <test_mem_no_maped>:
+
+void test_mem_no_maped()
+{
+    70201974:	d10043ff 	sub	sp, sp, #0x10
+    volatile unsigned int *const MEM_ADDR = (unsigned int *)0x80000000;
+    70201978:	d2b00000 	mov	x0, #0x80000000            	// #2147483648
+    7020197c:	f90007e0 	str	x0, [sp, #8]
+    *MEM_ADDR = 0x8888;
+    70201980:	f94007e0 	ldr	x0, [sp, #8]
+    70201984:	52911101 	mov	w1, #0x8888                	// #34952
+    70201988:	b9000001 	str	w1, [x0]
+}
+    7020198c:	d503201f 	nop
+    70201990:	910043ff 	add	sp, sp, #0x10
+    70201994:	d65f03c0 	ret
+
+0000000070201998 <test_mem_no_maped2>:
+
+void test_mem_no_maped2()
+{
+    70201998:	d10043ff 	sub	sp, sp, #0x10
+    volatile unsigned int *const MEM_ADDR = (unsigned int *)0x50000000;
+    7020199c:	d2aa0000 	mov	x0, #0x50000000            	// #1342177280
+    702019a0:	f90007e0 	str	x0, [sp, #8]
+    *MEM_ADDR = 0x8888;
+    702019a4:	f94007e0 	ldr	x0, [sp, #8]
+    702019a8:	52911101 	mov	w1, #0x8888                	// #34952
+    702019ac:	b9000001 	str	w1, [x0]
+}
+    702019b0:	d503201f 	nop
+    702019b4:	910043ff 	add	sp, sp, #0x10
+    702019b8:	d65f03c0 	ret
+
+00000000702019bc <kernel_main>:
+
+// main.c
+void kernel_main(void)
+{
+    702019bc:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+    702019c0:	910003fd 	mov	x29, sp
+    io_init();
+    702019c4:	97fff9b7 	bl	702000a0 <io_init>
+
+    // 在这里可以添加你的内核代码
+    printf("hello world\n");
+    702019c8:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    702019cc:	9101a000 	add	x0, x0, #0x68
+    702019d0:	97fffd99 	bl	70201034 <printf>
+
+    exception_init();
+    702019d4:	940001cf 	bl	70202110 <exception_init>
+
+    gic_init();
+    702019d8:	94000047 	bl	70201af4 <gic_init>
+
+    asm volatile("msr cntv_tval_el0, %0" : : "r"(100000));
+    702019dc:	5290d400 	mov	w0, #0x86a0                	// #34464
+    702019e0:	72a00020 	movk	w0, #0x1, lsl #16
+    702019e4:	d51be300 	msr	cntv_tval_el0, x0
+    asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
+    702019e8:	52800020 	mov	w0, #0x1                   	// #1
+    702019ec:	d51be320 	msr	cntv_ctl_el0, x0
+
+    gic_enable_int(TIMER, 0);
+    702019f0:	52800001 	mov	w1, #0x0                   	// #0
+    702019f4:	52800360 	mov	w0, #0x1b                  	// #27
+    702019f8:	940000a8 	bl	70201c98 <gic_enable_int>
+
+    enable_interrupts();
+    702019fc:	97ffffd2 	bl	70201944 <enable_interrupts>
+}
+    70201a00:	d503201f 	nop
+    70201a04:	a8c17bfd 	ldp	x29, x30, [sp], #16
+    70201a08:	d65f03c0 	ret
+
+0000000070201a0c <read32>:
+static inline void write16(uint16_t value, volatile void *addr) {
+    *(volatile uint16_t *)addr = value;
+}
+
+
+static inline uint32_t read32(const volatile void *addr) {
+    70201a0c:	d10043ff 	sub	sp, sp, #0x10
+    70201a10:	f90007e0 	str	x0, [sp, #8]
+    return *(const volatile uint32_t *)addr;
+    70201a14:	f94007e0 	ldr	x0, [sp, #8]
+    70201a18:	b9400000 	ldr	w0, [x0]
+}
+    70201a1c:	910043ff 	add	sp, sp, #0x10
+    70201a20:	d65f03c0 	ret
+
+0000000070201a24 <write32>:
+
+static inline void write32(uint32_t value, volatile void *addr) {
+    70201a24:	d10043ff 	sub	sp, sp, #0x10
+    70201a28:	b9000fe0 	str	w0, [sp, #12]
+    70201a2c:	f90003e1 	str	x1, [sp]
+    *(volatile uint32_t *)addr = value;
+    70201a30:	f94003e0 	ldr	x0, [sp]
+    70201a34:	b9400fe1 	ldr	w1, [sp, #12]
+    70201a38:	b9000001 	str	w1, [x0]
+}
+    70201a3c:	d503201f 	nop
+    70201a40:	910043ff 	add	sp, sp, #0x10
+    70201a44:	d65f03c0 	ret
+
+0000000070201a48 <gic_test_init>:
+#include "io.h"
+
+struct gic_t _gicv2;
+
+void gic_test_init(void)
+{
+    70201a48:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+    70201a4c:	910003fd 	mov	x29, sp
+    printf("[guest]     gicd enable %s\n", read32((void *)GICD_CTLR) ? "ok" : "error");
+    70201a50:	d2a10000 	mov	x0, #0x8000000             	// #134217728
+    70201a54:	97ffffee 	bl	70201a0c <read32>
+    70201a58:	7100001f 	cmp	w0, #0x0
+    70201a5c:	54000080 	b.eq	70201a6c <gic_test_init+0x24>  // b.none
+    70201a60:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201a64:	9101e000 	add	x0, x0, #0x78
+    70201a68:	14000003 	b	70201a74 <gic_test_init+0x2c>
+    70201a6c:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201a70:	91020000 	add	x0, x0, #0x80
+    70201a74:	aa0003e1 	mov	x1, x0
+    70201a78:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201a7c:	91022000 	add	x0, x0, #0x88
+    70201a80:	97fffd6d 	bl	70201034 <printf>
+    printf("[guest]     gicc enable %s\n", read32((void *)GICC_CTLR) ? "ok" : "error");
+    70201a84:	d2a10080 	mov	x0, #0x8040000             	// #134479872
+    70201a88:	97ffffe1 	bl	70201a0c <read32>
+    70201a8c:	7100001f 	cmp	w0, #0x0
+    70201a90:	54000080 	b.eq	70201aa0 <gic_test_init+0x58>  // b.none
+    70201a94:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201a98:	9101e000 	add	x0, x0, #0x78
+    70201a9c:	14000003 	b	70201aa8 <gic_test_init+0x60>
+    70201aa0:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201aa4:	91020000 	add	x0, x0, #0x80
+    70201aa8:	aa0003e1 	mov	x1, x0
+    70201aac:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201ab0:	9102a000 	add	x0, x0, #0xa8
+    70201ab4:	97fffd60 	bl	70201034 <printf>
+    printf("[guest]     irq numbers: %d\n", _gicv2.irq_nr);
+    70201ab8:	f0000020 	adrp	x0, 70208000 <lock>
+    70201abc:	91002000 	add	x0, x0, #0x8
+    70201ac0:	b9400000 	ldr	w0, [x0]
+    70201ac4:	2a0003e1 	mov	w1, w0
+    70201ac8:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201acc:	91032000 	add	x0, x0, #0xc8
+    70201ad0:	97fffd59 	bl	70201034 <printf>
+    printf("[guest]     cpu num: %d\n", cpu_num());
+    70201ad4:	94000067 	bl	70201c70 <cpu_num>
+    70201ad8:	2a0003e1 	mov	w1, w0
+    70201adc:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201ae0:	9103a000 	add	x0, x0, #0xe8
+    70201ae4:	97fffd54 	bl	70201034 <printf>
+}
+    70201ae8:	d503201f 	nop
+    70201aec:	a8c17bfd 	ldp	x29, x30, [sp], #16
+    70201af0:	d65f03c0 	ret
+
+0000000070201af4 <gic_init>:
+
+// gicd g0, g1  gicc enable
+void gic_init(void)
+{
+    70201af4:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+    70201af8:	910003fd 	mov	x29, sp
+    _gicv2.irq_nr = GICD_TYPER_IRQS(read32((void *)GICD_TYPER));
+    70201afc:	d2800080 	mov	x0, #0x4                   	// #4
+    70201b00:	f2a10000 	movk	x0, #0x800, lsl #16
+    70201b04:	97ffffc2 	bl	70201a0c <read32>
+    70201b08:	12001000 	and	w0, w0, #0x1f
+    70201b0c:	11000400 	add	w0, w0, #0x1
+    70201b10:	531b6801 	lsl	w1, w0, #5
+    70201b14:	f0000020 	adrp	x0, 70208000 <lock>
+    70201b18:	91002000 	add	x0, x0, #0x8
+    70201b1c:	b9000001 	str	w1, [x0]
+    if (_gicv2.irq_nr > 1020)
+    70201b20:	f0000020 	adrp	x0, 70208000 <lock>
+    70201b24:	91002000 	add	x0, x0, #0x8
+    70201b28:	b9400000 	ldr	w0, [x0]
+    70201b2c:	710ff01f 	cmp	w0, #0x3fc
+    70201b30:	540000a9 	b.ls	70201b44 <gic_init+0x50>  // b.plast
+    {
+        _gicv2.irq_nr = 1020;
+    70201b34:	f0000020 	adrp	x0, 70208000 <lock>
+    70201b38:	91002000 	add	x0, x0, #0x8
+    70201b3c:	52807f81 	mov	w1, #0x3fc                 	// #1020
+    70201b40:	b9000001 	str	w1, [x0]
+    }
+
+    write32(GICD_CTRL_ENABLE_GROUP0 | GICD_CTRL_ENABLE_GROUP1, (void *)GICD_CTLR);
+    70201b44:	d2a10001 	mov	x1, #0x8000000             	// #134217728
+    70201b48:	52800060 	mov	w0, #0x3                   	// #3
+    70201b4c:	97ffffb6 	bl	70201a24 <write32>
+
+    // 允许所有优先级的中断
+    write32(0xff - 7, (void *)GICC_PMR);
+    70201b50:	d2800081 	mov	x1, #0x4                   	// #4
+    70201b54:	f2a10081 	movk	x1, #0x804, lsl #16
+    70201b58:	52801f00 	mov	w0, #0xf8                  	// #248
+    70201b5c:	97ffffb2 	bl	70201a24 <write32>
+    write32(GICC_CTRL_ENABLE, (void *)GICC_CTLR);
+    70201b60:	d2a10081 	mov	x1, #0x8040000             	// #134479872
+    70201b64:	52800020 	mov	w0, #0x1                   	// #1
+    70201b68:	97ffffaf 	bl	70201a24 <write32>
+
+    gic_test_init();
+    70201b6c:	97ffffb7 	bl	70201a48 <gic_test_init>
+}
+    70201b70:	d503201f 	nop
+    70201b74:	a8c17bfd 	ldp	x29, x30, [sp], #16
+    70201b78:	d65f03c0 	ret
+
+0000000070201b7c <gicc_init>:
+
+void gicc_init()
+{
+    70201b7c:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+    70201b80:	910003fd 	mov	x29, sp
+    // 允许所有优先级的中断
+    write32(0xff - 7, (void *)GICC_PMR);
+    70201b84:	d2800081 	mov	x1, #0x4                   	// #4
+    70201b88:	f2a10081 	movk	x1, #0x804, lsl #16
+    70201b8c:	52801f00 	mov	w0, #0xf8                  	// #248
+    70201b90:	97ffffa5 	bl	70201a24 <write32>
+    write32(GICC_CTRL_ENABLE, (void *)GICC_CTLR);
+    70201b94:	d2a10081 	mov	x1, #0x8040000             	// #134479872
+    70201b98:	52800020 	mov	w0, #0x1                   	// #1
+    70201b9c:	97ffffa2 	bl	70201a24 <write32>
+}
+    70201ba0:	d503201f 	nop
+    70201ba4:	a8c17bfd 	ldp	x29, x30, [sp], #16
+    70201ba8:	d65f03c0 	ret
+
+0000000070201bac <gic_read_iar>:
+
+// get iar
+uint32_t gic_read_iar(void)
+{
+    70201bac:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+    70201bb0:	910003fd 	mov	x29, sp
+    return read32((void *)GICC_IAR);
+    70201bb4:	d2800180 	mov	x0, #0xc                   	// #12
+    70201bb8:	f2a10080 	movk	x0, #0x804, lsl #16
+    70201bbc:	97ffff94 	bl	70201a0c <read32>
+}
+    70201bc0:	a8c17bfd 	ldp	x29, x30, [sp], #16
+    70201bc4:	d65f03c0 	ret
+
+0000000070201bc8 <gic_iar_irqnr>:
+
+// iar to vector
+uint32_t gic_iar_irqnr(uint32_t iar)
+{
+    70201bc8:	d10043ff 	sub	sp, sp, #0x10
+    70201bcc:	b9000fe0 	str	w0, [sp, #12]
+    return iar & GICC_IAR_INT_ID_MASK;
+    70201bd0:	b9400fe0 	ldr	w0, [sp, #12]
+    70201bd4:	12002400 	and	w0, w0, #0x3ff
+}
+    70201bd8:	910043ff 	add	sp, sp, #0x10
+    70201bdc:	d65f03c0 	ret
+
+0000000070201be0 <gic_write_eoir>:
+
+void gic_write_eoir(uint32_t irqstat)
+{
+    70201be0:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    70201be4:	910003fd 	mov	x29, sp
+    70201be8:	b9001fe0 	str	w0, [sp, #28]
+    write32(irqstat, (void *)GICC_EOIR);
+    70201bec:	d2800201 	mov	x1, #0x10                  	// #16
+    70201bf0:	f2a10081 	movk	x1, #0x804, lsl #16
+    70201bf4:	b9401fe0 	ldr	w0, [sp, #28]
+    70201bf8:	97ffff8b 	bl	70201a24 <write32>
+}
+    70201bfc:	d503201f 	nop
+    70201c00:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70201c04:	d65f03c0 	ret
+
+0000000070201c08 <gic_write_dir>:
+
+void gic_write_dir(uint32_t irqstat)
+{
+    70201c08:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    70201c0c:	910003fd 	mov	x29, sp
+    70201c10:	b9001fe0 	str	w0, [sp, #28]
+    write32(irqstat, (void *)GICC_DIR);
+    70201c14:	d2820001 	mov	x1, #0x1000                	// #4096
+    70201c18:	f2a10081 	movk	x1, #0x804, lsl #16
+    70201c1c:	b9401fe0 	ldr	w0, [sp, #28]
+    70201c20:	97ffff81 	bl	70201a24 <write32>
+}
+    70201c24:	d503201f 	nop
+    70201c28:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70201c2c:	d65f03c0 	ret
+
+0000000070201c30 <gic_ipi_send_single>:
+
+
+// 发送给特定的核（某个核）
+void gic_ipi_send_single(int irq, int cpu)
+{
+    70201c30:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    70201c34:	910003fd 	mov	x29, sp
+    70201c38:	b9001fe0 	str	w0, [sp, #28]
+    70201c3c:	b9001be1 	str	w1, [sp, #24]
+    // assert(cpu < 8);
+    // assert(irq < 16);
+    write32(1 << (cpu + 16) | irq, (void *)GICD_SGIR);
+    70201c40:	b9401be0 	ldr	w0, [sp, #24]
+    70201c44:	11004000 	add	w0, w0, #0x10
+    70201c48:	52800021 	mov	w1, #0x1                   	// #1
+    70201c4c:	1ac02021 	lsl	w1, w1, w0
+    70201c50:	b9401fe0 	ldr	w0, [sp, #28]
+    70201c54:	2a000020 	orr	w0, w1, w0
+    70201c58:	d281e001 	mov	x1, #0xf00                 	// #3840
+    70201c5c:	f2a10001 	movk	x1, #0x800, lsl #16
+    70201c60:	97ffff71 	bl	70201a24 <write32>
+}
+    70201c64:	d503201f 	nop
+    70201c68:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70201c6c:	d65f03c0 	ret
+
+0000000070201c70 <cpu_num>:
+
+// The number of implemented CPU interfaces.
+uint32_t cpu_num(void)
+{
+    70201c70:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+    70201c74:	910003fd 	mov	x29, sp
+    return GICD_TYPER_CPU_NUM(read32((void *)GICD_TYPER));
+    70201c78:	d2800080 	mov	x0, #0x4                   	// #4
+    70201c7c:	f2a10000 	movk	x0, #0x800, lsl #16
+    70201c80:	97ffff63 	bl	70201a0c <read32>
+    70201c84:	53057c00 	lsr	w0, w0, #5
+    70201c88:	12000800 	and	w0, w0, #0x7
+    70201c8c:	11000400 	add	w0, w0, #0x1
+}
+    70201c90:	a8c17bfd 	ldp	x29, x30, [sp], #16
+    70201c94:	d65f03c0 	ret
+
+0000000070201c98 <gic_enable_int>:
+
+// Enables the given interrupt.
+void gic_enable_int(int vector, int pri)
+{
+    70201c98:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+    70201c9c:	910003fd 	mov	x29, sp
+    70201ca0:	b9001fe0 	str	w0, [sp, #28]
+    70201ca4:	b9001be1 	str	w1, [sp, #24]
+    int reg = vector >> 5;                     //  vec / 32
+    70201ca8:	b9401fe0 	ldr	w0, [sp, #28]
+    70201cac:	13057c00 	asr	w0, w0, #5
+    70201cb0:	b9002fe0 	str	w0, [sp, #44]
+    int mask = 1 << (vector & ((1 << 5) - 1)); //  vec % 32
+    70201cb4:	b9401fe0 	ldr	w0, [sp, #28]
+    70201cb8:	12001000 	and	w0, w0, #0x1f
+    70201cbc:	52800021 	mov	w1, #0x1                   	// #1
+    70201cc0:	1ac02020 	lsl	w0, w1, w0
+    70201cc4:	b9002be0 	str	w0, [sp, #40]
+    printf("[guest] set enable: reg: %d, mask: 0x%x\n", reg, mask);
+    70201cc8:	b9402be2 	ldr	w2, [sp, #40]
+    70201ccc:	b9402fe1 	ldr	w1, [sp, #44]
+    70201cd0:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201cd4:	91042000 	add	x0, x0, #0x108
+    70201cd8:	97fffcd7 	bl	70201034 <printf>
+
+    write32(mask, (void *)(uint64_t)GICD_ISENABLER(reg));
+    70201cdc:	b9402be2 	ldr	w2, [sp, #40]
+    70201ce0:	b9402fe1 	ldr	w1, [sp, #44]
+    70201ce4:	52800800 	mov	w0, #0x40                  	// #64
+    70201ce8:	72a04000 	movk	w0, #0x200, lsl #16
+    70201cec:	0b000020 	add	w0, w1, w0
+    70201cf0:	531e7400 	lsl	w0, w0, #2
+    70201cf4:	93407c00 	sxtw	x0, w0
+    70201cf8:	aa0003e1 	mov	x1, x0
+    70201cfc:	2a0203e0 	mov	w0, w2
+    70201d00:	97ffff49 	bl	70201a24 <write32>
+
+    int n = vector >> 2;
+    70201d04:	b9401fe0 	ldr	w0, [sp, #28]
+    70201d08:	13027c00 	asr	w0, w0, #2
+    70201d0c:	b90027e0 	str	w0, [sp, #36]
+    int m = vector & ((1 << 2) - 1);
+    70201d10:	b9401fe0 	ldr	w0, [sp, #28]
+    70201d14:	12000400 	and	w0, w0, #0x3
+    70201d18:	b90023e0 	str	w0, [sp, #32]
+    write32((pri << 3) | (1 << 7), (void *)(uint64_t)(GICD_IPRIORITYR(n) + m));
+    70201d1c:	b9401be0 	ldr	w0, [sp, #24]
+    70201d20:	531d7000 	lsl	w0, w0, #3
+    70201d24:	32190000 	orr	w0, w0, #0x80
+    70201d28:	2a0003e2 	mov	w2, w0
+    70201d2c:	b94027e1 	ldr	w1, [sp, #36]
+    70201d30:	52802000 	mov	w0, #0x100                 	// #256
+    70201d34:	72a04000 	movk	w0, #0x200, lsl #16
+    70201d38:	0b000020 	add	w0, w1, w0
+    70201d3c:	531e7401 	lsl	w1, w0, #2
+    70201d40:	b94023e0 	ldr	w0, [sp, #32]
+    70201d44:	0b000020 	add	w0, w1, w0
+    70201d48:	93407c00 	sxtw	x0, w0
+    70201d4c:	aa0003e1 	mov	x1, x0
+    70201d50:	2a0203e0 	mov	w0, w2
+    70201d54:	97ffff34 	bl	70201a24 <write32>
+}
+    70201d58:	d503201f 	nop
+    70201d5c:	a8c37bfd 	ldp	x29, x30, [sp], #48
+    70201d60:	d65f03c0 	ret
+
+0000000070201d64 <gic_disable_int>:
+
+// disables the given interrupt.
+void gic_disable_int(int vector, int pri)
+{
+    70201d64:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+    70201d68:	910003fd 	mov	x29, sp
+    70201d6c:	b9001fe0 	str	w0, [sp, #28]
+    70201d70:	b9001be1 	str	w1, [sp, #24]
+    int reg = vector >> 5;                     //  vec / 32
+    70201d74:	b9401fe0 	ldr	w0, [sp, #28]
+    70201d78:	13057c00 	asr	w0, w0, #5
+    70201d7c:	b9002fe0 	str	w0, [sp, #44]
+    int mask = 1 << (vector & ((1 << 5) - 1)); //  vec % 32
+    70201d80:	b9401fe0 	ldr	w0, [sp, #28]
+    70201d84:	12001000 	and	w0, w0, #0x1f
+    70201d88:	52800021 	mov	w1, #0x1                   	// #1
+    70201d8c:	1ac02020 	lsl	w0, w1, w0
+    70201d90:	b9002be0 	str	w0, [sp, #40]
+    printf("[guest] disable: reg: %d, mask: 0x%x\n", reg, mask);
+    70201d94:	b9402be2 	ldr	w2, [sp, #40]
+    70201d98:	b9402fe1 	ldr	w1, [sp, #44]
+    70201d9c:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201da0:	9104e000 	add	x0, x0, #0x138
+    70201da4:	97fffca4 	bl	70201034 <printf>
+
+    write32(mask, (void *)(uint64_t)GICD_ICENABLER(reg));
+    70201da8:	b9402be2 	ldr	w2, [sp, #40]
+    70201dac:	b9402fe1 	ldr	w1, [sp, #44]
+    70201db0:	52800c00 	mov	w0, #0x60                  	// #96
+    70201db4:	72a04000 	movk	w0, #0x200, lsl #16
+    70201db8:	0b000020 	add	w0, w1, w0
+    70201dbc:	531e7400 	lsl	w0, w0, #2
+    70201dc0:	93407c00 	sxtw	x0, w0
+    70201dc4:	aa0003e1 	mov	x1, x0
+    70201dc8:	2a0203e0 	mov	w0, w2
+    70201dcc:	97ffff16 	bl	70201a24 <write32>
+}
+    70201dd0:	d503201f 	nop
+    70201dd4:	a8c37bfd 	ldp	x29, x30, [sp], #48
+    70201dd8:	d65f03c0 	ret
+
+0000000070201ddc <gic_get_enable>:
+
+// check the given interrupt.
+int gic_get_enable(int vector)
+{
+    70201ddc:	a9bd7bfd 	stp	x29, x30, [sp, #-48]!
+    70201de0:	910003fd 	mov	x29, sp
+    70201de4:	b9001fe0 	str	w0, [sp, #28]
+    int reg = vector >> 5;                     //  vec / 32
+    70201de8:	b9401fe0 	ldr	w0, [sp, #28]
+    70201dec:	13057c00 	asr	w0, w0, #5
+    70201df0:	b9002fe0 	str	w0, [sp, #44]
+    int mask = 1 << (vector & ((1 << 5) - 1)); //  vec % 32
+    70201df4:	b9401fe0 	ldr	w0, [sp, #28]
+    70201df8:	12001000 	and	w0, w0, #0x1f
+    70201dfc:	52800021 	mov	w1, #0x1                   	// #1
+    70201e00:	1ac02020 	lsl	w0, w1, w0
+    70201e04:	b9002be0 	str	w0, [sp, #40]
+
+    uint32_t val = read32((void *)(uint64_t)GICD_ISENABLER(reg));
+    70201e08:	b9402fe1 	ldr	w1, [sp, #44]
+    70201e0c:	52800800 	mov	w0, #0x40                  	// #64
+    70201e10:	72a04000 	movk	w0, #0x200, lsl #16
+    70201e14:	0b000020 	add	w0, w1, w0
+    70201e18:	531e7400 	lsl	w0, w0, #2
+    70201e1c:	93407c00 	sxtw	x0, w0
+    70201e20:	97fffefb 	bl	70201a0c <read32>
+    70201e24:	b90027e0 	str	w0, [sp, #36]
+
+    printf("[guest] get enable: reg: %x, mask: %x, value: %x\n", reg, mask, val);
+    70201e28:	b94027e3 	ldr	w3, [sp, #36]
+    70201e2c:	b9402be2 	ldr	w2, [sp, #40]
+    70201e30:	b9402fe1 	ldr	w1, [sp, #44]
+    70201e34:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201e38:	91058000 	add	x0, x0, #0x160
+    70201e3c:	97fffc7e 	bl	70201034 <printf>
+    return val & mask != 0;
+    70201e40:	b9402be0 	ldr	w0, [sp, #40]
+    70201e44:	7100001f 	cmp	w0, #0x0
+    70201e48:	1a9f07e0 	cset	w0, ne  // ne = any
+    70201e4c:	12001c00 	and	w0, w0, #0xff
+    70201e50:	2a0003e1 	mov	w1, w0
+    70201e54:	b94027e0 	ldr	w0, [sp, #36]
+    70201e58:	0a000020 	and	w0, w1, w0
+}
+    70201e5c:	a8c37bfd 	ldp	x29, x30, [sp], #48
+    70201e60:	d65f03c0 	ret
+
+0000000070201e64 <gic_set_isenabler>:
+
+void gic_set_isenabler(uint32_t n, uint32_t value)
+{
+    70201e64:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    70201e68:	910003fd 	mov	x29, sp
+    70201e6c:	b9001fe0 	str	w0, [sp, #28]
+    70201e70:	b9001be1 	str	w1, [sp, #24]
+    write32(value, (void *)(uint64_t)GICD_ISENABLER(n));
+    70201e74:	b9401fe1 	ldr	w1, [sp, #28]
+    70201e78:	52800800 	mov	w0, #0x40                  	// #64
+    70201e7c:	72a04000 	movk	w0, #0x200, lsl #16
+    70201e80:	0b000020 	add	w0, w1, w0
+    70201e84:	531e7400 	lsl	w0, w0, #2
+    70201e88:	2a0003e0 	mov	w0, w0
+    70201e8c:	aa0003e1 	mov	x1, x0
+    70201e90:	b9401be0 	ldr	w0, [sp, #24]
+    70201e94:	97fffee4 	bl	70201a24 <write32>
+}
+    70201e98:	d503201f 	nop
+    70201e9c:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70201ea0:	d65f03c0 	ret
+
+0000000070201ea4 <gic_set_ipriority>:
+
+void gic_set_ipriority(uint32_t n, uint32_t value)
+{
+    70201ea4:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    70201ea8:	910003fd 	mov	x29, sp
+    70201eac:	b9001fe0 	str	w0, [sp, #28]
+    70201eb0:	b9001be1 	str	w1, [sp, #24]
+    write32(value, (void *)(uint64_t)GICD_IPRIORITYR(n));
+    70201eb4:	b9401fe1 	ldr	w1, [sp, #28]
+    70201eb8:	52802000 	mov	w0, #0x100                 	// #256
+    70201ebc:	72a04000 	movk	w0, #0x200, lsl #16
+    70201ec0:	0b000020 	add	w0, w1, w0
+    70201ec4:	531e7400 	lsl	w0, w0, #2
+    70201ec8:	2a0003e0 	mov	w0, w0
+    70201ecc:	aa0003e1 	mov	x1, x0
+    70201ed0:	b9401be0 	ldr	w0, [sp, #24]
+    70201ed4:	97fffed4 	bl	70201a24 <write32>
+}
+    70201ed8:	d503201f 	nop
+    70201edc:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70201ee0:	d65f03c0 	ret
+
+0000000070201ee4 <gic_set_icenabler>:
+
+void gic_set_icenabler(uint32_t n, uint32_t value)
+{
+    70201ee4:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    70201ee8:	910003fd 	mov	x29, sp
+    70201eec:	b9001fe0 	str	w0, [sp, #28]
+    70201ef0:	b9001be1 	str	w1, [sp, #24]
+    write32(value, (void *)(uint64_t)GICD_ICENABLER(n));
+    70201ef4:	b9401fe1 	ldr	w1, [sp, #28]
+    70201ef8:	52800c00 	mov	w0, #0x60                  	// #96
+    70201efc:	72a04000 	movk	w0, #0x200, lsl #16
+    70201f00:	0b000020 	add	w0, w1, w0
+    70201f04:	531e7400 	lsl	w0, w0, #2
+    70201f08:	2a0003e0 	mov	w0, w0
+    70201f0c:	aa0003e1 	mov	x1, x0
+    70201f10:	b9401be0 	ldr	w0, [sp, #24]
+    70201f14:	97fffec4 	bl	70201a24 <write32>
+    70201f18:	d503201f 	nop
+    70201f1c:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70201f20:	d65f03c0 	ret
+
+0000000070201f24 <read_esr_el1>:
+    vaddr_t gva;
+    paddr_t gpa;
+} ept_violation_info_t;
+
+static inline uint32_t read_esr_el1(void)
+{
+    70201f24:	d10043ff 	sub	sp, sp, #0x10
+    uint32_t esr;
+
+    // 使用内联汇编读取 ESR_EL1 寄存器
+    __asm__ volatile("mrs %0, esr_el1" : "=r"(esr));
+    70201f28:	d5385200 	mrs	x0, esr_el1
+    70201f2c:	b9000fe0 	str	w0, [sp, #12]
+
+    return esr;
+    70201f30:	b9400fe0 	ldr	w0, [sp, #12]
+}
+    70201f34:	910043ff 	add	sp, sp, #0x10
+    70201f38:	d65f03c0 	ret
+
+0000000070201f3c <irq_install>:
+#include "acfg.h"
+
+irq_handler_t g_handler_vec[512] = {0};
+
+void irq_install(int vector, void (*h)(uint64_t *))
+{
+    70201f3c:	d10043ff 	sub	sp, sp, #0x10
+    70201f40:	b9000fe0 	str	w0, [sp, #12]
+    70201f44:	f90003e1 	str	x1, [sp]
+    g_handler_vec[vector] = h;
+    70201f48:	f0000020 	adrp	x0, 70208000 <lock>
+    70201f4c:	91004000 	add	x0, x0, #0x10
+    70201f50:	b9800fe1 	ldrsw	x1, [sp, #12]
+    70201f54:	f94003e2 	ldr	x2, [sp]
+    70201f58:	f8217802 	str	x2, [x0, x1, lsl #3]
+}
+    70201f5c:	d503201f 	nop
+    70201f60:	910043ff 	add	sp, sp, #0x10
+    70201f64:	d65f03c0 	ret
+
+0000000070201f68 <handle_sync_exception>:
+
+void handle_sync_exception(uint64_t *stack_pointer)
+{
+    70201f68:	a9ba7bfd 	stp	x29, x30, [sp, #-96]!
+    70201f6c:	910003fd 	mov	x29, sp
+    70201f70:	f9000fe0 	str	x0, [sp, #24]
+    trap_frame_t *el1_ctx = (trap_frame_t *)stack_pointer;
+    70201f74:	f9400fe0 	ldr	x0, [sp, #24]
+    70201f78:	f9002be0 	str	x0, [sp, #80]
+
+    int el1_esr = read_esr_el1();
+    70201f7c:	97ffffea 	bl	70201f24 <read_esr_el1>
+    70201f80:	b9004fe0 	str	w0, [sp, #76]
+
+    int ec = ((el1_esr >> 26) & 0b111111);
+    70201f84:	b9404fe0 	ldr	w0, [sp, #76]
+    70201f88:	531a7c00 	lsr	w0, w0, #26
+    70201f8c:	b9004be0 	str	w0, [sp, #72]
+
+    printf("el1 esr: %x\n", el1_esr);
+    70201f90:	b9404fe1 	ldr	w1, [sp, #76]
+    70201f94:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201f98:	91066000 	add	x0, x0, #0x198
+    70201f9c:	97fffc26 	bl	70201034 <printf>
+    printf("ec: %x\n", ec);
+    70201fa0:	b9404be1 	ldr	w1, [sp, #72]
+    70201fa4:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201fa8:	9106a000 	add	x0, x0, #0x1a8
+    70201fac:	97fffc22 	bl	70201034 <printf>
+
+    printf("This is handle_sync_exception: \n");
+    70201fb0:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201fb4:	9106c000 	add	x0, x0, #0x1b0
+    70201fb8:	97fffc1f 	bl	70201034 <printf>
+    for (int i = 0; i < 31; i++)
+    70201fbc:	b9005fff 	str	wzr, [sp, #92]
+    70201fc0:	1400000d 	b	70201ff4 <handle_sync_exception+0x8c>
+    {
+        uint64_t value = el1_ctx->r[i];
+    70201fc4:	f9402be0 	ldr	x0, [sp, #80]
+    70201fc8:	b9805fe1 	ldrsw	x1, [sp, #92]
+    70201fcc:	f8617800 	ldr	x0, [x0, x1, lsl #3]
+    70201fd0:	f90017e0 	str	x0, [sp, #40]
+        printf("General-purpose register: %d, value: %x\n", i, value);
+    70201fd4:	f94017e2 	ldr	x2, [sp, #40]
+    70201fd8:	b9405fe1 	ldr	w1, [sp, #92]
+    70201fdc:	d0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70201fe0:	91076000 	add	x0, x0, #0x1d8
+    70201fe4:	97fffc14 	bl	70201034 <printf>
+    for (int i = 0; i < 31; i++)
+    70201fe8:	b9405fe0 	ldr	w0, [sp, #92]
+    70201fec:	11000400 	add	w0, w0, #0x1
+    70201ff0:	b9005fe0 	str	w0, [sp, #92]
+    70201ff4:	b9405fe0 	ldr	w0, [sp, #92]
+    70201ff8:	7100781f 	cmp	w0, #0x1e
+    70201ffc:	54fffe4d 	b.le	70201fc4 <handle_sync_exception+0x5c>
+    }
+
+    uint64_t elr_el1_value = el1_ctx->elr;
+    70202000:	f9402be0 	ldr	x0, [sp, #80]
+    70202004:	f9408000 	ldr	x0, [x0, #256]
+    70202008:	f90023e0 	str	x0, [sp, #64]
+    uint64_t usp_value = el1_ctx->usp;
+    7020200c:	f9402be0 	ldr	x0, [sp, #80]
+    70202010:	f9407c00 	ldr	x0, [x0, #248]
+    70202014:	f9001fe0 	str	x0, [sp, #56]
+    uint64_t spsr_value = el1_ctx->spsr;
+    70202018:	f9402be0 	ldr	x0, [sp, #80]
+    7020201c:	f9408400 	ldr	x0, [x0, #264]
+    70202020:	f9001be0 	str	x0, [sp, #48]
+
+    printf("usp: %x, elr: %x, spsr: %x\n", usp_value, elr_el1_value, spsr_value);
+    70202024:	f9401be3 	ldr	x3, [sp, #48]
+    70202028:	f94023e2 	ldr	x2, [sp, #64]
+    7020202c:	f9401fe1 	ldr	x1, [sp, #56]
+    70202030:	b0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70202034:	91082000 	add	x0, x0, #0x208
+    70202038:	97fffbff 	bl	70201034 <printf>
+
+    while (1)
+    7020203c:	14000000 	b	7020203c <handle_sync_exception+0xd4>
+
+0000000070202040 <handle_irq_exception>:
+        ;
+}
+
+void handle_irq_exception(uint64_t *stack_pointer)
+{
+    70202040:	a9bc7bfd 	stp	x29, x30, [sp, #-64]!
+    70202044:	910003fd 	mov	x29, sp
+    70202048:	f9000fe0 	str	x0, [sp, #24]
+    trap_frame_t *el1_ctx = (trap_frame_t *)stack_pointer;
+    7020204c:	f9400fe0 	ldr	x0, [sp, #24]
+    70202050:	f9001fe0 	str	x0, [sp, #56]
+
+    uint64_t x1_value = el1_ctx->r[1];
+    70202054:	f9401fe0 	ldr	x0, [sp, #56]
+    70202058:	f9400400 	ldr	x0, [x0, #8]
+    7020205c:	f9001be0 	str	x0, [sp, #48]
+    uint64_t sp_el0_value = el1_ctx->usp;
+    70202060:	f9401fe0 	ldr	x0, [sp, #56]
+    70202064:	f9407c00 	ldr	x0, [x0, #248]
+    70202068:	f90017e0 	str	x0, [sp, #40]
+
+    int iar = gic_read_iar();
+    7020206c:	97fffed0 	bl	70201bac <gic_read_iar>
+    70202070:	b90027e0 	str	w0, [sp, #36]
+    int vector = gic_iar_irqnr(iar);
+    70202074:	b94027e0 	ldr	w0, [sp, #36]
+    70202078:	97fffed4 	bl	70201bc8 <gic_iar_irqnr>
+    7020207c:	b90023e0 	str	w0, [sp, #32]
+    gic_write_eoir(iar);
+    70202080:	b94027e0 	ldr	w0, [sp, #36]
+    70202084:	97fffed7 	bl	70201be0 <gic_write_eoir>
+
+    g_handler_vec[vector]((uint64_t *)el1_ctx); // arg not use
+    70202088:	d0000020 	adrp	x0, 70208000 <lock>
+    7020208c:	91004000 	add	x0, x0, #0x10
+    70202090:	b98023e1 	ldrsw	x1, [sp, #32]
+    70202094:	f8617801 	ldr	x1, [x0, x1, lsl #3]
+    70202098:	f9401fe0 	ldr	x0, [sp, #56]
+    7020209c:	d63f0020 	blr	x1
+}
+    702020a0:	d503201f 	nop
+    702020a4:	a8c47bfd 	ldp	x29, x30, [sp], #64
+    702020a8:	d65f03c0 	ret
+
+00000000702020ac <invalid_exception>:
+
+void invalid_exception(uint64_t *stack_pointer, uint64_t kind, uint64_t source)
+{
+    702020ac:	d100c3ff 	sub	sp, sp, #0x30
+    702020b0:	f9000fe0 	str	x0, [sp, #24]
+    702020b4:	f9000be1 	str	x1, [sp, #16]
+    702020b8:	f90007e2 	str	x2, [sp, #8]
+    trap_frame_t *el1_ctx = (trap_frame_t *)stack_pointer;
+    702020bc:	f9400fe0 	ldr	x0, [sp, #24]
+    702020c0:	f90017e0 	str	x0, [sp, #40]
+
+    uint64_t x2_value = el1_ctx->r[2];
+    702020c4:	f94017e0 	ldr	x0, [sp, #40]
+    702020c8:	f9400800 	ldr	x0, [x0, #16]
+    702020cc:	f90013e0 	str	x0, [sp, #32]
+}
+    702020d0:	d503201f 	nop
+    702020d4:	9100c3ff 	add	sp, sp, #0x30
+    702020d8:	d65f03c0 	ret
+
+00000000702020dc <cntp_handler>:
+
+void cntp_handler(uint64_t *)
+{
+    702020dc:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    702020e0:	910003fd 	mov	x29, sp
+    702020e4:	f9000fe0 	str	x0, [sp, #24]
+    asm volatile("msr cntp_tval_el0, %0" : : "r"(100000));
+    702020e8:	5290d400 	mov	w0, #0x86a0                	// #34464
+    702020ec:	72a00020 	movk	w0, #0x1, lsl #16
+    702020f0:	d51be200 	msr	cntp_tval_el0, x0
+    printf("irq %d\n", TIMER);
+    702020f4:	52800361 	mov	w1, #0x1b                  	// #27
+    702020f8:	b0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    702020fc:	9108a000 	add	x0, x0, #0x228
+    70202100:	97fffbcd 	bl	70201034 <printf>
+}
+    70202104:	d503201f 	nop
+    70202108:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    7020210c:	d65f03c0 	ret
+
+0000000070202110 <exception_init>:
+
+void exception_init()
+{
+    70202110:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+    70202114:	910003fd 	mov	x29, sp
+    irq_install(TIMER, cntp_handler);
+    70202118:	90000000 	adrp	x0, 70202000 <handle_sync_exception+0x98>
+    7020211c:	91037001 	add	x1, x0, #0xdc
+    70202120:	52800360 	mov	w0, #0x1b                  	// #27
+    70202124:	97ffff86 	bl	70201f3c <irq_install>
+    70202128:	d503201f 	nop
+    7020212c:	a8c17bfd 	ldp	x29, x30, [sp], #16
+    70202130:	d65f03c0 	ret
+	...
+
+0000000070202800 <exception_vector_base>:
+.extern handle_sync_exception
+.extern handle_irq_exception
+
+exception_vector_base:
+    // current EL, with SP_EL0
+    INVALID_EXCP 0 0
+    70202800:	d10443ff 	sub	sp, sp, #0x110
+    70202804:	a90007e0 	stp	x0, x1, [sp]
+    70202808:	a9010fe2 	stp	x2, x3, [sp, #16]
+    7020280c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202810:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202814:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202818:	a9052fea 	stp	x10, x11, [sp, #80]
+    7020281c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202820:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202824:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202828:	a9094ff2 	stp	x18, x19, [sp, #144]
+    7020282c:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202830:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202834:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202838:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    7020283c:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202840:	d5384109 	mrs	x9, sp_el0
+    70202844:	d538402a 	mrs	x10, elr_el1
+    70202848:	d538400b 	mrs	x11, spsr_el1
+    7020284c:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202850:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202854:	910003e0 	mov	x0, sp
+    70202858:	d2800001 	mov	x1, #0x0                   	// #0
+    7020285c:	d2800002 	mov	x2, #0x0                   	// #0
+    70202860:	97fffe13 	bl	702020ac <invalid_exception>
+    70202864:	140001e1 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202868:	d503201f 	nop
+    7020286c:	d503201f 	nop
+    70202870:	d503201f 	nop
+    70202874:	d503201f 	nop
+    70202878:	d503201f 	nop
+    7020287c:	d503201f 	nop
+    INVALID_EXCP 1 0
+    70202880:	d10443ff 	sub	sp, sp, #0x110
+    70202884:	a90007e0 	stp	x0, x1, [sp]
+    70202888:	a9010fe2 	stp	x2, x3, [sp, #16]
+    7020288c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202890:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202894:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202898:	a9052fea 	stp	x10, x11, [sp, #80]
+    7020289c:	a90637ec 	stp	x12, x13, [sp, #96]
+    702028a0:	a9073fee 	stp	x14, x15, [sp, #112]
+    702028a4:	a90847f0 	stp	x16, x17, [sp, #128]
+    702028a8:	a9094ff2 	stp	x18, x19, [sp, #144]
+    702028ac:	a90a57f4 	stp	x20, x21, [sp, #160]
+    702028b0:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    702028b4:	a90c67f8 	stp	x24, x25, [sp, #192]
+    702028b8:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    702028bc:	a90e77fc 	stp	x28, x29, [sp, #224]
+    702028c0:	d5384109 	mrs	x9, sp_el0
+    702028c4:	d538402a 	mrs	x10, elr_el1
+    702028c8:	d538400b 	mrs	x11, spsr_el1
+    702028cc:	a90f27fe 	stp	x30, x9, [sp, #240]
+    702028d0:	a9102fea 	stp	x10, x11, [sp, #256]
+    702028d4:	910003e0 	mov	x0, sp
+    702028d8:	d2800021 	mov	x1, #0x1                   	// #1
+    702028dc:	d2800002 	mov	x2, #0x0                   	// #0
+    702028e0:	97fffdf3 	bl	702020ac <invalid_exception>
+    702028e4:	140001c1 	b	70202fe8 <exception_vector_base+0x7e8>
+    702028e8:	d503201f 	nop
+    702028ec:	d503201f 	nop
+    702028f0:	d503201f 	nop
+    702028f4:	d503201f 	nop
+    702028f8:	d503201f 	nop
+    702028fc:	d503201f 	nop
+    INVALID_EXCP 2 0
+    70202900:	d10443ff 	sub	sp, sp, #0x110
+    70202904:	a90007e0 	stp	x0, x1, [sp]
+    70202908:	a9010fe2 	stp	x2, x3, [sp, #16]
+    7020290c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202910:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202914:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202918:	a9052fea 	stp	x10, x11, [sp, #80]
+    7020291c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202920:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202924:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202928:	a9094ff2 	stp	x18, x19, [sp, #144]
+    7020292c:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202930:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202934:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202938:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    7020293c:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202940:	d5384109 	mrs	x9, sp_el0
+    70202944:	d538402a 	mrs	x10, elr_el1
+    70202948:	d538400b 	mrs	x11, spsr_el1
+    7020294c:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202950:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202954:	910003e0 	mov	x0, sp
+    70202958:	d2800041 	mov	x1, #0x2                   	// #2
+    7020295c:	d2800002 	mov	x2, #0x0                   	// #0
+    70202960:	97fffdd3 	bl	702020ac <invalid_exception>
+    70202964:	140001a1 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202968:	d503201f 	nop
+    7020296c:	d503201f 	nop
+    70202970:	d503201f 	nop
+    70202974:	d503201f 	nop
+    70202978:	d503201f 	nop
+    7020297c:	d503201f 	nop
+    INVALID_EXCP 3 0
+    70202980:	d10443ff 	sub	sp, sp, #0x110
+    70202984:	a90007e0 	stp	x0, x1, [sp]
+    70202988:	a9010fe2 	stp	x2, x3, [sp, #16]
+    7020298c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202990:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202994:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202998:	a9052fea 	stp	x10, x11, [sp, #80]
+    7020299c:	a90637ec 	stp	x12, x13, [sp, #96]
+    702029a0:	a9073fee 	stp	x14, x15, [sp, #112]
+    702029a4:	a90847f0 	stp	x16, x17, [sp, #128]
+    702029a8:	a9094ff2 	stp	x18, x19, [sp, #144]
+    702029ac:	a90a57f4 	stp	x20, x21, [sp, #160]
+    702029b0:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    702029b4:	a90c67f8 	stp	x24, x25, [sp, #192]
+    702029b8:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    702029bc:	a90e77fc 	stp	x28, x29, [sp, #224]
+    702029c0:	d5384109 	mrs	x9, sp_el0
+    702029c4:	d538402a 	mrs	x10, elr_el1
+    702029c8:	d538400b 	mrs	x11, spsr_el1
+    702029cc:	a90f27fe 	stp	x30, x9, [sp, #240]
+    702029d0:	a9102fea 	stp	x10, x11, [sp, #256]
+    702029d4:	910003e0 	mov	x0, sp
+    702029d8:	d2800061 	mov	x1, #0x3                   	// #3
+    702029dc:	d2800002 	mov	x2, #0x0                   	// #0
+    702029e0:	97fffdb3 	bl	702020ac <invalid_exception>
+    702029e4:	14000181 	b	70202fe8 <exception_vector_base+0x7e8>
+    702029e8:	d503201f 	nop
+    702029ec:	d503201f 	nop
+    702029f0:	d503201f 	nop
+    702029f4:	d503201f 	nop
+    702029f8:	d503201f 	nop
+    702029fc:	d503201f 	nop
+
+    // current EL, with SP_ELx
+    HANDLE_SYNC
+    70202a00:	d10443ff 	sub	sp, sp, #0x110
+    70202a04:	a90007e0 	stp	x0, x1, [sp]
+    70202a08:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202a0c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202a10:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202a14:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202a18:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202a1c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202a20:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202a24:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202a28:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202a2c:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202a30:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202a34:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202a38:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202a3c:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202a40:	d5384109 	mrs	x9, sp_el0
+    70202a44:	d538402a 	mrs	x10, elr_el1
+    70202a48:	d538400b 	mrs	x11, spsr_el1
+    70202a4c:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202a50:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202a54:	910003e0 	mov	x0, sp
+    70202a58:	97fffd44 	bl	70201f68 <handle_sync_exception>
+    70202a5c:	14000163 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202a60:	d503201f 	nop
+    70202a64:	d503201f 	nop
+    70202a68:	d503201f 	nop
+    70202a6c:	d503201f 	nop
+    70202a70:	d503201f 	nop
+    70202a74:	d503201f 	nop
+    70202a78:	d503201f 	nop
+    70202a7c:	d503201f 	nop
+    HANDLE_IRQ
+    70202a80:	d10443ff 	sub	sp, sp, #0x110
+    70202a84:	a90007e0 	stp	x0, x1, [sp]
+    70202a88:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202a8c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202a90:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202a94:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202a98:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202a9c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202aa0:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202aa4:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202aa8:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202aac:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202ab0:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202ab4:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202ab8:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202abc:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202ac0:	d5384109 	mrs	x9, sp_el0
+    70202ac4:	d538402a 	mrs	x10, elr_el1
+    70202ac8:	d538400b 	mrs	x11, spsr_el1
+    70202acc:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202ad0:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202ad4:	910003e0 	mov	x0, sp
+    70202ad8:	97fffd5a 	bl	70202040 <handle_irq_exception>
+    70202adc:	14000143 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202ae0:	d503201f 	nop
+    70202ae4:	d503201f 	nop
+    70202ae8:	d503201f 	nop
+    70202aec:	d503201f 	nop
+    70202af0:	d503201f 	nop
+    70202af4:	d503201f 	nop
+    70202af8:	d503201f 	nop
+    70202afc:	d503201f 	nop
+    INVALID_EXCP 2 1
+    70202b00:	d10443ff 	sub	sp, sp, #0x110
+    70202b04:	a90007e0 	stp	x0, x1, [sp]
+    70202b08:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202b0c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202b10:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202b14:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202b18:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202b1c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202b20:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202b24:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202b28:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202b2c:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202b30:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202b34:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202b38:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202b3c:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202b40:	d5384109 	mrs	x9, sp_el0
+    70202b44:	d538402a 	mrs	x10, elr_el1
+    70202b48:	d538400b 	mrs	x11, spsr_el1
+    70202b4c:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202b50:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202b54:	910003e0 	mov	x0, sp
+    70202b58:	d2800041 	mov	x1, #0x2                   	// #2
+    70202b5c:	d2800022 	mov	x2, #0x1                   	// #1
+    70202b60:	97fffd53 	bl	702020ac <invalid_exception>
+    70202b64:	14000121 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202b68:	d503201f 	nop
+    70202b6c:	d503201f 	nop
+    70202b70:	d503201f 	nop
+    70202b74:	d503201f 	nop
+    70202b78:	d503201f 	nop
+    70202b7c:	d503201f 	nop
+    INVALID_EXCP 3 1
+    70202b80:	d10443ff 	sub	sp, sp, #0x110
+    70202b84:	a90007e0 	stp	x0, x1, [sp]
+    70202b88:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202b8c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202b90:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202b94:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202b98:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202b9c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202ba0:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202ba4:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202ba8:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202bac:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202bb0:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202bb4:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202bb8:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202bbc:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202bc0:	d5384109 	mrs	x9, sp_el0
+    70202bc4:	d538402a 	mrs	x10, elr_el1
+    70202bc8:	d538400b 	mrs	x11, spsr_el1
+    70202bcc:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202bd0:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202bd4:	910003e0 	mov	x0, sp
+    70202bd8:	d2800061 	mov	x1, #0x3                   	// #3
+    70202bdc:	d2800022 	mov	x2, #0x1                   	// #1
+    70202be0:	97fffd33 	bl	702020ac <invalid_exception>
+    70202be4:	14000101 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202be8:	d503201f 	nop
+    70202bec:	d503201f 	nop
+    70202bf0:	d503201f 	nop
+    70202bf4:	d503201f 	nop
+    70202bf8:	d503201f 	nop
+    70202bfc:	d503201f 	nop
+
+    // lower EL, aarch64
+    HANDLE_SYNC
+    70202c00:	d10443ff 	sub	sp, sp, #0x110
+    70202c04:	a90007e0 	stp	x0, x1, [sp]
+    70202c08:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202c0c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202c10:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202c14:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202c18:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202c1c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202c20:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202c24:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202c28:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202c2c:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202c30:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202c34:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202c38:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202c3c:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202c40:	d5384109 	mrs	x9, sp_el0
+    70202c44:	d538402a 	mrs	x10, elr_el1
+    70202c48:	d538400b 	mrs	x11, spsr_el1
+    70202c4c:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202c50:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202c54:	910003e0 	mov	x0, sp
+    70202c58:	97fffcc4 	bl	70201f68 <handle_sync_exception>
+    70202c5c:	140000e3 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202c60:	d503201f 	nop
+    70202c64:	d503201f 	nop
+    70202c68:	d503201f 	nop
+    70202c6c:	d503201f 	nop
+    70202c70:	d503201f 	nop
+    70202c74:	d503201f 	nop
+    70202c78:	d503201f 	nop
+    70202c7c:	d503201f 	nop
+    HANDLE_IRQ
+    70202c80:	d10443ff 	sub	sp, sp, #0x110
+    70202c84:	a90007e0 	stp	x0, x1, [sp]
+    70202c88:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202c8c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202c90:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202c94:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202c98:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202c9c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202ca0:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202ca4:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202ca8:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202cac:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202cb0:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202cb4:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202cb8:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202cbc:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202cc0:	d5384109 	mrs	x9, sp_el0
+    70202cc4:	d538402a 	mrs	x10, elr_el1
+    70202cc8:	d538400b 	mrs	x11, spsr_el1
+    70202ccc:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202cd0:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202cd4:	910003e0 	mov	x0, sp
+    70202cd8:	97fffcda 	bl	70202040 <handle_irq_exception>
+    70202cdc:	140000c3 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202ce0:	d503201f 	nop
+    70202ce4:	d503201f 	nop
+    70202ce8:	d503201f 	nop
+    70202cec:	d503201f 	nop
+    70202cf0:	d503201f 	nop
+    70202cf4:	d503201f 	nop
+    70202cf8:	d503201f 	nop
+    70202cfc:	d503201f 	nop
+    INVALID_EXCP 2 2
+    70202d00:	d10443ff 	sub	sp, sp, #0x110
+    70202d04:	a90007e0 	stp	x0, x1, [sp]
+    70202d08:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202d0c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202d10:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202d14:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202d18:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202d1c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202d20:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202d24:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202d28:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202d2c:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202d30:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202d34:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202d38:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202d3c:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202d40:	d5384109 	mrs	x9, sp_el0
+    70202d44:	d538402a 	mrs	x10, elr_el1
+    70202d48:	d538400b 	mrs	x11, spsr_el1
+    70202d4c:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202d50:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202d54:	910003e0 	mov	x0, sp
+    70202d58:	d2800041 	mov	x1, #0x2                   	// #2
+    70202d5c:	d2800042 	mov	x2, #0x2                   	// #2
+    70202d60:	97fffcd3 	bl	702020ac <invalid_exception>
+    70202d64:	140000a1 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202d68:	d503201f 	nop
+    70202d6c:	d503201f 	nop
+    70202d70:	d503201f 	nop
+    70202d74:	d503201f 	nop
+    70202d78:	d503201f 	nop
+    70202d7c:	d503201f 	nop
+    INVALID_EXCP 3 2
+    70202d80:	d10443ff 	sub	sp, sp, #0x110
+    70202d84:	a90007e0 	stp	x0, x1, [sp]
+    70202d88:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202d8c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202d90:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202d94:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202d98:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202d9c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202da0:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202da4:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202da8:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202dac:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202db0:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202db4:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202db8:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202dbc:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202dc0:	d5384109 	mrs	x9, sp_el0
+    70202dc4:	d538402a 	mrs	x10, elr_el1
+    70202dc8:	d538400b 	mrs	x11, spsr_el1
+    70202dcc:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202dd0:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202dd4:	910003e0 	mov	x0, sp
+    70202dd8:	d2800061 	mov	x1, #0x3                   	// #3
+    70202ddc:	d2800042 	mov	x2, #0x2                   	// #2
+    70202de0:	97fffcb3 	bl	702020ac <invalid_exception>
+    70202de4:	14000081 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202de8:	d503201f 	nop
+    70202dec:	d503201f 	nop
+    70202df0:	d503201f 	nop
+    70202df4:	d503201f 	nop
+    70202df8:	d503201f 	nop
+    70202dfc:	d503201f 	nop
+
+    // lower EL, aarch32
+    INVALID_EXCP 0 3
+    70202e00:	d10443ff 	sub	sp, sp, #0x110
+    70202e04:	a90007e0 	stp	x0, x1, [sp]
+    70202e08:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202e0c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202e10:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202e14:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202e18:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202e1c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202e20:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202e24:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202e28:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202e2c:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202e30:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202e34:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202e38:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202e3c:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202e40:	d5384109 	mrs	x9, sp_el0
+    70202e44:	d538402a 	mrs	x10, elr_el1
+    70202e48:	d538400b 	mrs	x11, spsr_el1
+    70202e4c:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202e50:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202e54:	910003e0 	mov	x0, sp
+    70202e58:	d2800001 	mov	x1, #0x0                   	// #0
+    70202e5c:	d2800062 	mov	x2, #0x3                   	// #3
+    70202e60:	97fffc93 	bl	702020ac <invalid_exception>
+    70202e64:	14000061 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202e68:	d503201f 	nop
+    70202e6c:	d503201f 	nop
+    70202e70:	d503201f 	nop
+    70202e74:	d503201f 	nop
+    70202e78:	d503201f 	nop
+    70202e7c:	d503201f 	nop
+    INVALID_EXCP 1 3
+    70202e80:	d10443ff 	sub	sp, sp, #0x110
+    70202e84:	a90007e0 	stp	x0, x1, [sp]
+    70202e88:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202e8c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202e90:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202e94:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202e98:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202e9c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202ea0:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202ea4:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202ea8:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202eac:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202eb0:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202eb4:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202eb8:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202ebc:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202ec0:	d5384109 	mrs	x9, sp_el0
+    70202ec4:	d538402a 	mrs	x10, elr_el1
+    70202ec8:	d538400b 	mrs	x11, spsr_el1
+    70202ecc:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202ed0:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202ed4:	910003e0 	mov	x0, sp
+    70202ed8:	d2800021 	mov	x1, #0x1                   	// #1
+    70202edc:	d2800062 	mov	x2, #0x3                   	// #3
+    70202ee0:	97fffc73 	bl	702020ac <invalid_exception>
+    70202ee4:	14000041 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202ee8:	d503201f 	nop
+    70202eec:	d503201f 	nop
+    70202ef0:	d503201f 	nop
+    70202ef4:	d503201f 	nop
+    70202ef8:	d503201f 	nop
+    70202efc:	d503201f 	nop
+    INVALID_EXCP 2 3
+    70202f00:	d10443ff 	sub	sp, sp, #0x110
+    70202f04:	a90007e0 	stp	x0, x1, [sp]
+    70202f08:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202f0c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202f10:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202f14:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202f18:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202f1c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202f20:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202f24:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202f28:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202f2c:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202f30:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202f34:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202f38:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202f3c:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202f40:	d5384109 	mrs	x9, sp_el0
+    70202f44:	d538402a 	mrs	x10, elr_el1
+    70202f48:	d538400b 	mrs	x11, spsr_el1
+    70202f4c:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202f50:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202f54:	910003e0 	mov	x0, sp
+    70202f58:	d2800041 	mov	x1, #0x2                   	// #2
+    70202f5c:	d2800062 	mov	x2, #0x3                   	// #3
+    70202f60:	97fffc53 	bl	702020ac <invalid_exception>
+    70202f64:	14000021 	b	70202fe8 <exception_vector_base+0x7e8>
+    70202f68:	d503201f 	nop
+    70202f6c:	d503201f 	nop
+    70202f70:	d503201f 	nop
+    70202f74:	d503201f 	nop
+    70202f78:	d503201f 	nop
+    70202f7c:	d503201f 	nop
+    INVALID_EXCP 3 3
+    70202f80:	d10443ff 	sub	sp, sp, #0x110
+    70202f84:	a90007e0 	stp	x0, x1, [sp]
+    70202f88:	a9010fe2 	stp	x2, x3, [sp, #16]
+    70202f8c:	a90217e4 	stp	x4, x5, [sp, #32]
+    70202f90:	a9031fe6 	stp	x6, x7, [sp, #48]
+    70202f94:	a90427e8 	stp	x8, x9, [sp, #64]
+    70202f98:	a9052fea 	stp	x10, x11, [sp, #80]
+    70202f9c:	a90637ec 	stp	x12, x13, [sp, #96]
+    70202fa0:	a9073fee 	stp	x14, x15, [sp, #112]
+    70202fa4:	a90847f0 	stp	x16, x17, [sp, #128]
+    70202fa8:	a9094ff2 	stp	x18, x19, [sp, #144]
+    70202fac:	a90a57f4 	stp	x20, x21, [sp, #160]
+    70202fb0:	a90b5ff6 	stp	x22, x23, [sp, #176]
+    70202fb4:	a90c67f8 	stp	x24, x25, [sp, #192]
+    70202fb8:	a90d6ffa 	stp	x26, x27, [sp, #208]
+    70202fbc:	a90e77fc 	stp	x28, x29, [sp, #224]
+    70202fc0:	d5384109 	mrs	x9, sp_el0
+    70202fc4:	d538402a 	mrs	x10, elr_el1
+    70202fc8:	d538400b 	mrs	x11, spsr_el1
+    70202fcc:	a90f27fe 	stp	x30, x9, [sp, #240]
+    70202fd0:	a9102fea 	stp	x10, x11, [sp, #256]
+    70202fd4:	910003e0 	mov	x0, sp
+    70202fd8:	d2800061 	mov	x1, #0x3                   	// #3
+    70202fdc:	d2800062 	mov	x2, #0x3                   	// #3
+    70202fe0:	97fffc33 	bl	702020ac <invalid_exception>
+    70202fe4:	14000001 	b	70202fe8 <exception_vector_base+0x7e8>
+
+.Lexception_return:
+    RESTORE_REGS
+    70202fe8:	a9502fea 	ldp	x10, x11, [sp, #256]
+    70202fec:	a94f27fe 	ldp	x30, x9, [sp, #240]
+    70202ff0:	d5184109 	msr	sp_el0, x9
+    70202ff4:	d518402a 	msr	elr_el1, x10
+    70202ff8:	d518400b 	msr	spsr_el1, x11
+    70202ffc:	a94e77fc 	ldp	x28, x29, [sp, #224]
+    70203000:	a94d6ffa 	ldp	x26, x27, [sp, #208]
+    70203004:	a94c67f8 	ldp	x24, x25, [sp, #192]
+    70203008:	a94b5ff6 	ldp	x22, x23, [sp, #176]
+    7020300c:	a94a57f4 	ldp	x20, x21, [sp, #160]
+    70203010:	a9494ff2 	ldp	x18, x19, [sp, #144]
+    70203014:	a94847f0 	ldp	x16, x17, [sp, #128]
+    70203018:	a9473fee 	ldp	x14, x15, [sp, #112]
+    7020301c:	a94637ec 	ldp	x12, x13, [sp, #96]
+    70203020:	a9452fea 	ldp	x10, x11, [sp, #80]
+    70203024:	a94427e8 	ldp	x8, x9, [sp, #64]
+    70203028:	a9431fe6 	ldp	x6, x7, [sp, #48]
+    7020302c:	a94217e4 	ldp	x4, x5, [sp, #32]
+    70203030:	a9410fe2 	ldp	x2, x3, [sp, #16]
+    70203034:	a94007e0 	ldp	x0, x1, [sp]
+    70203038:	910443ff 	add	sp, sp, #0x110
+    eret
+    7020303c:	d69f03e0 	eret
