@@ -10,7 +10,7 @@ ELF Header:
   Version:                           0x1
   Entry point address:               0x70200000
   Start of program headers:          64 (bytes into file)
-  Start of section headers:          97248 (bytes into file)
+  Start of section headers:          97280 (bytes into file)
   Flags:                             0x0
   Size of this header:               64 (bytes)
   Size of program headers:           56 (bytes)
@@ -35,24 +35,24 @@ Section Headers:
   [ 5] .bss              NOBITS           0000000070204000  00013950
        0000000000005010  0000000000000000  WA       0     0     4096
   [ 6] .debug_line       PROGBITS         0000000000000000  00013950
-       0000000000000acf  0000000000000000           0     0     1
-  [ 7] .debug_line_str   PROGBITS         0000000000000000  0001441f
-       0000000000000115  0000000000000001  MS       0     0     1
-  [ 8] .debug_info       PROGBITS         0000000000000000  00014534
-       000000000000182c  0000000000000000           0     0     1
-  [ 9] .debug_abbrev     PROGBITS         0000000000000000  00015d60
-       000000000000086e  0000000000000000           0     0     1
-  [10] .debug_aranges    PROGBITS         0000000000000000  000165d0
+       0000000000000ace  0000000000000000           0     0     1
+  [ 7] .debug_line_str   PROGBITS         0000000000000000  0001441e
+       000000000000011b  0000000000000001  MS       0     0     1
+  [ 8] .debug_info       PROGBITS         0000000000000000  00014539
+       000000000000183a  0000000000000000           0     0     1
+  [ 9] .debug_abbrev     PROGBITS         0000000000000000  00015d73
+       0000000000000870  0000000000000000           0     0     1
+  [10] .debug_aranges    PROGBITS         0000000000000000  000165f0
        0000000000000180  0000000000000000           0     0     16
-  [11] .debug_str        PROGBITS         0000000000000000  00016750
-       00000000000005ab  0000000000000001  MS       0     0     1
-  [12] .comment          PROGBITS         0000000000000000  00016cfb
+  [11] .debug_str        PROGBITS         0000000000000000  00016770
+       00000000000005ad  0000000000000001  MS       0     0     1
+  [12] .comment          PROGBITS         0000000000000000  00016d1d
        000000000000001b  0000000000000001  MS       0     0     1
-  [13] .symtab           SYMTAB           0000000000000000  00016d18
+  [13] .symtab           SYMTAB           0000000000000000  00016d38
        0000000000000ac8  0000000000000018          14    55     8
-  [14] .strtab           STRTAB           0000000000000000  000177e0
+  [14] .strtab           STRTAB           0000000000000000  00017800
        0000000000000367  0000000000000000           0     0     1
-  [15] .shstrtab         STRTAB           0000000000000000  00017b47
+  [15] .shstrtab         STRTAB           0000000000000000  00017b67
        0000000000000097  0000000000000000           0     0     1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
@@ -154,8 +154,8 @@ Symbol table '.symtab' contains 115 entries:
     68: 00000000702000a0    32 FUNC    GLOBAL DEFAULT    1 io_init
     69: 00000000702015dc   112 FUNC    GLOBAL DEFAULT    1 memcpy
     70: 0000000070200104    68 FUNC    GLOBAL DEFAULT    1 uart_putstr
-    71: 0000000070202040   108 FUNC    GLOBAL DEFAULT    1 handle_irq_exception
-    72: 00000000702020ac    48 FUNC    GLOBAL DEFAULT    1 invalid_exception
+    71: 0000000070202040   116 FUNC    GLOBAL DEFAULT    1 handle_irq_exception
+    72: 00000000702020b4    48 FUNC    GLOBAL DEFAULT    1 invalid_exception
     73: 0000000070200770  2000 FUNC    GLOBAL DEFAULT    1 vsnprintf
     74: 0000000070201998    36 FUNC    GLOBAL DEFAULT    1 test_mem_no_maped2
     75: 0000000070201d64   120 FUNC    GLOBAL DEFAULT    1 gic_disable_int
@@ -183,7 +183,7 @@ Symbol table '.symtab' contains 115 entries:
     97: 0000000070201c98   204 FUNC    GLOBAL DEFAULT    1 gic_enable_int
     98: 000000007020157c    96 FUNC    GLOBAL DEFAULT    1 memset
     99: 000000007020146c    40 FUNC    GLOBAL DEFAULT    1 strcmp
-   100: 00000000702020dc    52 FUNC    GLOBAL DEFAULT    1 cntp_handler
+   100: 00000000702020e4    52 FUNC    GLOBAL DEFAULT    1 cntp_handler
    101: 0000000070200170    40 FUNC    GLOBAL DEFAULT    1 print_warn
    102: 0000000070201974    36 FUNC    GLOBAL DEFAULT    1 test_mem_no_maped
    103: 000000007020116c   156 FUNC    GLOBAL DEFAULT    1 error
@@ -195,7 +195,7 @@ Symbol table '.symtab' contains 115 entries:
    109: 0000000070201c30    64 FUNC    GLOBAL DEFAULT    1 gic_ipi_send_single
    110: 0000000070201300    64 FUNC    GLOBAL DEFAULT    1 strlen
    111: 0000000070201494    84 FUNC    GLOBAL DEFAULT    1 strchr
-   112: 0000000070202110    36 FUNC    GLOBAL DEFAULT    1 exception_init
+   112: 0000000070202118    36 FUNC    GLOBAL DEFAULT    1 exception_init
    113: 00000000702000c0    68 FUNC    GLOBAL DEFAULT    1 uart_putchar
    114: 0000000070201c70    40 FUNC    GLOBAL DEFAULT    1 cpu_num
 

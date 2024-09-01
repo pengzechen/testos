@@ -1,6 +1,6 @@
 
-#include "gic.h"
-#include "io.h"
+#include "gicv2.h"
+#include "t_io.h"
 #include "exception.h"
 #include "acfg.h"
 

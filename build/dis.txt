@@ -24,19 +24,19 @@ Idx Name          Size      VMA               LMA               File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   4 .bss          00005010  0000000070204000  0000000070204000  00013950  2**12
                   ALLOC
-  5 .debug_line   00000acf  0000000000000000  0000000000000000  00013950  2**0
+  5 .debug_line   00000ace  0000000000000000  0000000000000000  00013950  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
-  6 .debug_line_str 00000115  0000000000000000  0000000000000000  0001441f  2**0
+  6 .debug_line_str 0000011b  0000000000000000  0000000000000000  0001441e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
-  7 .debug_info   0000182c  0000000000000000  0000000000000000  00014534  2**0
+  7 .debug_info   0000183a  0000000000000000  0000000000000000  00014539  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
-  8 .debug_abbrev 0000086e  0000000000000000  0000000000000000  00015d60  2**0
+  8 .debug_abbrev 00000870  0000000000000000  0000000000000000  00015d73  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
-  9 .debug_aranges 00000180  0000000000000000  0000000000000000  000165d0  2**4
+  9 .debug_aranges 00000180  0000000000000000  0000000000000000  000165f0  2**4
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 10 .debug_str    000005ab  0000000000000000  0000000000000000  00016750  2**0
+ 10 .debug_str    000005ad  0000000000000000  0000000000000000  00016770  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 11 .comment      0000001b  0000000000000000  0000000000000000  00016cfb  2**0
+ 11 .comment      0000001b  0000000000000000  0000000000000000  00016d1d  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 0000000070200000 l    d  .text	0000000000000000 .text
@@ -86,8 +86,8 @@ SYMBOL TABLE:
 00000000702000a0 g     F .text	0000000000000020 io_init
 00000000702015dc g     F .text	0000000000000070 memcpy
 0000000070200104 g     F .text	0000000000000044 uart_putstr
-0000000070202040 g     F .text	000000000000006c handle_irq_exception
-00000000702020ac g     F .text	0000000000000030 invalid_exception
+0000000070202040 g     F .text	0000000000000074 handle_irq_exception
+00000000702020b4 g     F .text	0000000000000030 invalid_exception
 0000000070200770 g     F .text	00000000000007d0 vsnprintf
 0000000070201998 g     F .text	0000000000000024 test_mem_no_maped2
 0000000070201d64 g     F .text	0000000000000078 gic_disable_int
@@ -115,7 +115,7 @@ SYMBOL TABLE:
 0000000070201c98 g     F .text	00000000000000cc gic_enable_int
 000000007020157c g     F .text	0000000000000060 memset
 000000007020146c g     F .text	0000000000000028 strcmp
-00000000702020dc g     F .text	0000000000000034 cntp_handler
+00000000702020e4 g     F .text	0000000000000034 cntp_handler
 0000000070200170 g     F .text	0000000000000028 print_warn
 0000000070201974 g     F .text	0000000000000024 test_mem_no_maped
 000000007020116c g     F .text	000000000000009c error
@@ -127,7 +127,7 @@ SYMBOL TABLE:
 0000000070201c30 g     F .text	0000000000000040 gic_ipi_send_single
 0000000070201300 g     F .text	0000000000000040 strlen
 0000000070201494 g     F .text	0000000000000054 strchr
-0000000070202110 g     F .text	0000000000000024 exception_init
+0000000070202118 g     F .text	0000000000000024 exception_init
 00000000702000c0 g     F .text	0000000000000044 uart_putchar
 0000000070201c70 g     F .text	0000000000000028 cpu_num
 
@@ -2486,7 +2486,7 @@ static inline void enable_interrupts(void)
     7020194c:	d65f03c0 	ret
 
 0000000070201950 <test_mem_maped>:
-#include "io.h"
+#include "t_io.h"
 #include "exception.h"
 #include "acfg.h"
 
@@ -2556,7 +2556,7 @@ void kernel_main(void)
     702019d0:	97fffd99 	bl	70201034 <printf>
 
     exception_init();
-    702019d4:	940001cf 	bl	70202110 <exception_init>
+    702019d4:	940001d1 	bl	70202118 <exception_init>
 
     gic_init();
     702019d8:	94000047 	bl	70201af4 <gic_init>
@@ -2613,7 +2613,7 @@ static inline void write32(uint32_t value, volatile void *addr) {
     70201a44:	d65f03c0 	ret
 
 0000000070201a48 <gic_test_init>:
-#include "io.h"
+#include "t_io.h"
 
 struct gic_t _gicv2;
 
@@ -2636,7 +2636,7 @@ void gic_test_init(void)
     70201a7c:	91022000 	add	x0, x0, #0x88
     70201a80:	97fffd6d 	bl	70201034 <printf>
     printf("[guest]     gicc enable %s\n", read32((void *)GICC_CTLR) ? "ok" : "error");
-    70201a84:	d2a10080 	mov	x0, #0x8040000             	// #134479872
+    70201a84:	d2a10020 	mov	x0, #0x8010000             	// #134283264
     70201a88:	97ffffe1 	bl	70201a0c <read32>
     70201a8c:	7100001f 	cmp	w0, #0x0
     70201a90:	54000080 	b.eq	70201aa0 <gic_test_init+0x58>  // b.none
@@ -2707,12 +2707,12 @@ void gic_init(void)
     // 允许所有优先级的中断
     write32(0xff - 7, (void *)GICC_PMR);
     70201b50:	d2800081 	mov	x1, #0x4                   	// #4
-    70201b54:	f2a10081 	movk	x1, #0x804, lsl #16
+    70201b54:	f2a10021 	movk	x1, #0x801, lsl #16
     70201b58:	52801f00 	mov	w0, #0xf8                  	// #248
     70201b5c:	97ffffb2 	bl	70201a24 <write32>
-    write32(GICC_CTRL_ENABLE, (void *)GICC_CTLR);
-    70201b60:	d2a10081 	mov	x1, #0x8040000             	// #134479872
-    70201b64:	52800020 	mov	w0, #0x1                   	// #1
+    write32(GICC_CTRL_ENABLE | (1 << 9), (void *)GICC_CTLR);
+    70201b60:	d2a10021 	mov	x1, #0x8010000             	// #134283264
+    70201b64:	52804020 	mov	w0, #0x201                 	// #513
     70201b68:	97ffffaf 	bl	70201a24 <write32>
 
     gic_test_init();
@@ -2731,11 +2731,11 @@ void gicc_init()
     // 允许所有优先级的中断
     write32(0xff - 7, (void *)GICC_PMR);
     70201b84:	d2800081 	mov	x1, #0x4                   	// #4
-    70201b88:	f2a10081 	movk	x1, #0x804, lsl #16
+    70201b88:	f2a10021 	movk	x1, #0x801, lsl #16
     70201b8c:	52801f00 	mov	w0, #0xf8                  	// #248
     70201b90:	97ffffa5 	bl	70201a24 <write32>
     write32(GICC_CTRL_ENABLE, (void *)GICC_CTLR);
-    70201b94:	d2a10081 	mov	x1, #0x8040000             	// #134479872
+    70201b94:	d2a10021 	mov	x1, #0x8010000             	// #134283264
     70201b98:	52800020 	mov	w0, #0x1                   	// #1
     70201b9c:	97ffffa2 	bl	70201a24 <write32>
 }
@@ -2752,7 +2752,7 @@ uint32_t gic_read_iar(void)
     70201bb0:	910003fd 	mov	x29, sp
     return read32((void *)GICC_IAR);
     70201bb4:	d2800180 	mov	x0, #0xc                   	// #12
-    70201bb8:	f2a10080 	movk	x0, #0x804, lsl #16
+    70201bb8:	f2a10020 	movk	x0, #0x801, lsl #16
     70201bbc:	97ffff94 	bl	70201a0c <read32>
 }
     70201bc0:	a8c17bfd 	ldp	x29, x30, [sp], #16
@@ -2781,7 +2781,7 @@ void gic_write_eoir(uint32_t irqstat)
     70201be8:	b9001fe0 	str	w0, [sp, #28]
     write32(irqstat, (void *)GICC_EOIR);
     70201bec:	d2800201 	mov	x1, #0x10                  	// #16
-    70201bf0:	f2a10081 	movk	x1, #0x804, lsl #16
+    70201bf0:	f2a10021 	movk	x1, #0x801, lsl #16
     70201bf4:	b9401fe0 	ldr	w0, [sp, #28]
     70201bf8:	97ffff8b 	bl	70201a24 <write32>
 }
@@ -2798,7 +2798,7 @@ void gic_write_dir(uint32_t irqstat)
     70201c10:	b9001fe0 	str	w0, [sp, #28]
     write32(irqstat, (void *)GICC_DIR);
     70201c14:	d2820001 	mov	x1, #0x1000                	// #4096
-    70201c18:	f2a10081 	movk	x1, #0x804, lsl #16
+    70201c18:	f2a10021 	movk	x1, #0x801, lsl #16
     70201c1c:	b9401fe0 	ldr	w0, [sp, #28]
     70201c20:	97ffff81 	bl	70201a24 <write32>
 }
@@ -3230,78 +3230,83 @@ void handle_irq_exception(uint64_t *stack_pointer)
     70202074:	b94027e0 	ldr	w0, [sp, #36]
     70202078:	97fffed4 	bl	70201bc8 <gic_iar_irqnr>
     7020207c:	b90023e0 	str	w0, [sp, #32]
-    gic_write_eoir(iar);
-    70202080:	b94027e0 	ldr	w0, [sp, #36]
-    70202084:	97fffed7 	bl	70201be0 <gic_write_eoir>
+    
 
     g_handler_vec[vector]((uint64_t *)el1_ctx); // arg not use
-    70202088:	d0000020 	adrp	x0, 70208000 <lock>
-    7020208c:	91004000 	add	x0, x0, #0x10
-    70202090:	b98023e1 	ldrsw	x1, [sp, #32]
-    70202094:	f8617801 	ldr	x1, [x0, x1, lsl #3]
-    70202098:	f9401fe0 	ldr	x0, [sp, #56]
-    7020209c:	d63f0020 	blr	x1
-}
-    702020a0:	d503201f 	nop
-    702020a4:	a8c47bfd 	ldp	x29, x30, [sp], #64
-    702020a8:	d65f03c0 	ret
+    70202080:	d0000020 	adrp	x0, 70208000 <lock>
+    70202084:	91004000 	add	x0, x0, #0x10
+    70202088:	b98023e1 	ldrsw	x1, [sp, #32]
+    7020208c:	f8617801 	ldr	x1, [x0, x1, lsl #3]
+    70202090:	f9401fe0 	ldr	x0, [sp, #56]
+    70202094:	d63f0020 	blr	x1
 
-00000000702020ac <invalid_exception>:
+    gic_write_eoir(iar);
+    70202098:	b94027e0 	ldr	w0, [sp, #36]
+    7020209c:	97fffed1 	bl	70201be0 <gic_write_eoir>
+    gic_write_dir(iar);
+    702020a0:	b94027e0 	ldr	w0, [sp, #36]
+    702020a4:	97fffed9 	bl	70201c08 <gic_write_dir>
+}
+    702020a8:	d503201f 	nop
+    702020ac:	a8c47bfd 	ldp	x29, x30, [sp], #64
+    702020b0:	d65f03c0 	ret
+
+00000000702020b4 <invalid_exception>:
 
 void invalid_exception(uint64_t *stack_pointer, uint64_t kind, uint64_t source)
 {
-    702020ac:	d100c3ff 	sub	sp, sp, #0x30
-    702020b0:	f9000fe0 	str	x0, [sp, #24]
-    702020b4:	f9000be1 	str	x1, [sp, #16]
-    702020b8:	f90007e2 	str	x2, [sp, #8]
+    702020b4:	d100c3ff 	sub	sp, sp, #0x30
+    702020b8:	f9000fe0 	str	x0, [sp, #24]
+    702020bc:	f9000be1 	str	x1, [sp, #16]
+    702020c0:	f90007e2 	str	x2, [sp, #8]
     trap_frame_t *el1_ctx = (trap_frame_t *)stack_pointer;
-    702020bc:	f9400fe0 	ldr	x0, [sp, #24]
-    702020c0:	f90017e0 	str	x0, [sp, #40]
+    702020c4:	f9400fe0 	ldr	x0, [sp, #24]
+    702020c8:	f90017e0 	str	x0, [sp, #40]
 
     uint64_t x2_value = el1_ctx->r[2];
-    702020c4:	f94017e0 	ldr	x0, [sp, #40]
-    702020c8:	f9400800 	ldr	x0, [x0, #16]
-    702020cc:	f90013e0 	str	x0, [sp, #32]
+    702020cc:	f94017e0 	ldr	x0, [sp, #40]
+    702020d0:	f9400800 	ldr	x0, [x0, #16]
+    702020d4:	f90013e0 	str	x0, [sp, #32]
 }
-    702020d0:	d503201f 	nop
-    702020d4:	9100c3ff 	add	sp, sp, #0x30
-    702020d8:	d65f03c0 	ret
+    702020d8:	d503201f 	nop
+    702020dc:	9100c3ff 	add	sp, sp, #0x30
+    702020e0:	d65f03c0 	ret
 
-00000000702020dc <cntp_handler>:
+00000000702020e4 <cntp_handler>:
 
 void cntp_handler(uint64_t *)
 {
-    702020dc:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
-    702020e0:	910003fd 	mov	x29, sp
-    702020e4:	f9000fe0 	str	x0, [sp, #24]
+    702020e4:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
+    702020e8:	910003fd 	mov	x29, sp
+    702020ec:	f9000fe0 	str	x0, [sp, #24]
     asm volatile("msr cntp_tval_el0, %0" : : "r"(100000));
-    702020e8:	5290d400 	mov	w0, #0x86a0                	// #34464
-    702020ec:	72a00020 	movk	w0, #0x1, lsl #16
-    702020f0:	d51be200 	msr	cntp_tval_el0, x0
+    702020f0:	5290d400 	mov	w0, #0x86a0                	// #34464
+    702020f4:	72a00020 	movk	w0, #0x1, lsl #16
+    702020f8:	d51be200 	msr	cntp_tval_el0, x0
     printf("irq %d\n", TIMER);
-    702020f4:	52800361 	mov	w1, #0x1b                  	// #27
-    702020f8:	b0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
-    702020fc:	9108a000 	add	x0, x0, #0x228
-    70202100:	97fffbcd 	bl	70201034 <printf>
+    702020fc:	52800361 	mov	w1, #0x1b                  	// #27
+    70202100:	b0000000 	adrp	x0, 70203000 <exception_vector_base+0x800>
+    70202104:	9108a000 	add	x0, x0, #0x228
+    70202108:	97fffbcb 	bl	70201034 <printf>
 }
-    70202104:	d503201f 	nop
-    70202108:	a8c27bfd 	ldp	x29, x30, [sp], #32
-    7020210c:	d65f03c0 	ret
+    7020210c:	d503201f 	nop
+    70202110:	a8c27bfd 	ldp	x29, x30, [sp], #32
+    70202114:	d65f03c0 	ret
 
-0000000070202110 <exception_init>:
+0000000070202118 <exception_init>:
 
 void exception_init()
 {
-    70202110:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
-    70202114:	910003fd 	mov	x29, sp
+    70202118:	a9bf7bfd 	stp	x29, x30, [sp, #-16]!
+    7020211c:	910003fd 	mov	x29, sp
     irq_install(TIMER, cntp_handler);
-    70202118:	90000000 	adrp	x0, 70202000 <handle_sync_exception+0x98>
-    7020211c:	91037001 	add	x1, x0, #0xdc
-    70202120:	52800360 	mov	w0, #0x1b                  	// #27
-    70202124:	97ffff86 	bl	70201f3c <irq_install>
-    70202128:	d503201f 	nop
-    7020212c:	a8c17bfd 	ldp	x29, x30, [sp], #16
-    70202130:	d65f03c0 	ret
+    70202120:	90000000 	adrp	x0, 70202000 <handle_sync_exception+0x98>
+    70202124:	91039001 	add	x1, x0, #0xe4
+    70202128:	52800360 	mov	w0, #0x1b                  	// #27
+    7020212c:	97ffff84 	bl	70201f3c <irq_install>
+    70202130:	d503201f 	nop
+    70202134:	a8c17bfd 	ldp	x29, x30, [sp], #16
+    70202138:	d65f03c0 	ret
 	...
 
 0000000070202800 <exception_vector_base>:
@@ -3335,7 +3340,7 @@ exception_vector_base:
     70202854:	910003e0 	mov	x0, sp
     70202858:	d2800001 	mov	x1, #0x0                   	// #0
     7020285c:	d2800002 	mov	x2, #0x0                   	// #0
-    70202860:	97fffe13 	bl	702020ac <invalid_exception>
+    70202860:	97fffe15 	bl	702020b4 <invalid_exception>
     70202864:	140001e1 	b	70202fe8 <exception_vector_base+0x7e8>
     70202868:	d503201f 	nop
     7020286c:	d503201f 	nop
@@ -3368,7 +3373,7 @@ exception_vector_base:
     702028d4:	910003e0 	mov	x0, sp
     702028d8:	d2800021 	mov	x1, #0x1                   	// #1
     702028dc:	d2800002 	mov	x2, #0x0                   	// #0
-    702028e0:	97fffdf3 	bl	702020ac <invalid_exception>
+    702028e0:	97fffdf5 	bl	702020b4 <invalid_exception>
     702028e4:	140001c1 	b	70202fe8 <exception_vector_base+0x7e8>
     702028e8:	d503201f 	nop
     702028ec:	d503201f 	nop
@@ -3401,7 +3406,7 @@ exception_vector_base:
     70202954:	910003e0 	mov	x0, sp
     70202958:	d2800041 	mov	x1, #0x2                   	// #2
     7020295c:	d2800002 	mov	x2, #0x0                   	// #0
-    70202960:	97fffdd3 	bl	702020ac <invalid_exception>
+    70202960:	97fffdd5 	bl	702020b4 <invalid_exception>
     70202964:	140001a1 	b	70202fe8 <exception_vector_base+0x7e8>
     70202968:	d503201f 	nop
     7020296c:	d503201f 	nop
@@ -3434,7 +3439,7 @@ exception_vector_base:
     702029d4:	910003e0 	mov	x0, sp
     702029d8:	d2800061 	mov	x1, #0x3                   	// #3
     702029dc:	d2800002 	mov	x2, #0x0                   	// #0
-    702029e0:	97fffdb3 	bl	702020ac <invalid_exception>
+    702029e0:	97fffdb5 	bl	702020b4 <invalid_exception>
     702029e4:	14000181 	b	70202fe8 <exception_vector_base+0x7e8>
     702029e8:	d503201f 	nop
     702029ec:	d503201f 	nop
@@ -3535,7 +3540,7 @@ exception_vector_base:
     70202b54:	910003e0 	mov	x0, sp
     70202b58:	d2800041 	mov	x1, #0x2                   	// #2
     70202b5c:	d2800022 	mov	x2, #0x1                   	// #1
-    70202b60:	97fffd53 	bl	702020ac <invalid_exception>
+    70202b60:	97fffd55 	bl	702020b4 <invalid_exception>
     70202b64:	14000121 	b	70202fe8 <exception_vector_base+0x7e8>
     70202b68:	d503201f 	nop
     70202b6c:	d503201f 	nop
@@ -3568,7 +3573,7 @@ exception_vector_base:
     70202bd4:	910003e0 	mov	x0, sp
     70202bd8:	d2800061 	mov	x1, #0x3                   	// #3
     70202bdc:	d2800022 	mov	x2, #0x1                   	// #1
-    70202be0:	97fffd33 	bl	702020ac <invalid_exception>
+    70202be0:	97fffd35 	bl	702020b4 <invalid_exception>
     70202be4:	14000101 	b	70202fe8 <exception_vector_base+0x7e8>
     70202be8:	d503201f 	nop
     70202bec:	d503201f 	nop
@@ -3669,7 +3674,7 @@ exception_vector_base:
     70202d54:	910003e0 	mov	x0, sp
     70202d58:	d2800041 	mov	x1, #0x2                   	// #2
     70202d5c:	d2800042 	mov	x2, #0x2                   	// #2
-    70202d60:	97fffcd3 	bl	702020ac <invalid_exception>
+    70202d60:	97fffcd5 	bl	702020b4 <invalid_exception>
     70202d64:	140000a1 	b	70202fe8 <exception_vector_base+0x7e8>
     70202d68:	d503201f 	nop
     70202d6c:	d503201f 	nop
@@ -3702,7 +3707,7 @@ exception_vector_base:
     70202dd4:	910003e0 	mov	x0, sp
     70202dd8:	d2800061 	mov	x1, #0x3                   	// #3
     70202ddc:	d2800042 	mov	x2, #0x2                   	// #2
-    70202de0:	97fffcb3 	bl	702020ac <invalid_exception>
+    70202de0:	97fffcb5 	bl	702020b4 <invalid_exception>
     70202de4:	14000081 	b	70202fe8 <exception_vector_base+0x7e8>
     70202de8:	d503201f 	nop
     70202dec:	d503201f 	nop
@@ -3737,7 +3742,7 @@ exception_vector_base:
     70202e54:	910003e0 	mov	x0, sp
     70202e58:	d2800001 	mov	x1, #0x0                   	// #0
     70202e5c:	d2800062 	mov	x2, #0x3                   	// #3
-    70202e60:	97fffc93 	bl	702020ac <invalid_exception>
+    70202e60:	97fffc95 	bl	702020b4 <invalid_exception>
     70202e64:	14000061 	b	70202fe8 <exception_vector_base+0x7e8>
     70202e68:	d503201f 	nop
     70202e6c:	d503201f 	nop
@@ -3770,7 +3775,7 @@ exception_vector_base:
     70202ed4:	910003e0 	mov	x0, sp
     70202ed8:	d2800021 	mov	x1, #0x1                   	// #1
     70202edc:	d2800062 	mov	x2, #0x3                   	// #3
-    70202ee0:	97fffc73 	bl	702020ac <invalid_exception>
+    70202ee0:	97fffc75 	bl	702020b4 <invalid_exception>
     70202ee4:	14000041 	b	70202fe8 <exception_vector_base+0x7e8>
     70202ee8:	d503201f 	nop
     70202eec:	d503201f 	nop
@@ -3803,7 +3808,7 @@ exception_vector_base:
     70202f54:	910003e0 	mov	x0, sp
     70202f58:	d2800041 	mov	x1, #0x2                   	// #2
     70202f5c:	d2800062 	mov	x2, #0x3                   	// #3
-    70202f60:	97fffc53 	bl	702020ac <invalid_exception>
+    70202f60:	97fffc55 	bl	702020b4 <invalid_exception>
     70202f64:	14000021 	b	70202fe8 <exception_vector_base+0x7e8>
     70202f68:	d503201f 	nop
     70202f6c:	d503201f 	nop
@@ -3836,7 +3841,7 @@ exception_vector_base:
     70202fd4:	910003e0 	mov	x0, sp
     70202fd8:	d2800061 	mov	x1, #0x3                   	// #3
     70202fdc:	d2800062 	mov	x2, #0x3                   	// #3
-    70202fe0:	97fffc33 	bl	702020ac <invalid_exception>
+    70202fe0:	97fffc35 	bl	702020b4 <invalid_exception>
     70202fe4:	14000001 	b	70202fe8 <exception_vector_base+0x7e8>
 
 .Lexception_return:

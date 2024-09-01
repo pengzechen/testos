@@ -1,8 +1,8 @@
 
 #include "aj_types.h"
 #include "exception.h"
-#include "gic.h"
-#include "io.h"
+#include "gicv2.h"
+#include "t_io.h"
 #include "acfg.h"
 
 irq_handler_t g_handler_vec[512] = {0};
@@ -49,9 +49,12 @@ void handle_irq_exception(uint64_t *stack_pointer)
 
     int iar = gic_read_iar();
     int vector = gic_iar_irqnr(iar);
-    gic_write_eoir(iar);
+    
 
     g_handler_vec[vector]((uint64_t *)el1_ctx); // arg not use
+
+    gic_write_eoir(iar);
+    gic_write_dir(iar);
 }
 
 void invalid_exception(uint64_t *stack_pointer, uint64_t kind, uint64_t source)

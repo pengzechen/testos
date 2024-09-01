@@ -2,9 +2,9 @@
 
 /*   ============= gic.c ================*/
 
-#include "gic.h"
+#include "gicv2.h"
 #include "aj_types.h"
-#include "io.h"
+#include "t_io.h"
 
 struct gic_t _gicv2;
 
@@ -29,7 +29,7 @@ void gic_init(void)
 
     // 允许所有优先级的中断
     write32(0xff - 7, (void *)GICC_PMR);
-    write32(GICC_CTRL_ENABLE, (void *)GICC_CTLR);
+    write32(GICC_CTRL_ENABLE | (1 << 9), (void *)GICC_CTLR);
 
     gic_test_init();
 }
