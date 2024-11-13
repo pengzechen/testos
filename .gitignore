@@ -1,3 +1,4 @@
 build/*.o
 build/*.bin
 build/*.elf
+build/*.txt
