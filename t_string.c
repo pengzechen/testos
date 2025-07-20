@@ -5,8 +5,8 @@
  * under the terms of the GNU Library General Public License version 2.
  */
 
-#include "aj_string.h"
-#include "aj_types.h"
+#include "t_string.h"
+#include "t_types.h"
 
 unsigned long strlen(const char *buf)
 {

@@ -1,7 +1,7 @@
 #ifndef __IO_H__
 #define __IO_H__
 
-#include "aj_types.h"
+#include "t_types.h"
 #include <stdarg.h>
 
 static inline uint8_t read8(const volatile void *addr) {

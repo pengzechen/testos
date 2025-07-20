@@ -2,8 +2,8 @@
 
 /*   ============= gic.c ================*/
 
-#include "gicv2.h"
-#include "aj_types.h"
+#include "t_gicv2.h"
+#include "t_types.h"
 #include "t_io.h"
 
 struct gic_t _gicv2;

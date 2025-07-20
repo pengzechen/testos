@@ -1,8 +1,8 @@
 
-#include "gicv2.h"
+#include "t_gicv2.h"
 #include "t_io.h"
-#include "exception.h"
-#include "acfg.h"
+#include "t_exception.h"
+#include "t_cfg.h"
 
 void test_mem_maped()
 {

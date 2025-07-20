@@ -2,7 +2,7 @@
 
 /*
 忙等待：获取锁的处理器会不断地检查锁的状态，直到锁被释放。
-低开销：由于不涉及上下文切换，spinlock 比一般的锁（如互斥锁）开销更低。
+低开销：由于不涉及上下文切换，t_spinlock 比一般的锁（如互斥锁）开销更低。
 短时间锁定：适用于锁定时间较短的场景。如果锁定时间较长，自旋等待会浪费 CPU 资源。
  */
 .global spin_lock
@@ -20,7 +20,7 @@ spin_lock:
     ret
 
 /*
- * when spinlock already taken, r1 will read 1 which is same with the
+ * when t_spinlock already taken, r1 will read 1 which is same with the
  * 'strex' failure return value, no extra convertion needed.
  */
 spin_trylock:

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "t_io.h": "c",
+        "t_cfg.h": "c"
+    }
+}

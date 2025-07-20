@@ -3,8 +3,8 @@
 #ifndef __GIC_H__
 #define __GIC_H__
 
-#include "aj_types.h"
-#include "acfg.h"
+#include "t_types.h"
+#include "t_cfg.h"
 
 
 
@@ -81,7 +81,7 @@
 
 #define GICC_IAR_INT_ID_MASK 0x3ff
 
-#include "aj_types.h"
+#include "t_types.h"
 
 typedef struct gic_t
 {

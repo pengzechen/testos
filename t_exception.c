@@ -1,9 +1,9 @@
 
-#include "aj_types.h"
-#include "exception.h"
-#include "gicv2.h"
+#include "t_types.h"
+#include "t_exception.h"
+#include "t_gicv2.h"
 #include "t_io.h"
-#include "acfg.h"
+#include "t_cfg.h"
 
 irq_handler_t g_handler_vec[512] = {0};
 
@@ -64,7 +64,7 @@ void invalid_exception(uint64_t *stack_pointer, uint64_t kind, uint64_t source)
     uint64_t x2_value = el1_ctx->r[2];
 }
 
-void cntp_handler(uint64_t *)
+void cntp_handler(uint64_t * one)
 {
     asm volatile("msr cntp_tval_el0, %0" : : "r"(100000));
     printf("irq %d\n", TIMER);
