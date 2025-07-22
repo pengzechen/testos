@@ -79,18 +79,31 @@ uint32_t cpu_num(void)
 }
 
 // Enables the given interrupt.
+// void gic_enable_int(int vector, int pri)
+// {
+//     int reg = vector >> 5;                     //  vec / 32
+//     int mask = 1 << (vector & ((1 << 5) - 1)); //  vec % 32
+//     printf("[guest] set enable: reg: %d, mask: 0x%x\n", reg, mask);
+
+//     write32(mask, (void *)(uint64_t)GICD_ISENABLER(reg));
+
+//     int n = vector >> 2;
+//     int m = vector & ((1 << 2) - 1);
+//     write32((pri << 3) | (1 << 7), (void *)(uint64_t)(GICD_IPRIORITYR(n) + m));
+// }
 void gic_enable_int(int vector, int pri)
 {
-    int reg = vector >> 5;                     //  vec / 32
-    int mask = 1 << (vector & ((1 << 5) - 1)); //  vec % 32
+    int reg = vector >> 5; // vector / 32
+    int mask = 1 << (vector & 31); // vector % 32
     printf("[guest] set enable: reg: %d, mask: 0x%x\n", reg, mask);
 
     write32(mask, (void *)(uint64_t)GICD_ISENABLER(reg));
 
-    int n = vector >> 2;
-    int m = vector & ((1 << 2) - 1);
-    write32((pri << 3) | (1 << 7), (void *)(uint64_t)(GICD_IPRIORITYR(n) + m));
+    int n = vector >> 2; // vector / 4
+    int m = vector & 3;  // vector % 4
+    write8((pri << 3), (void *)(uint64_t)(GICD_IPRIORITYR(n) + m));
 }
+
 
 // disables the given interrupt.
 void gic_disable_int(int vector, int pri)

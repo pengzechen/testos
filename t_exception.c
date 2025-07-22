@@ -49,12 +49,11 @@ void handle_irq_exception(uint64_t *stack_pointer)
 
     int iar = gic_read_iar();
     int vector = gic_iar_irqnr(iar);
-    
-
-    g_handler_vec[vector]((uint64_t *)el1_ctx); // arg not use
-
     gic_write_eoir(iar);
     gic_write_dir(iar);
+    
+    g_handler_vec[vector]((uint64_t *)el1_ctx); // arg not use
+
 }
 
 void invalid_exception(uint64_t *stack_pointer, uint64_t kind, uint64_t source)

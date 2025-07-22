@@ -17,10 +17,10 @@ kernel:
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_exception.S $(INCLUDE) -o $(BUILD)exception.s.o
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_string.c $(INCLUDE) -o $(BUILD)string.o
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_print.c $(INCLUDE) -o $(BUILD)print.o
-	$(TOOL_PREFIX)gcc  $(CFLAGS) t_spinlock.S $(INCLUDE) -o $(BUILD)t_spinlock.s.o
+	$(TOOL_PREFIX)gcc  $(CFLAGS) t_spinlock.S $(INCLUDE) -o $(BUILD)spinlock.s.o
 
 
-	$(TOOL_PREFIX)ld -T link.lds -o $(BUILD)kernel.elf $(BUILD)dmos.s.o $(BUILD)t_spinlock.s.o $(BUILD)print.o $(BUILD)string.o   $(BUILD)dmos.o $(BUILD)gic.o $(BUILD)exception.o $(BUILD)exception.s.o
+	$(TOOL_PREFIX)ld -T link.lds -o $(BUILD)kernel.elf $(BUILD)dmos.s.o $(BUILD)spinlock.s.o $(BUILD)print.o $(BUILD)string.o   $(BUILD)dmos.o $(BUILD)gic.o $(BUILD)exception.o $(BUILD)exception.s.o
 	
 	$(TOOL_PREFIX)objdump -x -d -S $(BUILD)kernel.elf > $(BUILD)dis.txt
 	$(TOOL_PREFIX)readelf -a $(BUILD)kernel.elf  > $(BUILD)elf.txt
