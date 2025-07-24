@@ -10,10 +10,12 @@ struct gic_t _gicv2;
 
 void gic_test_init(void)
 {
+    printf("\n[guest]:  ============= gic init test =============\n");
     printf("[guest]     gicd enable %s\n", read32((void *)GICD_CTLR) ? "ok" : "error");
     printf("[guest]     gicc enable %s\n", read32((void *)GICC_CTLR) ? "ok" : "error");
     printf("[guest]     irq numbers: %d\n", _gicv2.irq_nr);
     printf("[guest]     cpu num: %d\n", cpu_num());
+    printf("[guest]:  ============= gic test init done =============\n\n");
 }
 
 // gicd g0, g1  gicc enable
