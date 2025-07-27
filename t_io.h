@@ -40,13 +40,18 @@ static inline void write64(uint64_t value, volatile void *addr) {
 
 void io_init();
 
-extern int printf(const char *fmt, ...);
-extern void print_info(const char *info);
-extern void print_warn(const char *info);
-extern int warning(const char *fmt, ...);
-extern int error(const char *fmt, ...);
-extern int snprintf(char *buf, int size, const char *fmt, ...);
-extern int vsnprintf(char *buf, int size, const char *fmt, va_list va);
+extern void uart_putstr(const char *str);
 
+/*  printf 函数库  */
+extern int my_vprintf(const char *fmt, va_list va);
+extern int my_snprintf(char *buf, int size, const char *fmt, ...);
+extern int my_vsnprintf(char *buf, int size, const char *fmt, va_list va);
+
+extern int logger(const char *fmt, ...);
+extern int logger_info(const char *fmt, ...);
+extern int logger_warn(const char *fmt, ...);
+extern int logger_error(const char *fmt, ...);
+
+extern void t_run_printf_tests();
 
 #endif // __IO_H__

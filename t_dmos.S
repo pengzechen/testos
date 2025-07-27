@@ -27,4 +27,4 @@ _start:
 .align 12
 .global _stack_top
 _stack_top:
-    .skip 0x4000  // 4KB 的栈空间
+    .skip 0x8000  // 4KB 的栈空间

@@ -28,7 +28,8 @@ void kernel_main(void)
     io_init();
 
     // 在这里可以添加你的内核代码
-    printf("hello world\n");
+    logger_info("hello world, os version: %s\n", OS_VERSION);
+    t_run_printf_tests();
 
     exception_init();
 

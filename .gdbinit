@@ -1,2 +1,4 @@
-add-symbol-file build/kernel.elf
+
+file build/kernel.elf
 target remote localhost:1234
+add-symbol-file build/kernel.elf

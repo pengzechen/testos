@@ -21,21 +21,21 @@ void handle_sync_exception(uint64_t *stack_pointer)
 
     int ec = ((el1_esr >> 26) & 0b111111);
 
-    printf("el1 esr: %x\n", el1_esr);
-    printf("ec: %x\n", ec);
+    logger("el1 esr: %x\n", el1_esr);
+    logger("ec: %x\n", ec);
 
-    printf("This is handle_sync_exception: \n");
+    logger("This is handle_sync_exception: \n");
     for (int i = 0; i < 31; i++)
     {
         uint64_t value = el1_ctx->r[i];
-        printf("General-purpose register: %d, value: %x\n", i, value);
+        logger("General-purpose register: %d, value: %x\n", i, value);
     }
 
     uint64_t elr_el1_value = el1_ctx->elr;
     uint64_t usp_value = el1_ctx->usp;
     uint64_t spsr_value = el1_ctx->spsr;
 
-    printf("usp: %x, elr: %x, spsr: %x\n", usp_value, elr_el1_value, spsr_value);
+    logger("usp: %x, elr: %x, spsr: %x\n", usp_value, elr_el1_value, spsr_value);
 
     while (1)
         ;
@@ -69,7 +69,7 @@ void cntp_handler(uint64_t * one)
     asm volatile("msr cntp_tval_el0, %0" : : "r"(625000));
     if (print_flag++ % 100 == 0)
     {
-        printf("[guest]: irq %d. times: %d\n", TIMER, print_flag);
+        logger("[guest]: irq %d. times: %d\n", TIMER, print_flag);
     }
 }
 

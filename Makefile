@@ -1,15 +1,18 @@
 
 
-# TOOL_PREFIX=aarch64-linux-musl-
-TOOL_PREFIX=aarch64-none-elf-
+TOOL_PREFIX=aarch64-linux-musl-
+# TOOL_PREFIX=aarch64-none-elf-
 
-INCLUDE = -I /home/ajax/rust/usb/first_state/aarch64-linux-musl-cross/aarch64-linux-musl/include
+INCLUDE = 
 
 BUILD=build/
 
-CFLAGS= -g -c -O0 -fno-pie -fno-builtin-vsnprintf -fno-builtin-snprintf -fno-builtin-printf -mgeneral-regs-only
+CFLAGS= -g -c -O0 -fno-pie -mgeneral-regs-only
 
-kernel:
+.PHONY: all clean debug run $(BUILD)
+
+
+all: 
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_dmos.S $(INCLUDE) -o $(BUILD)dmos.s.o
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_dmos.c $(INCLUDE) -o $(BUILD)dmos.o
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_gic.c $(INCLUDE) -o $(BUILD)gic.o
@@ -20,18 +23,25 @@ kernel:
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_spinlock.S $(INCLUDE) -o $(BUILD)spinlock.s.o
 
 
-	$(TOOL_PREFIX)ld -T link.lds -o $(BUILD)kernel.elf $(BUILD)dmos.s.o $(BUILD)spinlock.s.o $(BUILD)print.o $(BUILD)string.o   $(BUILD)dmos.o $(BUILD)gic.o $(BUILD)exception.o $(BUILD)exception.s.o
+	$(TOOL_PREFIX)ld -T link.lds -o $(BUILD)kernel.elf \
+		$(BUILD)dmos.s.o\
+		$(BUILD)spinlock.s.o\
+		$(BUILD)print.o\
+		$(BUILD)string.o\
+		$(BUILD)dmos.o\
+		$(BUILD)gic.o\
+		$(BUILD)exception.o\
+		$(BUILD)exception.s.o
 	
 	$(TOOL_PREFIX)objdump -x -d -S $(BUILD)kernel.elf > $(BUILD)dis.txt
 	$(TOOL_PREFIX)readelf -a $(BUILD)kernel.elf  > $(BUILD)elf.txt
-	
 	$(TOOL_PREFIX)objcopy -O binary $(BUILD)kernel.elf $(BUILD)kernel.bin
 
 debug:
-	qemu-system-aarch64 -m 4G -M virt -cpu cortex-a72 -nographic -kernel $(BUILD)kernel.elf -s -S
+	qemu-system-aarch64 -m 4G -smp 1 -cpu cortex-a72 -M virt -M gic_version=2 -nographic -kernel $(BUILD)kernel.elf -s -S
 
 run:
-	qemu-system-aarch64 -m 4G -M virt -cpu cortex-a72 -nographic -kernel $(BUILD)kernel.elf 
+	qemu-system-aarch64 -m 4G -smp 1 -cpu cortex-a72 -M virt -M gic_version=2 -nographic -kernel $(BUILD)kernel.elf 
 
 
 clean:
