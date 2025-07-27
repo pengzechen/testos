@@ -1,4 +1,4 @@
-build/*.o
-build/*.bin
-build/*.elf
-build/*.txt
+build/**/*.txt
+build/**/*.elf
+build/**/*.bin
+build/**/*.o
