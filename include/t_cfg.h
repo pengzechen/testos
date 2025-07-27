@@ -11,4 +11,10 @@
 
 #define OS_VERSION "0.1.0"
 
+#define T_STACK_SIZE (1 << 14) // 16 K
+
+#ifndef T_SMP_NUM
+#define T_SMP_NUM 2
+#endif
+
 #endif // __ACFG_H__

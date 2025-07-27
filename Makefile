@@ -7,12 +7,15 @@ INCLUDE = -I $(realpath ./include)
 
 BUILD=build
 
-CFLAGS= -g -c -O0 -fno-pie -mgeneral-regs-only
-
-LOAD_ADDR = 0x40080000
-
+# arguments
 guest=y
+SMP=1
 
+CFLAGS= -g -c -O0 -fno-pie -mgeneral-regs-only -DT_SMP_NUM=$(SMP)
+
+
+# text段地址
+LOAD_ADDR = 0x40080000
 ifeq ($(guest),y)
 LOAD_ADDR = 0x70200000
 endif
@@ -46,10 +49,10 @@ all:
 	$(TOOL_PREFIX)objcopy -O binary $(BUILD)/kernel.elf $(BUILD)/kernel.bin
 
 debug:
-	qemu-system-aarch64 -m 4G -smp 1 -cpu cortex-a72 -M virt -M gic_version=2 -nographic -kernel $(BUILD)/kernel.elf -s -S
+	qemu-system-aarch64 -m 4G -smp $(SMP) -cpu cortex-a72 -M virt -M gic_version=2 -nographic -kernel $(BUILD)/kernel.elf -s -S
 
 run:
-	qemu-system-aarch64 -m 4G -smp 1 -cpu cortex-a72 -M virt -M gic_version=2 -nographic -kernel $(BUILD)/kernel.elf 
+	qemu-system-aarch64 -m 4G -smp $(SMP) -cpu cortex-a72 -M virt -M gic_version=2 -nographic -kernel $(BUILD)/kernel.elf 
 
 
 clean:
