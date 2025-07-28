@@ -74,7 +74,7 @@ void t_main_entry()
     t_inited_cpu_num++;
     spin_unlock(&t_lock);
 
-    // logger_warn("core %d: t_main_entry called, inited cpu num: %d\n", t_get_current_cpu_id(), t_inited_cpu_num);
+    logger_warn("core %d: t_main_entry called, inited cpu num: %d\n", t_get_current_cpu_id(), t_inited_cpu_num);
     while (t_inited_cpu_num != T_SMP_NUM) {
         // logger_info("core %d: waiting for other cpu to init...\n", t_get_current_cpu_id());
         // 这里不能使用wfi
