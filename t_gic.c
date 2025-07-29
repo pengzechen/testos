@@ -10,12 +10,12 @@ struct gic_t _gicv2;
 
 void gic_test_init(void)
 {
-    logger("\n[guest]:  ============= gic init test =============\n");
-    logger("[guest]     gicd enable %s\n", read32((void *)GICD_CTLR) ? "ok" : "error");
-    logger("[guest]     gicc enable %s\n", read32((void *)GICC_CTLR) ? "ok" : "error");
-    logger("[guest]     irq numbers: %d\n", _gicv2.irq_nr);
-    logger("[guest]     cpu num: %d\n", cpu_num());
-    logger("[guest]:  ============= gic test init done =============\n\n");
+    logger("\n  ============= gic init test =============\n");
+    logger("     gicd enable %s\n", read32((void *)GICD_CTLR) ? "ok" : "error");
+    logger("     gicc enable %s\n", read32((void *)GICC_CTLR) ? "ok" : "error");
+    logger("     irq numbers: %d\n", _gicv2.irq_nr);
+    logger("     cpu num: %d\n", cpu_num());
+    logger("  ============= gic test init done =============\n\n");
 }
 
 // gicd g0, g1  gicc enable
@@ -85,7 +85,7 @@ uint32_t cpu_num(void)
 // {
 //     int reg = vector >> 5;                     //  vec / 32
 //     int mask = 1 << (vector & ((1 << 5) - 1)); //  vec % 32
-//     logger("[guest] set enable: reg: %d, mask: 0x%x\n", reg, mask);
+//     logger("set enable: reg: %d, mask: 0x%x\n", reg, mask);
 
 //     write32(mask, (void *)(uint64_t)GICD_ISENABLER(reg));
 
@@ -97,7 +97,7 @@ void gic_enable_int(int vector, int pri)
 {
     int reg = vector >> 5; // vector / 32
     int mask = 1 << (vector & 31); // vector % 32
-    logger("[guest] set enable: reg: %d, mask: 0x%x\n", reg, mask);
+    logger("set enable: reg: %d, mask: 0x%x\n", reg, mask);
 
     write32(mask, (void *)(uint64_t)GICD_ISENABLER(reg));
 
@@ -112,7 +112,7 @@ void gic_disable_int(int vector, int pri)
 {
     int reg = vector >> 5;                     //  vec / 32
     int mask = 1 << (vector & ((1 << 5) - 1)); //  vec % 32
-    logger("[guest] disable: reg: %d, mask: 0x%x\n", reg, mask);
+    logger("disable: reg: %d, mask: 0x%x\n", reg, mask);
 
     write32(mask, (void *)(uint64_t)GICD_ICENABLER(reg));
 }
@@ -125,7 +125,7 @@ int gic_get_enable(int vector)
 
     uint32_t val = read32((void *)(uint64_t)GICD_ISENABLER(reg));
 
-    logger("[guest] get enable: reg: %x, mask: %x, value: %x\n", reg, mask, val);
+    logger("get enable: reg: %x, mask: %x, value: %x\n", reg, mask, val);
     return val & mask != 0;
 }
 

@@ -10,6 +10,7 @@
 #include "t_string.h"
 #include "t_io.h"
 #include "t_spinlock.h"
+#include "t_cfg.h"
 
 spinlock_t lock;
 
@@ -324,6 +325,7 @@ int logger(const char *fmt, ...)
     r = my_vsnprintf(buf, sizeof buf, fmt, va);
     va_end(va);
 
+    uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
 
     return r;
@@ -341,6 +343,7 @@ int logger_warn(const char *fmt, ...)
     va_end(va);
 
     uart_putstr(ANSI_YELLOW);
+    uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
     uart_putstr(ANSI_RESET);
 
@@ -358,6 +361,7 @@ int logger_error(const char *fmt, ...)
     va_end(va);
 
     uart_putstr(ANSI_RED);
+    uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
     uart_putstr(ANSI_RESET);
 
@@ -375,6 +379,7 @@ int logger_info(const char *fmt, ...)
     va_end(va);
 
     uart_putstr(ANSI_GREEN);
+    uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
     uart_putstr(ANSI_RESET);
 

@@ -13,8 +13,14 @@
 
 #define T_STACK_SIZE (1 << 14) // 16 K
 
+// 没定义 T_SMP_NUM 就是单核
 #ifndef T_SMP_NUM
-#define T_SMP_NUM 2
+#define T_SMP_NUM 1
+#endif
+
+// 没定义 GUEST_LABEL 就不是guest
+#ifndef GUEST_LABEL
+#define GUEST_LABEL "[not guest] "
 #endif
 
 #endif // __ACFG_H__

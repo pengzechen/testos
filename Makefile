@@ -8,16 +8,18 @@ INCLUDE = -I $(realpath ./include)
 BUILD=build
 
 # arguments
-guest=y
+GUEST=y
 SMP=1
 
 CFLAGS= -g -c -O0 -fno-pie -mgeneral-regs-only -DT_SMP_NUM=$(SMP)
 
 
-# text段地址
-LOAD_ADDR = 0x40080000
-ifeq ($(guest),y)
+ifeq ($(GUEST),y)
+GUEST_LABEL = "[guest:0] "
 LOAD_ADDR = 0x70200000
+CFLAGS += '-DGUEST_LABEL="$(GUEST_LABEL)"'
+else
+LOAD_ADDR = 0x40080000
 endif
 
 .PHONY: all clean debug run $(BUILD)

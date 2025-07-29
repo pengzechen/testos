@@ -85,7 +85,7 @@ void t_main_entry()
     while(1) {
         for (int k = 0; k < 0xffffff; k++)
             ;
-        logger_info("[guest: ](cpu: %d)hello world! move %d\n", t_get_current_cpu_id(), move++);
+        logger_info("(cpu: %d)hello world! move %d\n", t_get_current_cpu_id(), move++);
     }
     
 }
