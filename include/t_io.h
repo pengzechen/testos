@@ -54,4 +54,11 @@ extern int logger_error(const char *fmt, ...);
 
 extern void t_run_printf_tests();
 
+static inline unsigned int t_get_current_cpu_id(void)
+{
+    unsigned long mpidr;
+    __asm__ __volatile__("mrs %0, mpidr_el1" : "=r"(mpidr));
+    return (unsigned int)(mpidr & 0xff);
+}
+
 #endif // __IO_H__

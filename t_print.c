@@ -325,6 +325,10 @@ int logger(const char *fmt, ...)
     r = my_vsnprintf(buf, sizeof buf, fmt, va);
     va_end(va);
 
+    char core_prefix[16];
+    int cid = t_get_current_cpu_id();
+    my_snprintf(core_prefix, sizeof(core_prefix), "[core%d] ", cid);
+    uart_putstr(core_prefix);
     uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
 
@@ -342,7 +346,11 @@ int logger_warn(const char *fmt, ...)
     r = my_vsnprintf(buf, sizeof buf, fmt, va);
     va_end(va);
 
+    char core_prefix[16];
+    int cid = t_get_current_cpu_id();
+    my_snprintf(core_prefix, sizeof(core_prefix), "[core%d] ", cid);
     uart_putstr(ANSI_YELLOW);
+    uart_putstr(core_prefix);
     uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
     uart_putstr(ANSI_RESET);
@@ -360,7 +368,11 @@ int logger_error(const char *fmt, ...)
     r = my_vsnprintf(buf, sizeof buf, fmt, va);
     va_end(va);
 
+    char core_prefix[16];
+    int cid = t_get_current_cpu_id();
+    my_snprintf(core_prefix, sizeof(core_prefix), "[core%d] ", cid);
     uart_putstr(ANSI_RED);
+    uart_putstr(core_prefix);
     uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
     uart_putstr(ANSI_RESET);
@@ -378,7 +390,11 @@ int logger_info(const char *fmt, ...)
     r = my_vsnprintf(buf, sizeof buf, fmt, va);
     va_end(va);
 
+    char core_prefix[16];
+    int cid = t_get_current_cpu_id();
+    my_snprintf(core_prefix, sizeof(core_prefix), "[core%d] ", cid);
     uart_putstr(ANSI_GREEN);
+    uart_putstr(core_prefix);
     uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
     uart_putstr(ANSI_RESET);
