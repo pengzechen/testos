@@ -11,6 +11,17 @@ _start:
 
     msr daifset, #2   // 关闭所有中断
 
+    // 清空 bss 区域
+    ldr x1, =__bss_start
+    ldr x2, =__bss_end
+    mov x3, #0
+0:
+    cmp x1, x2
+    b.ge 1f
+    str x3, [x1], #8
+    b 0b
+1:
+
     adrp    x0, exception_vector_base
     add     x0, x0, :lo12:exception_vector_base
     // ldr x0, =exception_vector_base
@@ -27,7 +38,7 @@ _start:
     blr  x0
 
     // 死循环，防止返回
-    1:  b 1b
+    2:  b 2b
 
 
 t_second_entry:

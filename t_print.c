@@ -50,11 +50,11 @@ typedef struct pstream {
     int added;
 } pstream_t;
 
-typedef struct strprops {
+typedef struct strprops  {
     char pad;
     int npad;
     bool alternate;
-} strprops_t;
+} strprops_t __attribute__((aligned(8)));
 
 static char digits[16] = "0123456789abcdef";
 
