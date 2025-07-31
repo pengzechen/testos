@@ -10,12 +10,12 @@ struct gic_t _gicv2;
 
 void gic_test_init(void)
 {
-    logger("\n  ============= gic init test =============\n");
+    logger("  ============= gic init test =============\n");
     logger("     gicd enable %s\n", read32((void *)GICD_CTLR) ? "ok" : "error");
     logger("     gicc enable %s\n", read32((void *)GICC_CTLR) ? "ok" : "error");
     logger("     irq numbers: %d\n", _gicv2.irq_nr);
     logger("     cpu num: %d\n", cpu_num());
-    logger("  ============= gic test init done =============\n\n");
+    logger("  ============= gic test init done =============\n");
 }
 
 // gicd g0, g1  gicc enable
@@ -30,8 +30,7 @@ void gic_init(void)
     write32(GICD_CTRL_ENABLE_GROUP0 | GICD_CTRL_ENABLE_GROUP1, (void *)GICD_CTLR);
 
     // 允许所有优先级的中断
-    write32(0xff - 7, (void *)GICC_PMR);
-    write32(GICC_CTRL_ENABLE | (1 << 9), (void *)GICC_CTLR);
+    gicc_init();
 
     gic_test_init();
 }
@@ -39,7 +38,7 @@ void gic_init(void)
 void gicc_init()
 {
     // 允许所有优先级的中断
-    write32(0xff - 7, (void *)GICC_PMR);
+    write32(0xff, (void *)GICC_PMR);
     write32(GICC_CTRL_ENABLE, (void *)GICC_CTLR);
 }
 
@@ -80,35 +79,18 @@ uint32_t cpu_num(void)
     return GICD_TYPER_CPU_NUM(read32((void *)GICD_TYPER));
 }
 
-// Enables the given interrupt.
-// void gic_enable_int(int vector, int pri)
-// {
-//     int reg = vector >> 5;                     //  vec / 32
-//     int mask = 1 << (vector & ((1 << 5) - 1)); //  vec % 32
-//     logger("set enable: reg: %d, mask: 0x%x\n", reg, mask);
-
-//     write32(mask, (void *)(uint64_t)GICD_ISENABLER(reg));
-
-//     int n = vector >> 2;
-//     int m = vector & ((1 << 2) - 1);
-//     write32((pri << 3) | (1 << 7), (void *)(uint64_t)(GICD_IPRIORITYR(n) + m));
-// }
-void gic_enable_int(int vector, int pri)
+void gic_enable_int(int vector)
 {
     int reg = vector >> 5; // vector / 32
     int mask = 1 << (vector & 31); // vector % 32
     logger("set enable: reg: %d, mask: 0x%x\n", reg, mask);
 
     write32(mask, (void *)(uint64_t)GICD_ISENABLER(reg));
-
-    int n = vector >> 2; // vector / 4
-    int m = vector & 3;  // vector % 4
-    write8((pri << 3), (void *)(uint64_t)(GICD_IPRIORITYR(n) + m));
 }
 
 
 // disables the given interrupt.
-void gic_disable_int(int vector, int pri)
+void gic_disable_int(int vector)
 {
     int reg = vector >> 5;                     //  vec / 32
     int mask = 1 << (vector & ((1 << 5) - 1)); //  vec % 32
@@ -127,19 +109,4 @@ int gic_get_enable(int vector)
 
     logger("get enable: reg: %x, mask: %x, value: %x\n", reg, mask, val);
     return val & mask != 0;
-}
-
-void gic_set_isenabler(uint32_t n, uint32_t value)
-{
-    write32(value, (void *)(uint64_t)GICD_ISENABLER(n));
-}
-
-void gic_set_ipriority(uint32_t n, uint32_t value)
-{
-    write32(value, (void *)(uint64_t)GICD_IPRIORITYR(n));
-}
-
-void gic_set_icenabler(uint32_t n, uint32_t value)
-{
-    write32(value, (void *)(uint64_t)GICD_ICENABLER(n));
 }

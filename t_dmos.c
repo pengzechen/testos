@@ -56,38 +56,49 @@ void start_secondary_cpus()
     }
 }
 
-static inline unsigned int t_get_current_cpu_id(void)
-{
-    unsigned long mpidr;
-    __asm__ __volatile__("mrs %0, mpidr_el1" : "=r"(mpidr));
-    return (unsigned int)(mpidr & 0xff);
-}
 
 volatile int t_inited_cpu_num = 0;
 spinlock_t t_lock;
 static int move = 0;
 
+volatile int sgi_chain_stage = 0;
+volatile int sgi_chain_done = 0;
+
+void send_sgi_chain() {
+    int cid = t_get_current_cpu_id();
+    int next = (cid + 1) % T_SMP_NUM;
+    int sgi_id = (cid % 15) + 1; // SGI号1~15循环
+    if (!sgi_chain_done) {
+        logger_info("Send SGI %d to core %d\n", sgi_id, next);
+        gic_ipi_send_single(sgi_id, next);
+    }
+}
+
 void t_main_entry()
 {
-
     spin_lock(&t_lock);
     t_inited_cpu_num++;
     spin_unlock(&t_lock);
 
-    logger_warn("core %d: t_main_entry called, inited cpu num: %d\n", t_get_current_cpu_id(), t_inited_cpu_num);
+    logger_warn("t_main_entry called, inited cpu num: %d\n", t_inited_cpu_num);
     while (t_inited_cpu_num != T_SMP_NUM) {
-        // logger_info("core %d: waiting for other cpu to init...\n", t_get_current_cpu_id());
-        // 这里不能使用wfi
-        // __asm__ volatile("wfi" : : : "memory");
         for (int i = 0; i < 100000; i++) asm volatile("nop");
     }
-        
-    while(1) {
-        for (int k = 0; k < 0xffffff; k++)
-            ;
-        logger_info("(cpu: %d)hello world! move %d\n", t_get_current_cpu_id(), move++);
+
+    enable_interrupts();
+
+    // 首核发起链式SGI
+    if (t_get_current_cpu_id() == 0) {
+        sgi_chain_stage = 1;
+        send_sgi_chain();
     }
-    
+
+    // 等待链式SGI完成
+    while (!sgi_chain_done) {
+        for (int i = 0; i < 100000; i++) asm volatile("nop");
+    }
+
+    // logger_info("SGI chain test finished!\n");
 }
 
 // main.c
@@ -101,12 +112,12 @@ void t_kernel_main(void)
     // t_run_printf_tests();
 
     // 中断控制器先不考虑
-    // exception_init();
-    // gic_init();
-    // asm volatile("msr cntv_tval_el0, %0" : : "r"(100000));
-    // asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
-    // gic_enable_int(TIMER, 0);
-    // enable_interrupts();
+    exception_init();
+    gic_init();
+    
+    asm volatile("msr cntv_tval_el0, %0" : : "r"(100000));
+    asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
+    // gic_enable_int(TIMER);
 
     start_secondary_cpus();
     
@@ -117,12 +128,17 @@ void t_kernel_main(void)
 
 void t_second_kernel_main()
 {
-    logger_info("starting core: %d ...\n", t_get_current_cpu_id());
+    logger_info("starting core:...\n");
 
     for (int k = 0; k < 0xffff; k++)
             ;
+    gicc_init();
 
-    logger_info("core %d starting is done.\n\n", t_get_current_cpu_id());
+    asm volatile("msr cntv_tval_el0, %0" : : "r"(100000));
+    asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
+    // gic_enable_int(TIMER);
+
+    logger_info("starting is done.\n\n");
 
     t_main_entry();
     // can't reach here !

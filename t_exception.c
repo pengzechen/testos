@@ -67,13 +67,55 @@ void invalid_exception(uint64_t *stack_pointer, uint64_t kind, uint64_t source)
 void cntp_handler(uint64_t * one)
 {
     asm volatile("msr cntp_tval_el0, %0" : : "r"(625000));
+    unsigned long mpidr;
     if (print_flag++ % 100 == 0)
     {
-        logger("[guest]: irq %d. times: %d\n", TIMER, print_flag);
+        __asm__ __volatile__("mrs %0, mpidr_el1" : "=r"(mpidr));
+        logger("core: %d: irq %d. times: %d\n", (0xff & mpidr), TIMER, print_flag);
+        if (print_flag >= 20000) {
+            gic_disable_int(TIMER);
+        }
+    }
+}
+
+// SGI中断号定义（可选1~15，这里用1）
+#define SGI_INT_ID 1
+
+extern volatile int sgi_chain_stage;
+extern volatile int sgi_chain_done;
+extern void send_sgi_chain();
+
+void sgi_handler(uint64_t *stack_pointer) {
+    int cid = t_get_current_cpu_id();
+    logger("SGI interrupt handled on core: %d\n", cid);
+    if (sgi_chain_stage < T_SMP_NUM) {
+        if (cid == sgi_chain_stage) {
+            sgi_chain_stage++;
+            send_sgi_chain();
+        }
+    } else if (cid == 0 && !sgi_chain_done) {
+        // 最后一个核发回首核，结束
+        sgi_chain_done = 1;
     }
 }
 
 void exception_init()
 {
     irq_install(TIMER, cntp_handler);
+    
+    irq_install(SGI_INT_ID, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+1, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+2, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+3, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+4, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+5, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+6, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+7, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+8, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+9, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+10, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+11, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+12, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+13, sgi_handler); // 安装SGI中断处理器
+    irq_install(SGI_INT_ID+14, sgi_handler); // 安装SGI中断处理器
 }
