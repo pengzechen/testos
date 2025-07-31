@@ -56,12 +56,6 @@ void start_secondary_cpus()
     }
 }
 
-static inline unsigned int t_get_current_cpu_id(void)
-{
-    unsigned long mpidr;
-    __asm__ __volatile__("mrs %0, mpidr_el1" : "=r"(mpidr));
-    return (unsigned int)(mpidr & 0xff);
-}
 
 volatile int t_inited_cpu_num = 0;
 spinlock_t t_lock;
