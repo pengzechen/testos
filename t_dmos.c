@@ -98,6 +98,7 @@ void t_main_entry()
         for (int i = 0; i < 100000; i++) asm volatile("nop");
     }
 
+    asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
     // logger_info("SGI chain test finished!\n");
 }
 
@@ -116,7 +117,7 @@ void t_kernel_main(void)
     gic_init();
     
     asm volatile("msr cntv_tval_el0, %0" : : "r"(100000));
-    asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
+    // asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
     // gic_enable_int(TIMER);
 
     start_secondary_cpus();
@@ -135,7 +136,7 @@ void t_second_kernel_main()
     gicc_init();
 
     asm volatile("msr cntv_tval_el0, %0" : : "r"(100000));
-    asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
+    // asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
     // gic_enable_int(TIMER);
 
     logger_info("starting is done.\n\n");
