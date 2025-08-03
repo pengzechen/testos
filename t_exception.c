@@ -66,9 +66,9 @@ void invalid_exception(uint64_t *stack_pointer, uint64_t kind, uint64_t source)
 
 void cntp_handler(uint64_t * one)
 {
-    asm volatile("msr cntp_tval_el0, %0" : : "r"(625000));
+    asm volatile("msr cntp_tval_el0, %0" : : "r"(6250000));
     unsigned long mpidr;
-    if (print_flag++ % 100 == 0)
+    if (print_flag++ % 10 == 0)
     {
         __asm__ __volatile__("mrs %0, mpidr_el1" : "=r"(mpidr));
         logger("core: %d: irq %d. times: %d\n", (0xff & mpidr), TIMER, print_flag);

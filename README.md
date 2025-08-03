@@ -13,3 +13,10 @@ make SMP=2 run
 ```bash
 make SMP=2 GUEST_LABEL='[guest:0] ' LOAD_ADDR=0x70200000
 ```
+
+```bash
+make SMP=2 GUEST_LABEL='[guest:0 ' LOAD_ADDR=0x70200000
+mv build/kernel.bin build/guest0_kernel.bin
+make SMP=4 GUEST_LABEL='[guest:1 ' LOAD_ADDR=0x50200000
+mv build/kernel.bin build/guest1_kernel.bin
+```
