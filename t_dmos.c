@@ -6,27 +6,6 @@
 #include "t_psci.h"
 #include "t_spinlock.h"
 
-void test_mem_maped()
-{
-    volatile unsigned int *const MEM_ADDR = (unsigned int *)0x70000000;
-    *MEM_ADDR = 0x7777;
-}
-
-void test_mem_no_maped()
-{
-    volatile unsigned int *const MEM_ADDR = (unsigned int *)0x80000000;
-    *MEM_ADDR = 0x8888;
-}
-
-void test_mem_no_maped2()
-{
-    volatile unsigned int *const MEM_ADDR = (unsigned int *)0x50000000;
-    *MEM_ADDR = 0x8888;
-}
-
-
-
-
 extern void _t_stack_top();
 extern void _t_stack_top_second();
 
@@ -77,9 +56,19 @@ void t_main_entry()
     }
         
     while(1) {
-        for (int k = 0; k < 0xffffff; k++)
-            ;
-        logger_info("(cpu: %d)hello world! move %d\n", t_get_current_cpu_id(), move++);
+        // Test UART receive functionality
+        if (uart_rx_available()) {
+            char c;
+            while (uart_getchar_nb(&c)) {
+                logger_info("(cpu: %d) Received char: '%c' (0x%02x)\n",
+                           t_get_current_cpu_id(), c, (unsigned char)c);
+            }
+        }
+
+        // Small delay to avoid busy waiting
+        for (int k = 0; k < 0x10000; k++) {
+            asm volatile("nop");
+        }
     }
     
 }
@@ -94,13 +83,14 @@ void t_kernel_main(void)
     logger_info("hello world, os version: %s\n", OS_VERSION);
     // t_run_printf_tests();
 
-    // 中断控制器先不考虑
-    // exception_init();
-    // gic_init();
-    // asm volatile("msr cntv_tval_el0, %0" : : "r"(100000));
-    // asm volatile("msr cntv_ctl_el0, %0" : : "r"(1));
-    // gic_enable_int(TIMER, 0);
-    // enable_interrupts();
+    // 初始化中断系统以支持UART中断
+    exception_init();
+    gic_init();
+
+    // 启用中断
+    enable_interrupts();
+
+    logger_info("Interrupt system initialized for UART\n");
 
     start_secondary_cpus();
     

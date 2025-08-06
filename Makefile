@@ -33,6 +33,7 @@ all:
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_exception.S $(INCLUDE) -o $(BUILD)/exception.s.o
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_string.c $(INCLUDE) -o $(BUILD)/string.o
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_print.c $(INCLUDE) -o $(BUILD)/print.o
+	$(TOOL_PREFIX)gcc  $(CFLAGS) t_uart.c $(INCLUDE) -o $(BUILD)/uart.o
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_spinlock.S $(INCLUDE) -o $(BUILD)/spinlock.s.o
 
 	$(TOOL_PREFIX)ld -T link.lds --defsym=__LOAD_ADDR__=$(LOAD_ADDR) -o $(BUILD)/kernel.elf \
@@ -40,6 +41,7 @@ all:
 		$(BUILD)/spinlock.s.o\
 		$(BUILD)/print.o\
 		$(BUILD)/string.o\
+		$(BUILD)/uart.o\
 		$(BUILD)/dmos.o\
 		$(BUILD)/gic.o\
 		$(BUILD)/exception.o\
