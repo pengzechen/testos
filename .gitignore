@@ -2,3 +2,4 @@ build/**/*.txt
 build/**/*.elf
 build/**/*.bin
 build/**/*.o
+.vscode/

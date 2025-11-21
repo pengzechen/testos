@@ -5,7 +5,7 @@
 
 #include "t_types.h"
 
-void exception_init();
+void timer_init();
 
 typedef struct
 {

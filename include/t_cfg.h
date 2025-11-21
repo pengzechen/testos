@@ -4,7 +4,7 @@
 #define CNTP_TIMER   30
 #define CNTV_TIMER   27
 
-#define TIMER  CNTV_TIMER
+#define TIMER  CNTP_TIMER
 
 // UART interrupt number (SPI 1 = GIC interrupt 33)
 #define UART_IRQ     33

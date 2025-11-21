@@ -13,11 +13,11 @@
 #include "t_cfg.h"
 #include "t_uart.h"
 
-spinlock_t lock;
+spinlock_irq_t lock;
 
 void io_init()
 {
-	spinlock_init(&lock);
+	spinlock_irq_init(&lock);
 	// Initialize interrupt-driven UART
 	uart_init();
 }
@@ -29,7 +29,7 @@ void io_init()
 
 #define BINSTR_SZ (sizeof(uint32_t) * 8 + sizeof(uint32_t) * 2)
 
-#define BUFSZ 2048
+#define BUFSZ 512
 
 #define ANSI_RED     "\x1b[31m"
 #define ANSI_YELLOW  "\x1b[33m"
@@ -50,7 +50,7 @@ typedef struct strprops  {
 
 static char digits[16] = "0123456789abcdef";
 
-static spinlock_t print_lock = {0};
+static spinlock_irq_t print_lock = {0};
 
 
 static void addchar(pstream_t *p, char c)
@@ -313,7 +313,7 @@ int my_vprintf(const char *fmt, va_list va)
 
 int logger(const char *fmt, ...)
 {
-    spin_lock(&print_lock);
+    spin_lock_irqsave(&print_lock);
     va_list va;
     char buf[BUFSZ];
     int r;
@@ -329,7 +329,7 @@ int logger(const char *fmt, ...)
     uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
     
-    spin_unlock(&print_lock);
+    spin_unlock_irqrestore(&print_lock);
 
     return r;
 }
@@ -337,7 +337,7 @@ int logger(const char *fmt, ...)
 
 int logger_warn(const char *fmt, ...)
 {
-    spin_lock(&print_lock);
+    spin_lock_irqsave(&print_lock);
     va_list va;
     char buf[BUFSZ];
     int r;
@@ -355,14 +355,14 @@ int logger_warn(const char *fmt, ...)
     uart_putstr(buf);
     uart_putstr(ANSI_RESET);
 
-    spin_unlock(&print_lock);
+    spin_unlock_irqrestore(&print_lock);
 
     return r;
 }
 
 int logger_error(const char *fmt, ...)
 {
-    spin_lock(&print_lock);
+    spin_lock_irqsave(&print_lock);
     va_list va;
     char buf[BUFSZ];
     int r;
@@ -379,14 +379,14 @@ int logger_error(const char *fmt, ...)
     uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
     uart_putstr(ANSI_RESET);
-    spin_unlock(&print_lock);
+    spin_unlock_irqrestore(&print_lock);
 
     return r;
 }
 
 int logger_info(const char *fmt, ...)
 {
-    spin_lock(&print_lock);
+    spin_lock_irqsave(&print_lock);
     va_list va;
     char buf[BUFSZ];
     int r;
@@ -403,7 +403,7 @@ int logger_info(const char *fmt, ...)
     uart_putstr(GUEST_LABEL);
     uart_putstr(buf);
     uart_putstr(ANSI_RESET);
-    spin_unlock(&print_lock);
+    spin_unlock_irqrestore(&print_lock);
 
     return r;
 }
