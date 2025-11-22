@@ -37,6 +37,7 @@ all:
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_spinlock.S $(INCLUDE) -o $(BUILD)/spinlock.s.o
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_task.c $(INCLUDE) -o $(BUILD)/task.o
 	$(TOOL_PREFIX)gcc  $(CFLAGS) t_list.c $(INCLUDE) -o $(BUILD)/list.o
+	$(TOOL_PREFIX)gcc  $(CFLAGS) user.c $(INCLUDE) -o $(BUILD)/user.o
 
 	$(TOOL_PREFIX)ld -T link.lds --defsym=__LOAD_ADDR__=$(LOAD_ADDR) -o $(BUILD)/kernel.elf \
 		$(BUILD)/dmos.s.o\
@@ -49,7 +50,8 @@ all:
 		$(BUILD)/exception.o\
 		$(BUILD)/exception.s.o\
 		$(BUILD)/task.o\
-		$(BUILD)/list.o
+		$(BUILD)/list.o\
+		$(BUILD)/user.o
 
 	
 	$(TOOL_PREFIX)objdump -x -d -S $(BUILD)/kernel.elf > $(BUILD)/dis.txt

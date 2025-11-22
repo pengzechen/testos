@@ -187,21 +187,6 @@ deque_task(void)
 }
 
 void
-yield_cpu(void)
-{
-    struct tcb_t *current = get_current_task();
-    if (current != &sched[t_get_current_cpu_id()].idle_task)
-        enque_task(current);
-
-    struct tcb_t *next_task = deque_task();
-    set_current_task(next_task);
-    logger_warn("Task %d yielding to task %d\n",
-                current->task_id,
-                next_task->task_id);
-    switch_context(current, next_task);
-}
-
-void
 switch_to_task(struct tcb_t *next_task)
 {
     struct tcb_t *current = get_current_task();
@@ -243,7 +228,8 @@ schedule(void)
     struct tcb_t *next_task = deque_task();
 
     struct tcb_t *current = get_current_task();
-    if (current != &sched[t_get_current_cpu_id()].idle_task) {
+    if (current != &sched[t_get_current_cpu_id()].idle_task &&
+        current->state != TASK_STATE_EXIT) {
         enque_task(current);
     }
 
@@ -257,8 +243,45 @@ schedule(void)
         set_current_task(next_task);
         switch_context(current, next_task);
     } else {
-        //logger_warn("Continuing with the same task %d\n", current->task_id);
+        // logger_warn("Continuing with the same task %d\n", current->task_id);
     }
+}
+
+// ================= 下面是系统调用接口实现 =================
+
+void
+sys_exit(void)
+{
+    struct tcb_t *current = get_current_task();
+    int           cpu_id  = t_get_current_cpu_id();
+
+    if (current->state != TASK_STATE_RUNNING) {
+        logger_warn("sys_exit: exiting task %d is not in RUNNING state!\n",
+                    current->task_id);
+    }
+    // 标记为退出态
+    current->state = TASK_STATE_EXIT;
+    logger_info("Task %d exited.\n", current->task_id);
+
+    // 切换到下一个任务调度
+    schedule();
+
+    logger_error("sys_exit: should not reach here!\n");
+}
+
+void
+sys_yield(void)
+{
+    struct tcb_t *current = get_current_task();
+    if (current != &sched[t_get_current_cpu_id()].idle_task)
+        enque_task(current);
+
+    struct tcb_t *next_task = deque_task();
+    set_current_task(next_task);
+    logger_warn("Task %d yielding to task %d\n",
+                current->task_id,
+                next_task->task_id);
+    switch_context(current, next_task);
 }
 
 void

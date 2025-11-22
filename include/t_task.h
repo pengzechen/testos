@@ -11,6 +11,7 @@ typedef enum _task_state_t
     TASK_STATE_RUNNING,
     TASK_STATE_WAITING,   // 睡眠状态（sleep tick 到期后可转 READY）
     TASK_STATE_WAIT_IRQ,  // 等待中断
+    TASK_STATE_EXIT,
 } task_state_t;
 
 typedef struct _contex_t
@@ -81,10 +82,6 @@ init_task(entry_t       entry,
 void
 enque_task(struct tcb_t *task);
 
-void
-yield_cpu(void);
-
-
 struct tcb_t *
 get_idle_task(void);
 
@@ -94,7 +91,16 @@ schedule(void);
 void
 handle_timer_tick(void);
 
+
+// ================= 下面是系统调用接口声明 =================
+
+void
+sys_exit(void);
+
 void
 sys_sleep(uint32_t ticks);
+
+void
+sys_yield(void);
 
 #endif /* T_TASK_H */
