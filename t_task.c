@@ -149,7 +149,8 @@ enque_task(struct tcb_t *task)
 
     // asm volatile("dmb ish" ::: "memory");
     list_insert_last(&sched[cpu_id].ready_queue, &task->run_node);
-    if (task->state != TASK_STATE_CREATE && task->state != TASK_STATE_RUNNING) {
+    if (task->state != TASK_STATE_CREATE && task->state != TASK_STATE_RUNNING &&
+        task->state != TASK_STATE_WAITING) {
         logger_warn("Enqueing task %d which is not in CREATE or RUNNING state! "
                     "Current state: %d\n",
                     task->task_id,
@@ -209,6 +210,34 @@ switch_to_task(struct tcb_t *next_task)
 }
 
 void
+handle_timer_tick(void)
+{
+    int cpu_id = t_get_current_cpu_id();
+
+    // 处理睡眠队列
+    list_t      *sleep_queue = &sched[cpu_id].sleep_queue;
+    list_node_t *node        = sleep_queue->first;
+
+    while (node) {
+        struct tcb_t *task = list_node_parent(node, struct tcb_t, run_node);
+        list_node_t  *next_node = node->next;  // 先保存下一个结点
+
+        task->sleep_ticks--;
+        if (task->sleep_ticks <= 0) {
+            // 从睡眠队列中移除
+            list_delete(sleep_queue, &task->run_node);
+            task->sleep_ticks = 0;
+            // enque_task(task);
+            list_insert_first(&sched[cpu_id].ready_queue, &task->run_node);
+            task->state = TASK_STATE_READY;
+            logger_info("Waking up task %d from sleep\n", task->task_id);
+        }
+
+        node = next_node;
+    }
+}
+
+void
 schedule(void)
 {
     struct tcb_t *next_task = deque_task();
@@ -218,9 +247,9 @@ schedule(void)
         enque_task(current);
     }
 
-    logger_info("Scheduling from task %d to task %d\n",
-                current->task_id,
-                next_task->task_id);
+    // logger_info("Scheduling from task %d to task %d\n",
+    //             current->task_id,
+    //             next_task->task_id);
     // logger_info("Ready queue count: %d\n",
     //             list_count(&sched[t_get_current_cpu_id()].ready_queue));
 
@@ -228,6 +257,29 @@ schedule(void)
         set_current_task(next_task);
         switch_context(current, next_task);
     } else {
-        logger_warn("Continuing with the same task %d\n", current->task_id);
+        //logger_warn("Continuing with the same task %d\n", current->task_id);
     }
+}
+
+void
+sys_sleep(uint32_t ms)
+{
+    struct tcb_t *current = get_current_task();
+    // tick 是 10ms，向上取整
+    uint32_t ticks = (ms + 9) / 10;  // 保证至少休眠 ms 毫秒
+
+    current->sleep_ticks = ticks;
+    current->state       = TASK_STATE_WAITING;
+
+    list_insert_last(&sched[t_get_current_cpu_id()].sleep_queue,
+                     &current->run_node);
+
+    logger_info("Task %d going to sleep for %d ms (%d ticks)\n",
+                current->task_id,
+                ms,
+                ticks);
+
+    struct tcb_t *next_task = deque_task();
+    set_current_task(next_task);
+    switch_context(current, next_task);
 }

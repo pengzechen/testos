@@ -91,4 +91,10 @@ get_idle_task(void);
 void
 schedule(void);
 
+void
+handle_timer_tick(void);
+
+void
+sys_sleep(uint32_t ticks);
+
 #endif /* T_TASK_H */

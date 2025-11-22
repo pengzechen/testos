@@ -44,7 +44,7 @@ uint64_t el0_stack = (uint64_t) 0x80000000;
 volatile int t_inited_cpu_num = 0;
 spinlock_t   t_lock;
 
-static int   log = 0;
+static int   log = 1;
 
 static spinlock_irq_t print_lock = {0};
 
@@ -68,9 +68,7 @@ test_task0()
     while (1) {
         if (log)
             my_puts("Task 0 is running\n");
-        for (int i = 0; i < 0x105000; i++) {
-            asm volatile("nop");
-        }
+        sys_sleep(1000);
     }
 }
 
@@ -92,9 +90,7 @@ test_task2()
     while (1) {
         if (log)
             my_puts("Task 2 is running\n");
-        for (int i = 0; i < 0x105000; i++) {
-            asm volatile("nop");
-        }
+        sys_sleep(1000);
     }
 }
 
@@ -304,10 +300,12 @@ test_task19()
 
 
 static entry_t test_tasks[] = {
-    test_task1,  test_task2,  test_task3,  test_task4,  test_task5,
+    test_task0, test_task1,  test_task2,  test_task3,  test_task4,  test_task5,
     test_task6,  test_task7,  test_task8,  test_task9,  test_task10,
     test_task11, test_task12, test_task13, test_task14, test_task15,
-    test_task16, test_task17, test_task18, test_task19, test_task0};
+    test_task16, test_task17, test_task18, test_task19, };
+
+#define TEST_TASK_NUM (T_SMP_NUM + 3)
 
 void
 t_main_entry()
@@ -324,10 +322,10 @@ t_main_entry()
             asm volatile("nop");
     }
 
-    for (int i = 0; i < T_SMP_NUM + 1; i++) {
+    for (int i = 0; i < TEST_TASK_NUM; i++) {
         struct tcb_t *task = create_task();
         init_task(
-            (entry_t) test_tasks[t_get_current_cpu_id() * (T_SMP_NUM + 1) + i],
+            (entry_t) test_tasks[t_get_current_cpu_id() * (TEST_TASK_NUM) + i],
             task,
             (uint64_t) (void *) (el1_stack + task->task_id * T_STACK_SIZE),
             (uint64_t) (void *) (el0_stack + task->task_id * T_STACK_SIZE),

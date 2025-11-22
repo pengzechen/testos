@@ -86,7 +86,10 @@ invalid_exception(uint64_t *stack_pointer, uint64_t kind, uint64_t source)
 void
 cntp_handler(uint64_t *one)
 {
-    WRITE_CNTP_TVAL_EL0(625000);
+    WRITE_CNTP_TVAL_EL0(625000); // 10ms at 62.5MHz
+
+    handle_timer_tick();
+
     if (print_flag++ % 10 == 0) {
         // logger("timer irq %d. times: %d\n", TIMER, print_flag);
         schedule();
