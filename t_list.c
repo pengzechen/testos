@@ -11,6 +11,7 @@
  */
 
 #include "t_list.h"
+#include "t_io.h"
 
 void
 list_init(list_t *list)
@@ -35,9 +36,28 @@ list_insert_first(list_t *list, list_node_t *node)
     list->count++;
 }
 
+bool
+list_contains(list_t *list, list_node_t *node)
+{
+    list_node_t *cur = list->first;
+    while (cur != NULL) {
+        if (cur == node)
+            return true;
+        cur = cur->next;
+    }
+    return false;
+}
+
 void
 list_insert_last(list_t *list, list_node_t *node)
 {
+    // 插入前检查
+    if (list_contains(list, node)) {
+        logger_warn("list_insert_last_checked: node %p already in list %p", node, list);
+        // assert(0 && "Attempted to insert a node that's already in the list!");
+        return;
+    }
+
     node->pre  = list->last;
     node->next = (list_node_t *) 0;
 

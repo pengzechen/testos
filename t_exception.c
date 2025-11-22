@@ -86,8 +86,8 @@ invalid_exception(uint64_t *stack_pointer, uint64_t kind, uint64_t source)
 void
 cntp_handler(uint64_t *one)
 {
-    WRITE_CNTP_TVAL_EL0(62500);
-    if (print_flag++ % 100 == 0) {
+    WRITE_CNTP_TVAL_EL0(625000);
+    if (print_flag++ % 10 == 0) {
         // logger("timer irq %d. times: %d\n", TIMER, print_flag);
         schedule();
     }
@@ -100,5 +100,5 @@ timer_init()
     irq_install(TIMER, cntp_handler);
     gic_enable_int(TIMER, 1);  // enable timer interrupt
     WRITE_CNTP_CTL_EL0(1);
-    WRITE_CNTP_TVAL_EL0(62500);
+    WRITE_CNTP_TVAL_EL0(625000);
 }
