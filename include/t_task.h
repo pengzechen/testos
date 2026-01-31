@@ -82,8 +82,20 @@ init_task(entry_t       entry,
 void
 enque_task(struct tcb_t *task);
 
+void
+enque_task_to_cpu(struct tcb_t *task, int cpu_id);
+
 struct tcb_t *
 get_idle_task(void);
+
+struct tcb_t *
+get_current_task(void);
+
+void
+set_current_task(struct tcb_t *task);
+
+struct tcb_t *
+deque_task(void);
 
 void
 schedule(void);
@@ -102,5 +114,16 @@ sys_sleep(uint32_t ticks);
 
 void
 sys_yield(void);
+
+// Mutex 系统调用
+struct _mutex_t;  // 前向声明
+void
+sys_mutex_lock(struct _mutex_t *mutex);
+
+void
+sys_mutex_unlock(struct _mutex_t *mutex);
+
+int
+sys_mutex_trylock(struct _mutex_t *mutex);
 
 #endif /* T_TASK_H */

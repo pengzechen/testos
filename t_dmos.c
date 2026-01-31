@@ -68,11 +68,15 @@ t_main_entry()
         int           info_idx = cpu_id * TASKS_PER_CPU + i;
         struct tcb_t *task     = create_task();
 
+        // 确保task_id和infos数组索引一致
+        task->task_id = info_idx;
+
         entry_t  entry     = infos[info_idx].entry;
         uint64_t el0_stack = infos[info_idx].el0_stack_addr;
         uint64_t el1_stack = infos[info_idx].el1_stack_addr;
 
-        init_task(entry, task, el1_stack, el0_stack, 0);
+        // 设置任务的 CPU affinity 为当前 CPU
+        init_task(entry, task, el1_stack, el0_stack, cpu_id);
         enque_task(task);  // 加入本核 ready 队列
     }
 
@@ -107,6 +111,10 @@ t_kernel_main(void)
     init_scheduler();
 
     task_code_copy();
+
+    // 初始化 mutex 测试
+    extern void mutex_test_init(void);
+    mutex_test_init();
 
     start_secondary_cpus();
 

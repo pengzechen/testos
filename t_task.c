@@ -6,6 +6,7 @@
 #include "t_string.h"
 #include "t_io.h"
 #include "t_spinlock.h"
+#include "t_mutex.h"
 
 #define IDLE_STACK_SIZE     0x1000UL
 #define TASK_EL1_STACK_SIZE 0x2000UL
@@ -140,17 +141,19 @@ init_task(entry_t       entry,
     asm volatile("" ::: "memory");
 }
 
-// Per cpu
-// 入队之后设置为 READY 状态
+// 将任务加入到指定 CPU 的就绪队列
 void
-enque_task(struct tcb_t *task)
+enque_task_to_cpu(struct tcb_t *task, int cpu_id)
 {
-    int cpu_id = t_get_current_cpu_id();
+    if (cpu_id < 0 || cpu_id >= T_SMP_NUM) {
+        logger_error("enque_task_to_cpu: invalid cpu_id %d\n", cpu_id);
+        return;
+    }
 
     // asm volatile("dmb ish" ::: "memory");
     list_insert_last(&sched[cpu_id].ready_queue, &task->run_node);
     if (task->state != TASK_STATE_CREATE && task->state != TASK_STATE_RUNNING &&
-        task->state != TASK_STATE_WAITING) {
+        task->state != TASK_STATE_WAITING && task->state != TASK_STATE_WAIT_IRQ) {
         logger_warn("Enqueing task %d which is not in CREATE or RUNNING state! "
                     "Current state: %d\n",
                     task->task_id,
@@ -159,6 +162,15 @@ enque_task(struct tcb_t *task)
     task->state = TASK_STATE_READY;
     // logger_info("Enque task %d to cpu %d ready queue\n", task->task_id, cpu_id);
     // asm volatile("dmb ish" ::: "memory");
+}
+
+// Per cpu
+// 入队之后设置为 READY 状态
+void
+enque_task(struct tcb_t *task)
+{
+    int cpu_id = t_get_current_cpu_id();
+    enque_task_to_cpu(task, cpu_id);
 }
 
 // Per cpu
@@ -215,7 +227,7 @@ handle_timer_tick(void)
             // enque_task(task);
             list_insert_first(&sched[cpu_id].ready_queue, &task->run_node);
             task->state = TASK_STATE_READY;
-            logger_info("Waking up task %d from sleep\n", task->task_id);
+            // logger_info("Waking up task %d from sleep\n", task->task_id);
         }
 
         node = next_node;
@@ -229,7 +241,9 @@ schedule(void)
 
     struct tcb_t *current = get_current_task();
     if (current != &sched[t_get_current_cpu_id()].idle_task &&
-        current->state != TASK_STATE_EXIT) {
+        current->state != TASK_STATE_EXIT &&
+        current->state != TASK_STATE_WAIT_IRQ &&
+        current->state != TASK_STATE_WAITING) {
         enque_task(current);
     }
 
@@ -297,12 +311,32 @@ sys_sleep(uint32_t ms)
     list_insert_last(&sched[t_get_current_cpu_id()].sleep_queue,
                      &current->run_node);
 
-    logger_info("Task %d going to sleep for %d ms (%d ticks)\n",
-                current->task_id,
-                ms,
-                ticks);
+    // logger_info("Task %d going to sleep for %d ms (%d ticks)\n",
+    //             current->task_id,
+    //             ms,
+    //             ticks);
 
     struct tcb_t *next_task = deque_task();
     set_current_task(next_task);
     switch_context(current, next_task);
+}
+
+// ================= Mutex 系统调用实现 =================
+
+void
+sys_mutex_lock(mutex_t *mutex)
+{
+    mutex_lock(mutex);
+}
+
+void
+sys_mutex_unlock(mutex_t *mutex)
+{
+    mutex_unlock(mutex);
+}
+
+int
+sys_mutex_trylock(mutex_t *mutex)
+{
+    return mutex_trylock(mutex);
 }
